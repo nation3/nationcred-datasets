@@ -1,2 +1,2 @@
 # nationcred-datasets
-Historical NationCred scores
+Current and historical NationCred scores
