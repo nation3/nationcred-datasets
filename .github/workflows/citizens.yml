@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: citizens
+        working-directory: data-sources/citizens
     strategy:
       matrix:
         node-version: [16.x, 18.x]
@@ -22,6 +22,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        cache-dependency-path: citizens/package-lock.json
+        cache-dependency-path: data-sources/citizens/package-lock.json
     - run: npm install
     - run: npx tsc generate-csv.ts
