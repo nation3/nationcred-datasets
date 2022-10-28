@@ -1,4 +1,4 @@
-# nationcred-datasets
+# NationCred Datasets
 
 Current and historical NationCred scores
 
