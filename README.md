@@ -2,6 +2,8 @@
 
 Current and historical NationCred scores
 
+## Data Sources
+
 A Nation3 citizen's NationCred score is based on multiple data sources:
 
 ```mermaid
