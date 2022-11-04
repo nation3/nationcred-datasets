@@ -5,23 +5,33 @@ Current and historical NationCred scores
 A Nation3 citizen's NationCred score is based on multiple data sources:
 
 ```mermaid
-graph TD;
-    subgraph Governance
-    Discourse_Karma(Discourse)-->Karma;
+graph TD
+    subgraph Nation3 Governance
+    Discord_Karma(Discord)-->Karma
+    Discourse_Karma(Discourse)-->Karma
+    Snapshot-->Karma
     end
-    subgraph Value Creation
-    Discord-->SourceCred;
-    Discourse-->SourceCred;
-    GitHub-->SourceCred;
-    Dework;
+    Karma-->NationCred
+    
+    subgraph Nation3 Operations
+    Aragon(Aragon DAO)
+    Gnosis(Gnosis Multisig)
+    Coordinape(Coordinape CoVault)
     end
-    Karma-->NationCred;
-    subgraph Governance
-    Snapshot-->Karma;
+    Aragon-->NationCred
+    Gnosis-->NationCred
+    Coordinape-->NationCred
+    
+    subgraph Nation3 Value Creation
+    Discord-->SourceCred
+    Discourse-->SourceCred
+    GitHub-->SourceCred
+    Dework
     end
-    SourceCred-->NationCred;
+    Dework-->NationCred
+    SourceCred-->NationCred
+    
     subgraph Nation3 Activity
     NationCred
     end
-    Dework-->NationCred;
 ```
