@@ -25,5 +25,5 @@ npx tsc generate-csv.ts
 ## Run
 
 ```
-node tsc generate-csv.js
+node generate-csv.js
 ```

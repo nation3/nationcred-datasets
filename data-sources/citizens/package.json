@@ -18,5 +18,8 @@
   "homepage": "https://github.com/nation3/nationcred-datasets#readme",
   "devDependencies": {
     "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "csv-writer": "^1.6.0"
   }
 }
