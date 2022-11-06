@@ -4,11 +4,11 @@
 
 - `citizen-count-peer-week.csv`
 
-    Contains the total number of Nation3 Citizens week by week.
+    Contains the total number of Nation3 Citizens week by week, and the number of _active_ Citizens week by week.
     
 - `citizens.csv`
 
-    Contains the ID (Ethereum address) and ENS name (if any) of each Nation3 Citizen.
+    Contains the NFT Passport ID, Ethereum address and ENS name (if any) of each Nation3 Citizen.
 
 ## Install
 
