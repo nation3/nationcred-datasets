@@ -4,7 +4,7 @@
 
 - `citizen-count-peer-week.csv`
 
-    Contains the total number of Nation3 Citizens week by week, and the number of _active_ Citizens week by week.
+    Contains the total number of Nation3 Citizens week by week, and the total number of [_active_](https://github.com/nation3/nationcred-datasets/tree/main/nationcred#definition-of-active) Citizens week by week.
     
 - `citizens.csv`
 
