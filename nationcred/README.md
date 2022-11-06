@@ -14,4 +14,4 @@ We define an _active_ Citizen as someone who dedicates [at least 1 hour per week
 
 - `nationcred-active-citizens.csv`
 
-  Contains a list of Ethereum addresses belonging to Nation3 Citizens in the _active_ category.
+  Contains a list of Ethereum addresses belonging to _active_ Nation3 Citizens, week by week.
