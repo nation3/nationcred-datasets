@@ -50,8 +50,8 @@ async function loadDeworkData() {
     console.info('nowDate:', nowDate)
     while (nowDate.getTime() > weekEndDate.getTime()) {
       // Count the number of tasks completed during the week
-      let taskCount: number = 0
-      let taskPoints: number = 0
+      let taskCount = 0
+      let taskPoints = 0
       const weekBeginDate: Date = new Date(weekEndDate.getTime() - 7*24*60*60*1000)
       // console.info('weekBeginDate:', weekBeginDate)
       if (tasks.length > 0) {
