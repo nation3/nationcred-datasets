@@ -40,7 +40,7 @@ async function loadDeworkData() {
     console.info('json:', json)
 
     const tasks = json.tasks
-    console.log('tasks:', tasks)
+    console.info('tasks:', tasks)
 
     // Iterate every Sunday from 2022-05-29 until now
     const weekEndDate: Date = new Date('2022-05-29T23:59:59Z')
@@ -51,13 +51,15 @@ async function loadDeworkData() {
       // Count the number of tasks completed during the week
       let task_count = 0
       const weekBeginDate: Date = new Date(weekEndDate.getTime() - 7*24*60*60*1000)
-      // console.log('weekBeginDate:', weekBeginDate)
+      // console.info('weekBeginDate:', weekBeginDate)
       if (tasks.length > 0) {
         tasks.forEach((task: any) => {
-          const taskDate: Date = new Date(task.date)
-          if ((taskDate.getTime() > weekBeginDate.getTime()) && (taskDate.getTime() <= weekEndDate.getTime())) {
-            console.info('taskDate:', taskDate)
-            task_count++
+          if (task.workspace.organization.name == 'Nation3') {
+            const taskDate: Date = new Date(task.date)
+            if ((taskDate.getTime() > weekBeginDate.getTime()) && (taskDate.getTime() <= weekEndDate.getTime())) {
+              console.info('taskDate:', taskDate)
+              task_count++
+            }
           }
         })
       }
