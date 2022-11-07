@@ -16,14 +16,18 @@
 npm install
 ```
 
-## Build
+## Build & Run
+
+### Generate Citizen Count CSV
 
 ```
-npx tsc generate-csv.ts
+npx tsc generate-citizen-count-csv.ts
+node generate-citizen-count-csv.js
 ```
 
-## Run
+### Generate Citizen Data CSV
 
 ```
-node generate-csv.js
+npx tsc generate-citizens-csv.ts
+node generate-citizens-csv.js
 ```
