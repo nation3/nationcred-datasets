@@ -64,8 +64,7 @@ async function loadDeworkData() {
 
               console.info('task.points:', task.points)
               if (task.points) {
-                const taskPointsAsNumber: number = task.points
-                taskPoints += taskPointsAsNumber
+                taskPoints += task.points
               }
             }
           }
