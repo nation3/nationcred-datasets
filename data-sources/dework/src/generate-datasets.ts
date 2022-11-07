@@ -50,16 +50,18 @@ async function loadDeworkData() {
     while (nowDate.getTime() > weekEndDate.getTime()) {
       // Count the number of tasks completed during the week
       let task_count = 0
+      const weekBeginDate: Date = new Date(weekEndDate.getTime() - 7*24*60*60*1000)
+      // console.log('weekBeginDate:', weekBeginDate)
       if (tasks.length > 0) {
         tasks.forEach((task: any) => {
           const taskDate: Date = new Date(task.date)
-          if (taskDate.getTime() <= weekEndDate.getTime()) {
+          if ((taskDate.getTime() > weekBeginDate.getTime()) && (taskDate.getTime() <= weekEndDate.getTime())) {
             console.info('taskDate:', taskDate)
             task_count++
           }
         })
       }
-      console.info('task_count:', task_count)
+      console.info(weekEndDate.toISOString().substring(0, 10) + ' task_count:', task_count)
       
       // Export to CSV
       const csvRow = {
@@ -70,7 +72,7 @@ async function loadDeworkData() {
 
       // Increase week end date by 7 days
       weekEndDate.setDate(weekEndDate.getDate() + 7)
-      console.info('weekEndDate:', weekEndDate)
+      // console.info('weekEndDate:', weekEndDate)
     }
 
     writer.writeRecords(csvRows)
