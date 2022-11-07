@@ -25,9 +25,9 @@ graph TD
     Coordinape-->NationCred
     
     subgraph Nation3 Value Creation
+    GitHub-->SourceCred
     Discord-->SourceCred
     Discourse-->SourceCred
-    GitHub-->SourceCred
     Dework
     end
     Dework-->NationCred
