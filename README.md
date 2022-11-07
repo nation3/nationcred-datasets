@@ -16,7 +16,7 @@ graph TD
     Karma-->NationCred
     
     subgraph Nation3 Operations
-    Aragon(Aragon DAO)
+    Aragon(Aragon DAO Agent)
     Gnosis(Gnosis Multisig)
     Coordinape(Coordinape CoVault)
     end
