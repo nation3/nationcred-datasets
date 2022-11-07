@@ -47,7 +47,7 @@ async function loadPassportMintsByWeek() {
       const csvRow = {
         week_end: weekEndDate.toISOString().substring(0, 10),
         total_citizens: weekCount,
-        active_citizens: Math.floor(weekCount * 0.2 * Math.random())  // TODO
+        active_citizens: Math.floor(weekCount * 0.2 * Math.random())  // TODO: Fetch from https://github.com/nation3/nationcred-datasets/tree/main/nationcred
       }
       csvRows.push(csvRow)
 
