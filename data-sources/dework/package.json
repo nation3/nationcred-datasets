@@ -1,0 +1,21 @@
+{
+  "name": "dework",
+  "version": "1.0.0",
+  "description": "Dework Datasets",
+  "main": "dist/generate-datasets.js",
+  "scripts": {
+    "lint": "eslint . --ext .ts",
+    "build": "tsc",
+    "start": "node dist/generate-datasets.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nation3",
+  "license": "GPL-3.0-or-later",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "csv-writer": "^1.6.0",
+    "eslint": "^8.27.0",
+    "typescript": "^4.8.4"
+  }
+}
