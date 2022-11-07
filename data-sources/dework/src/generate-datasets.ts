@@ -30,7 +30,8 @@ async function loadDeworkData() {
       path: `dework-${signerAddress}.csv`,
       header: [
         { id: 'week_end', title: 'week_end' },
-        { id: 'tasks_completed', title: 'tasks_completed' }
+        { id: 'tasks_completed', title: 'tasks_completed' },
+        { id: 'task_points', title: 'task_points' }
       ]
     })
     const csvRows = []
@@ -49,7 +50,8 @@ async function loadDeworkData() {
     console.info('nowDate:', nowDate)
     while (nowDate.getTime() > weekEndDate.getTime()) {
       // Count the number of tasks completed during the week
-      let task_count = 0
+      let taskCount: number = 0
+      let taskPoints: number = 0
       const weekBeginDate: Date = new Date(weekEndDate.getTime() - 7*24*60*60*1000)
       // console.info('weekBeginDate:', weekBeginDate)
       if (tasks.length > 0) {
@@ -58,17 +60,24 @@ async function loadDeworkData() {
             const taskDate: Date = new Date(task.date)
             if ((taskDate.getTime() > weekBeginDate.getTime()) && (taskDate.getTime() <= weekEndDate.getTime())) {
               console.info('taskDate:', taskDate)
-              task_count++
+              taskCount++
+
+              console.info('task.points:', task.points)
+              if (task.points) {
+                const taskPointsAsNumber: number = Number(task.points)
+                taskPoints = taskPoints + taskPointsAsNumber
+              }
             }
           }
         })
       }
-      console.info(weekEndDate.toISOString().substring(0, 10) + ' task_count:', task_count)
+      console.info(weekEndDate.toISOString().substring(0, 10) + ' taskCount:', taskCount + ', taskPoints: ' + taskPoints)
       
       // Export to CSV
       const csvRow = {
         week_end: weekEndDate.toISOString().substring(0, 10),
-        tasks_completed: task_count
+        tasks_completed: taskCount,
+        task_points: taskPoints
       }
       csvRows.push(csvRow)
 
