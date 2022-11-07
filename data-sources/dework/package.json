@@ -12,6 +12,7 @@
   "author": "Nation3",
   "license": "GPL-3.0-or-later",
   "devDependencies": {
+    "@types/node": "^18.11.9",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.42.0",
     "csv-writer": "^1.6.0",
