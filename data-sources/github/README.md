@@ -6,4 +6,4 @@ https://github.com/nation3
 
 - `github-usernames.csv`
 
-  Contains the GitHub username and the Ethereum address of each Nation3 citizen.
+  Contains the link between a GitHub username and an Ethereum address.
