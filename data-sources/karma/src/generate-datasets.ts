@@ -1,5 +1,5 @@
+import { Delegate, Stat } from "./KarmaTypes"
 const Passport = require('../abis/Passport.json')
-
 const Web3 = require('web3')
 
 /* eslint @typescript-eslint/no-var-requires: "off" */
@@ -37,7 +37,12 @@ async function loadKarmaData() {
         { id: 'forum_activity_score_30d', title: 'forum_activity_score_30d' }
       ]
     })
-    const csvRows: any[] = []
+    interface CsvRow {
+      week_end: string,
+      karma_score_30d: number,
+      forum_activity_score_30d: number
+    }
+    const csvRows: CsvRow[] = []
 
     const response: Response = await fetch(`https://api.showkarma.xyz/api/user/${signerAddress}`)
     const json = await response.json()
@@ -47,16 +52,16 @@ async function loadKarmaData() {
       continue
     }
 
-    const delegates = json.data.delegates
+    const delegates: Delegate[] = json.data.delegates
     console.info('delegates:', delegates)
-    delegates.forEach((delegate: any) => {
+    delegates.forEach((delegate: Delegate) => {
       if (delegate.daoName == 'nation3') {
-        delegate.stats.forEach((stat: any) => {
+        delegate.stats.forEach((stat: Stat) => {
           if (stat.period == '30d') { // TODO: replace with "7d" once available
             console.info('stat:', stat)
 
             // Export to CSV
-            const csvRow = {
+            const csvRow: CsvRow = {
               week_end: weekEndDate.toISOString().substring(0, 10),
               karma_score_30d: stat.karmaScore,
               forum_activity_score_30d: stat.forumActivityScore
