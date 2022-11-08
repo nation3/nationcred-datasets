@@ -1,0 +1,30 @@
+{
+  "name": "sourcecred",
+  "version": "1.0.0",
+  "description": "Nation3 Sourcecred",
+  "main": "dist/generate-datasets.js",
+  "scripts": {
+    "lint": "eslint . --ext .ts",
+    "build": "tsc",
+    "generate": "node dist/generate-datasets.js",
+    "bg": "tsc && node dist/generate-datasets.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nation3/nationcred-datasets.git"
+  },
+  "author": "Nation3",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/nation3/nationcred-datasets/issues"
+  },
+  "homepage": "https://github.com/nation3/nationcred-datasets#readme",
+  "dependencies": {
+    "@types/node": "^18.11.9",
+    "csv-writer": "^1.6.0",
+    "ethers": "^5.7.2",
+    "sourcecred": "^0.11.2",
+    "typescript": "^4.8.4"
+  }
+}
