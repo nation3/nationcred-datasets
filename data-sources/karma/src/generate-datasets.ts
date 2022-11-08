@@ -52,7 +52,7 @@ async function loadKarmaData() {
     delegates.forEach((delegate: any) => {
       if (delegate.daoName == 'nation3') {
         delegate.stats.forEach((stat: any) => {
-          if (stat.period == '30d') {
+          if (stat.period == '30d') { // TODO: replace with "7d" once available
             console.info('stat:', stat)
 
             // Export to CSV
