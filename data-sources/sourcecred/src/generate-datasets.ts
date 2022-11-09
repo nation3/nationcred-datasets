@@ -63,7 +63,8 @@ async function loadSourceCredData() {
   let intervalsWeCareAbout: Array<[Interval, number]> =
     buildIntervals(credGrainView)
 
-  const peopleWhoDidtuffMap = getParticipantsWhoParticipated(
+  const peopleWhoDidStuffMap = getParticipantsWhoParticipated(
+
     ledger,
     credGrainView
   )
