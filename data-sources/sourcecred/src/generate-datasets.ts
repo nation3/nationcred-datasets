@@ -12,7 +12,8 @@ let PassportContract = new Ethers.Contract(
   provider
 )
 
-console.info('PassportContract._address:', PassportContract.address)
+console.info('PassportContract.address:', PassportContract.address)
+
 
 const SOURCECRED_URL =
   'https://raw.githubusercontent.com/nation3/nationcred-instance/gh-pages/'
@@ -62,7 +63,8 @@ async function loadSourceCredData() {
   let intervalsWeCareAbout: Array<[Interval, number]> =
     buildIntervals(credGrainView)
 
-  const peopleWhoDidtuffMap = getParticipantsWhoParticipated(
+  const peopleWhoDidStuffMap = getParticipantsWhoParticipated(
+
     ledger,
     credGrainView
   )
@@ -176,7 +178,8 @@ function buildIntervals(credGrainView: any): Array<[Interval, number]> {
   //the intervals list in the credGrainView facilitates indexing into the cred array on
   //each participant
   //we are interested in data since 29/05/2022
-  const startDate = new Date('2022-05-29').setUTCHours(0, 0, 0, 0)
+  const startDate: Date = new Date('2022-05-29').setUTCHours(0, 0, 0, 0)
+
   console.info(`Building interval map starting at week ending ${startDate}`)
 
   let intervalsWeCareAbout: Array<[Interval, number]> = []
