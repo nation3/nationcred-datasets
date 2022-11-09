@@ -12,7 +12,8 @@ let PassportContract = new Ethers.Contract(
   provider
 )
 
-console.info('PassportContract._address:', PassportContract.address)
+console.info('PassportContract.address:', PassportContract.address)
+
 
 const SOURCECRED_URL =
   'https://raw.githubusercontent.com/nation3/nationcred-instance/gh-pages/'
