@@ -14,39 +14,8 @@ let PassportContract = new Ethers.Contract(
 
 console.info('PassportContract.address:', PassportContract.address)
 
-
 const SOURCECRED_URL =
   'https://raw.githubusercontent.com/nation3/nationcred-instance/gh-pages/'
-
-interface SCAlias {
-  address: string
-  description: string
-}
-
-interface SCIdentity {
-  id: string
-  subtype: string
-  name: string
-  address: string
-  aliases: SCAlias[]
-}
-
-interface CredGrainViewParticipantPlusWallet {
-  active: string
-  identity: SCIdentity
-  cred: number
-  credPerInterval: number[]
-  grainEarned: string
-  grainEarnedPerInterval: string[]
-  walletAddress: string[]
-}
-
-interface Interval {
-  startTimeMs: number
-  endTimeMs: number
-  startDate: string
-  endDate: string
-}
 
 loadSourceCredData()
 
@@ -64,7 +33,6 @@ async function loadSourceCredData() {
     buildIntervals(credGrainView)
 
   const peopleWhoDidStuffMap = getParticipantsWhoParticipated(
-
     ledger,
     credGrainView
   )
@@ -89,7 +57,7 @@ async function loadSourceCredData() {
     const csvRows: any[] = []
 
     let participant: CredGrainViewParticipantPlusWallet[] | undefined =
-      peopleWhoDidtuffMap.get(signerAddress)
+      peopleWhoDidStuffMap.get(signerAddress)
 
     console.info(
       `${passportId} linked to wallet? ${participant ? ' - YES' : ' - NO'}`
@@ -178,9 +146,13 @@ function buildIntervals(credGrainView: any): Array<[Interval, number]> {
   //the intervals list in the credGrainView facilitates indexing into the cred array on
   //each participant
   //we are interested in data since 29/05/2022
-  const startDate: Date = new Date('2022-05-29').setUTCHours(0, 0, 0, 0)
+  const startDate: number = new Date('2022-05-29').setUTCHours(0, 0, 0, 0)
 
-  console.info(`Building interval map starting at week ending ${startDate}`)
+  console.info(
+    `Building interval map starting at week ending ${new Date(
+      startDate
+    ).toUTCString()}`
+  )
 
   let intervalsWeCareAbout: Array<[Interval, number]> = []
   credGrainView.intervals().forEach((interval: Interval, index: number) => {
