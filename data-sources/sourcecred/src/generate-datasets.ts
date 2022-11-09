@@ -100,7 +100,7 @@ function getParticipantsWhoParticipated(
   credGrainView
     .participants()
     .forEach((participant: CredGrainViewParticipantPlusWallet) => {
-      const anyCred = participant.credPerInterval.some((cred) => cred > 0.1)
+      const anyCred = participant.credPerInterval.some((cred) => cred > 0.01)
       if (anyCred) {
         console.info(
           `Participant ${participant.identity.name} participated, trying to fetch their wallet address`
@@ -116,7 +116,7 @@ function getParticipantsWhoParticipated(
     })
 
   console.info(
-    `${peopleWhoDidStuff.length} active participants ever (Cred greater than 0.1 in any 1 week )`
+    `${peopleWhoDidStuff.length} active participants ever (Cred greater than 0.01 in any 1 week )`
   )
 
   console.info(`Creating a Map keyed on wallet addresses`)
@@ -155,8 +155,9 @@ function buildIntervals(credGrainView: any): Array<[Interval, number]> {
   )
 
   let intervalsWeCareAbout: Array<[Interval, number]> = []
+  const now = Date.now()
   credGrainView.intervals().forEach((interval: Interval, index: number) => {
-    if (interval.endTimeMs < startDate) return
+    if (interval.endTimeMs < startDate || interval.endTimeMs > now) return
     interval.endDate = new Date(interval.endTimeMs)
       .toISOString()
       .substring(0, 10)
