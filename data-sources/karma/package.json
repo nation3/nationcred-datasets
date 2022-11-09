@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint . --ext .ts",
     "build": "tsc",
-    "start": "node dist/generate-datasets.js",
+    "generate": "node dist/generate-datasets.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Nation3",

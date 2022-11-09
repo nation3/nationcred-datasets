@@ -14,5 +14,5 @@ https://www.showkarma.xyz/dao/delegates/nation3
 npm install
 npm run lint
 npm run build
-npm run start
+npm run generate
 ```
