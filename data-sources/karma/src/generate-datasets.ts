@@ -33,38 +33,38 @@ async function loadKarmaData() {
       path: `output/karma-${signerAddress}.csv`,
       header: [
         { id: 'week_end', title: 'week_end' },
-        { id: 'karma_score_30d', title: 'karma_score_30d' },
-        { id: 'forum_activity_score_30d', title: 'forum_activity_score_30d' }
+        { id: 'karma_score_7d', title: 'karma_score_7d' },
+        { id: 'forum_activity_score_7d', title: 'forum_activity_score_7d' }
       ]
     })
     interface CsvRow {
       week_end: string,
-      karma_score_30d: number,
-      forum_activity_score_30d: number
+      karma_score_7d: number,
+      forum_activity_score_7d: number
     }
     const csvRows: CsvRow[] = []
 
     const response: Response = await fetch(`https://api.showkarma.xyz/api/user/${signerAddress}`)
     const json = await response.json()
-    console.info('json:', json)
+    // console.info('json:', json)
     if (!response.ok) {
       console.error('response.status:', response.status)
       continue
     }
 
     const delegates: Delegate[] = json.data.delegates
-    console.info('delegates:', delegates)
+    // console.info('delegates:', delegates)
     delegates.forEach((delegate: Delegate) => {
       if (delegate.daoName == 'nation3') {
         delegate.stats.forEach((stat: Stat) => {
-          if (stat.period == '30d') { // TODO: replace with "7d" once available
+          if (stat.period == '7d') {
             console.info('stat:', stat)
 
             // Export to CSV
             const csvRow: CsvRow = {
               week_end: weekEndDate.toISOString().substring(0, 10),
-              karma_score_30d: stat.karmaScore,
-              forum_activity_score_30d: stat.forumActivityScore
+              karma_score_7d: stat.karmaScore,
+              forum_activity_score_7d: stat.forumActivityScore
             }
             csvRows.push(csvRow)
           }
