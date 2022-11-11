@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/nation3/nationcred-datasets#readme",
   "dependencies": {
+    "@ensdomains/ens-avatar": "^0.1.8",
     "@types/node": "^18.11.9",
     "csv-writer": "^1.6.0",
     "ethers": "^5.7.2",

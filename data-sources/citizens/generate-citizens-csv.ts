@@ -3,15 +3,18 @@ const Passport = require('./abis/Passport.json')
 const csvWriter = require('csv-writer')
 const fs = require('fs')
 const ethers = require('ethers')
+import { AvatarResolver, utils } from '@ensdomains/ens-avatar'
 
 const web3 = new Web3('https://rpc.ankr.com/eth')
 console.info('web3.version:', web3.version)
 
 const ethersProvider = new ethers.providers.JsonRpcProvider('https://rpc.ankr.com/eth')
-console.log('ethersProvider:', ethersProvider)
+console.info('ethersProvider:', ethersProvider)
 
 const PassportContract = new web3.eth.Contract(Passport.abi, '0x3337dac9f251d4e403d6030e18e3cfb6a2cb1333')
 console.info('PassportContract._address:', PassportContract._address)
+
+const avatarResolver = new AvatarResolver(ethersProvider)
 
 loadCitizenData()
 
@@ -26,7 +29,8 @@ async function loadCitizenData() {
     header: [
       { id: 'passport_id', title: 'passport_id' },
       { id: 'eth_address', title: 'eth_address' },
-      { id: 'ens_name', title: 'ens_name' }
+      { id: 'ens_name', title: 'ens_name' },
+      { id: 'ens_avatar_uri', title: 'ens_avatar_uri' }
     ]
   })
   let csvRows = []
@@ -42,13 +46,24 @@ async function loadCitizenData() {
     console.info('signerAddress:', signerAddress)
 
     const ensName: string = await getEnsName(signerAddress)
-    console.log('ensName:', ensName)
+    console.info('ensName:', ensName)
+
+    let ensAvatarUri
+    if (ensName) {
+      try {
+        ensAvatarUri = await getEnsAvatarUri(ensName)
+        console.log('ensAvatarUri:', ensAvatarUri)
+      } catch (err) {
+        console.error('err:', err)
+      }
+    }
 
     // Export to CSV
     const csvRow = {
       passport_id: passportId,
       eth_address: signerAddress,
-      ens_name: ensName
+      ens_name: ensName,
+      ens_avatar_uri: ensAvatarUri
     }
     csvRows.push(csvRow)
   }
@@ -69,4 +84,16 @@ async function getSigner(passportId: number): Promise<string> {
 async function getEnsName(ethAddress: string): Promise<string> {
   console.info('getEnsName')
   return await ethersProvider.lookupAddress(ethAddress)
+}
+
+async function getEnsAvatarUri(ensName: string): Promise<string | null> {
+  console.info('getEnsAvatarUri')
+  const avatarMetadata = await avatarResolver.getMetadata(ensName)
+  console.info('avatarMetadata:', avatarMetadata)
+  if (!avatarMetadata) {
+    return null
+  }
+  const avatarUri = utils.getImageURI({ metadata: avatarMetadata })
+  console.info('avatarUri:', avatarUri)
+  return avatarUri
 }
