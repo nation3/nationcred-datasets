@@ -8,7 +8,7 @@
     
 - `citizens.csv`
 
-    Contains the NFT Passport ID, Ethereum address and ENS name (if any) of each Nation3 Citizen.
+    Contains the NFT Passport ID, Ethereum address and ENS name (if any) of each Nation3 Citizen.  And the `voting_power` column is the Citizen's [`$veNATION`](https://wiki.nation3.org/token/#venation) balance.
 
 ## Install
 
