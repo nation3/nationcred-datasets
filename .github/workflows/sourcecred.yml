@@ -22,6 +22,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        cache-dependency-path: data-sources/dework/package-lock.json
+        cache-dependency-path: data-sources/sourcecred/package-lock.json
     - run: npm install
     - run: npm run build
