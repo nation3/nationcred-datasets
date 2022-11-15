@@ -1,9 +1,11 @@
-interface SCAlias {
+import { Channel } from './sc-enums'
+
+export interface SCAlias {
   address: string
   description: string
 }
 
-interface SCIdentity {
+export interface SCIdentity {
   id: string
   subtype: string
   name: string
@@ -11,7 +13,7 @@ interface SCIdentity {
   aliases: SCAlias[]
 }
 
-interface CredGrainViewParticipantPlusWallet {
+export interface CredGrainViewParticipantPlusWallet {
   active: string
   identity: SCIdentity
   cred: number
@@ -19,11 +21,19 @@ interface CredGrainViewParticipantPlusWallet {
   grainEarned: string
   grainEarnedPerInterval: string[]
   walletAddress: string[]
+  channel?: Channel
 }
 
-interface Interval {
+export interface Interval {
   startTimeMs: number
   endTimeMs: number
   startDate: string
   endDate: string
+}
+
+export interface Cred {
+  sourcecred: number
+  discord: number
+  discourse: number
+  github: number
 }

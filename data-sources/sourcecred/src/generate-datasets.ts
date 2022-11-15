@@ -1,3 +1,11 @@
+import { Channel } from './sc-enums'
+import {
+  Cred,
+  CredGrainViewParticipantPlusWallet,
+  Interval,
+  SCAlias,
+} from './sc-types'
+
 const sc = require('sourcecred')
 const Passport = require('../abis/Passport.json')
 const Ethers = require('ethers')
@@ -52,6 +60,9 @@ async function loadSourceCredData() {
       header: [
         { id: 'week_end', title: 'week_end' },
         { id: 'sourcecred_score', title: 'sourcecred_score' },
+        { id: 'discord_score', title: 'discord_score' },
+        { id: 'discourse_score', title: 'discourse_score' },
+        { id: 'github_score', title: 'github_score' },
       ],
     })
     const csvRows: any[] = []
@@ -64,11 +75,15 @@ async function loadSourceCredData() {
     )
 
     intervalsWeCareAbout.forEach((interval) => {
+      const scForIdentity = participant
+        ? sumCredForIdentities(interval, participant)
+        : ({ sourcecred: 0, discord: 0, discourse: 0, github: 0 } as Cred)
       const csvRow = {
         week_end: interval[0].endDate,
-        sourcecred_score: participant
-          ? sumCredForIdentities(interval, participant)
-          : 0,
+        sourcecred_score: scForIdentity.sourcecred,
+        discord_score: scForIdentity.discord,
+        discourse_score: scForIdentity.discourse,
+        github_score: scForIdentity.github,
       }
       csvRows.push(csvRow)
     })
@@ -80,14 +95,27 @@ async function loadSourceCredData() {
 function sumCredForIdentities(
   interval: [Interval, number],
   participant: CredGrainViewParticipantPlusWallet[]
-): number {
+): Cred {
+  let cred = { sourcecred: 0, discord: 0, discourse: 0, github: 0 } as Cred
   return participant.reduce(
-    (acc: number, el: CredGrainViewParticipantPlusWallet) => {
-      return el.credPerInterval[interval[1]] > 0.01
-        ? acc + el.credPerInterval[interval[1]]
-        : acc
+    (acc: Cred, el: CredGrainViewParticipantPlusWallet) => {
+      if (el.credPerInterval[interval[1]] > 0.01) {
+        acc.sourcecred += el.credPerInterval[interval[1]]
+        switch (el.channel) {
+          case Channel.DISCORD:
+            acc.discord += el.credPerInterval[interval[1]]
+            break
+          case Channel.DISCOURSE:
+            acc.discourse += el.credPerInterval[interval[1]]
+            break
+          case Channel.GITHUB:
+            acc.github += el.credPerInterval[interval[1]]
+            break
+        }
+      }
+      return acc
     },
-    0
+    cred
   )
 }
 
@@ -107,6 +135,7 @@ function getParticipantsWhoParticipated(
         )
         const account = ledger.accountByName(participant.identity.name)
         if (account.payoutAddresses.size > 0) {
+          participant.channel = determineChannel(participant.identity.aliases)
           participant.walletAddress = Array.from(
             account.payoutAddresses.values()
           )
@@ -139,6 +168,15 @@ function getParticipantsWhoParticipated(
   )
 
   return peopleWhoDidtuffMap
+}
+
+function determineChannel(aliases: SCAlias[]): Channel | undefined {
+  //We only handle single aliases for Nation3 - this will bite us if we merge aliases!
+  const aliasDescription = aliases[0]?.description || ''
+
+  if (aliasDescription.startsWith('discourse')) return Channel.DISCOURSE
+  if (aliasDescription.startsWith('discord')) return Channel.DISCORD
+  if (aliasDescription.startsWith('github')) return Channel.GITHUB
 }
 
 function buildIntervals(credGrainView: any): Array<[Interval, number]> {
