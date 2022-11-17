@@ -26,7 +26,7 @@ async function loadCitizenData() {
   console.info('loadCitizenData')
 
   const writer = csvWriter.createObjectCsvWriter({
-    path: 'citizens.csv',
+    path: 'output/citizens.csv',
     header: [
       { id: 'passport_id', title: 'passport_id' },
       { id: 'eth_address', title: 'eth_address' },

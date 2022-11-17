@@ -18,7 +18,7 @@ async function loadPassportMintsByWeek() {
   console.info('loadPassportMintsByWeek')
 
   const writer = csvWriter.createObjectCsvWriter({
-    path: 'citizen-count-per-week.csv',
+    path: 'output/citizen-count-per-week.csv',
     header: [
       { id: 'week_end', title: 'week_end' },
       { id: 'total_citizens', title: 'total_citizens' },
