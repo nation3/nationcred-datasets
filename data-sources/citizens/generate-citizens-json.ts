@@ -19,16 +19,16 @@ async function convertToJSON() {
   console.info('jsonFilePath:', jsonFilePath)
 
   fs.createReadStream(csvFilePath)
-    .pipe(csvParser(['passport_id', 'eth_address', 'ens_name', 'voting_power']))
+    .pipe(csvParser())
     .on('data', (row) => {
-      console.info('on data, row:', row)
+      console.info('on data, row.passport_id:', row.passport_id)
 
       const passportID: number = Number(row.passport_id)
       const ethAddress: string = row.eth_address
       const ensName: string = row.ens_name
       const votingPower: number = Number(row.voting_power)
 
-      if (passportID) {
+      if (passportID >= 0) {
         const citizenObject = {
           passportId: passportID,
           ethAddress: ethAddress,
@@ -42,7 +42,7 @@ async function convertToJSON() {
     .on('end', () => {
       console.info('on end')
 
-      console.info('citizenObjects:\n', citizenObjects)
+      // console.info('citizenObjects:\n', citizenObjects)
 
       console.info('Writing JSON to file: ' + jsonFilePath)
       jsonfile.writeFile(jsonFilePath, citizenObjects, { spaces: 2 }, function(err) {
