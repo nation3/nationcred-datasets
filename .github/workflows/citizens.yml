@@ -26,3 +26,4 @@ jobs:
     - run: npm install
     - run: npx tsc generate-citizen-count-csv.ts
     - run: npx tsc generate-citizens-csv.ts
+    - run: npx tsc generate-citizens-json.ts
