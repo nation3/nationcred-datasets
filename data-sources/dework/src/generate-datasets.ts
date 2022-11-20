@@ -43,8 +43,8 @@ async function loadDeworkData() {
     const tasks = json.tasks
     console.info('tasks:', tasks)
 
-    // Iterate every Sunday from 2022-05-29 until now
-    const weekEndDate: Date = new Date('2022-05-29T23:59:59Z')
+    // Iterate every week from the week of [Sun May-29-2022 → Sun Jun-05-2022] until now
+    const weekEndDate: Date = new Date('2022-06-05T00:00:00Z')
     console.info('weekEndDate:', weekEndDate)
     const nowDate: Date = new Date()
     console.info('nowDate:', nowDate)

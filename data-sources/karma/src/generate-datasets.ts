@@ -1,6 +1,7 @@
 import { Delegate, Stat } from "./KarmaTypes"
 const Passport = require('../abis/Passport.json')
 const Web3 = require('web3')
+const fs = require('fs')
 
 /* eslint @typescript-eslint/no-var-requires: "off" */
 const createObjectCsvWriter = require('csv-writer').createObjectCsvWriter
@@ -29,16 +30,28 @@ async function loadKarmaData() {
     const signerAddress: string = await getSigner(passportId)
     console.info('signerAddress:', signerAddress)
 
+    const outputFilePath = `output/karma-${signerAddress}.csv`
+    console.info('outputFilePath:', outputFilePath)
+
+    // let append = false
+    // if (fs.existsSync(outputFilePath)) {
+    //   append = true
+    // }
+    // console.info('append:', append)
+
     const writer = createObjectCsvWriter({
-      path: `output/karma-${signerAddress}.csv`,
+      path: outputFilePath,
+      // append: append,
       header: [
         { id: 'week_end', title: 'week_end' },
+        { id: 'karma_score', title: 'karma_score' },
         { id: 'karma_score_7d', title: 'karma_score_7d' },
         { id: 'forum_activity_score_7d', title: 'forum_activity_score_7d' }
       ]
     })
     interface CsvRow {
       week_end: string,
+      karma_score: number,
       karma_score_7d: number,
       forum_activity_score_7d: number
     }
@@ -63,6 +76,7 @@ async function loadKarmaData() {
             // Export to CSV
             const csvRow: CsvRow = {
               week_end: weekEndDate.toISOString().substring(0, 10),
+              karma_score: delegate.score,
               karma_score_7d: stat.karmaScore,
               forum_activity_score_7d: stat.forumActivityScore
             }
@@ -72,7 +86,9 @@ async function loadKarmaData() {
       }
     })
 
-    writer.writeRecords(csvRows)
+    if (csvRows.length > 0) {
+      writer.writeRecords(csvRows)
+    }
   }
 }
 

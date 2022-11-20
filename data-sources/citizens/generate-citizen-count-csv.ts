@@ -31,7 +31,7 @@ async function loadPassportMintsByWeek() {
   console.info('nextId:', nextId)
 
   // The first NFT passport was minted on Sunday May-29-2022 04:13:24 PM +UTC:  https://etherscan.io/tx/0x688d147d2e23192eef6acb567feba2ef6b2e4838e8fe79933984e87170c3dc78
-  const weekEndDate: Date = new Date('2022-05-29T23:59:59Z')
+  const weekEndDate: Date = new Date('2022-06-05T00:00:00Z')
   console.info('weekEndDate:', weekEndDate)
 
   // Iterate all passport NFTs, and count how many were minted by the end of each week
