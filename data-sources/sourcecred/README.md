@@ -7,3 +7,19 @@ https://nation3.github.io/nationcred-instance/#/explorer
 - `sourcecred-<eth_address>.csv`
 
   A Nation3 Citizen's SourceCred score week by week.
+
+
+## Install
+
+```
+npm install
+```
+
+## Build & Run
+
+### Generate SourceCred data set
+
+```
+npm run build
+npm run generate
+```
