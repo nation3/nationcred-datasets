@@ -10,6 +10,10 @@
 
     Contains the NFT Passport ID, Ethereum address and ENS name (if any) of each Nation3 Citizen.  And the `voting_power` column is the Citizen's [`$veNATION`](https://wiki.nation3.org/token/#venation) balance.
 
+- `citizens.json`
+
+    Same data as in `citizens.csv`, but stored in JSON format.
+
 ## Install
 
 ```
@@ -30,4 +34,11 @@ node generate-citizen-count-csv.js
 ```
 npx tsc generate-citizens-csv.ts
 node generate-citizens-csv.js
+```
+
+### Generate Citizen Data JSON
+
+```
+npx tsc generate-citizens-json.ts
+node generate-citizens-json.js
 ```
