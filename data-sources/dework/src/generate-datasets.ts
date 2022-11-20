@@ -1,33 +1,23 @@
-const Passport = require('../abis/Passport.json')
-
-const Web3 = require('web3')
-
 /* eslint @typescript-eslint/no-var-requires: "off" */
 const createObjectCsvWriter = require('csv-writer').createObjectCsvWriter
-
-const web3 = new Web3('https://rpc.ankr.com/eth')
-console.info('web3.version:', web3.version)
-
-const PassportContract = new web3.eth.Contract(Passport.abi, '0x3337dac9f251d4e403d6030e18e3cfb6a2cb1333')
-console.info('PassportContract._address:', PassportContract._address)
 
 loadDeworkData()
 
 async function loadDeworkData() {
   console.info('loadDeworkData')
 
-  const nextId: number = await getNextId()
-  console.info('nextId:', nextId)
-
-  let passportId: number
-  for (passportId = 0; passportId < nextId; passportId++) {
+  const citizensJson = require('../../citizens/output/citizens.json')
+  for (const passportId in citizensJson) {
     console.info('passportId:', passportId)
 
-    const signerAddress: string = await getSigner(passportId)
-    console.info('signerAddress:', signerAddress)
+    const citizen = citizensJson[passportId]
+    console.info('citizen:', citizen)
+
+    const ethAddress: string = citizen.ethAddress
+    console.info('ethAddress:', ethAddress)
 
     const writer = createObjectCsvWriter({
-      path: `output/dework-${signerAddress}.csv`,
+      path: `output/dework-${ethAddress}.csv`,
       header: [
         { id: 'week_end', title: 'week_end' },
         { id: 'tasks_completed', title: 'tasks_completed' },
@@ -36,7 +26,7 @@ async function loadDeworkData() {
     })
     const csvRows = []
 
-    const response: Response = await fetch(`https://api.deworkxyz.com/v1/reputation/${signerAddress}`)
+    const response: Response = await fetch(`https://api.deworkxyz.com/v1/reputation/${ethAddress}`)
     const json = await response.json()
     console.info('json:', json)
 
@@ -87,14 +77,4 @@ async function loadDeworkData() {
 
     writer.writeRecords(csvRows)
   }
-}
-
-async function getNextId(): Promise<number> {
-  console.info('getNextId')
-  return await PassportContract.methods.getNextId().call()
-}
-
-async function getSigner(passportId: number): Promise<string> {
-  console.info('getSigner')
-  return await PassportContract.methods.signerOf(passportId).call()
 }
