@@ -7,20 +7,9 @@ import {
 } from './sc-types'
 
 const sc = require('sourcecred')
-const Passport = require('../abis/Passport.json')
-const Ethers = require('ethers')
 
 /* eslint @typescript-eslint/no-var-requires: "off" */
 const createObjectCsvWriter = require('csv-writer').createObjectCsvWriter
-
-let provider = new Ethers.providers.AnkrProvider()
-let PassportContract = new Ethers.Contract(
-  '0x3337dac9f251d4e403d6030e18e3cfb6a2cb1333',
-  Passport.abi,
-  provider
-)
-
-console.info('PassportContract.address:', PassportContract.address)
 
 const SOURCECRED_URL =
   'https://raw.githubusercontent.com/nation3/nationcred-instance/gh-pages/'
@@ -45,18 +34,18 @@ async function loadSourceCredData() {
     credGrainView
   )
 
-  const nextId: number = await getNextId()
-  console.info('nextId:', nextId)
-
-  let passportId: number
-  for (passportId = 0; passportId < nextId; passportId++) {
+  const citizensJson = require('../../citizens/output/citizens.json')
+  for (const passportId in citizensJson) {
     console.info('passportId:', passportId)
 
-    const signerAddress: string = await getSigner(passportId)
-    console.info('signerAddress:', signerAddress)
+    const citizen = citizensJson[passportId]
+    console.info('citizen:', citizen)
+
+    const ethAddress: string = citizen.ethAddress
+    console.info('ethAddress:', ethAddress)
 
     const writer = createObjectCsvWriter({
-      path: `output/sourcecred-${signerAddress}.csv`,
+      path: `output/sourcecred-${ethAddress}.csv`,
       header: [
         { id: 'week_end', title: 'week_end' },
         { id: 'sourcecred_score', title: 'sourcecred_score' },
@@ -68,7 +57,7 @@ async function loadSourceCredData() {
     const csvRows: any[] = []
 
     let participant: CredGrainViewParticipantPlusWallet[] | undefined =
-      peopleWhoDidStuffMap.get(signerAddress)
+      peopleWhoDidStuffMap.get(ethAddress)
 
     console.info(
       `${passportId} linked to wallet? ${participant ? ' - YES' : ' - NO'}`
@@ -206,14 +195,4 @@ function buildIntervals(credGrainView: any): Array<[Interval, number]> {
   })
 
   return intervalsWeCareAbout
-}
-
-async function getNextId(): Promise<number> {
-  console.info('getNextId')
-  return await PassportContract.getNextId()
-}
-
-async function getSigner(passportId: number): Promise<string> {
-  console.info('getSigner')
-  return await PassportContract.signerOf(passportId)
 }
