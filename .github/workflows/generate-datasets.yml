@@ -28,6 +28,14 @@ jobs:
         run: npx tsc generate-citizen-count-csv.ts
         run: node generate-citizen-count-csv.js
 
+      - name: Generate Citizen Data CSV 🧮
+        run: npx tsc generate-citizens-csv.ts
+        run: node generate-citizens-csv.js
+
+      - name: Generate Citizen Data JSON 🧮
+        run: npx tsc generate-citizens-json.ts
+        run: node generate-citizens-json.js
+
       - name: Set Environment Variables for PR
         id: pr_details
         run: |
