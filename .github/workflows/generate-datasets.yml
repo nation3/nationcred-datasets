@@ -1,0 +1,59 @@
+name: Generate Datasets
+
+on:
+  # A new interval every Sunday (midnight)
+  schedule:
+    - cron: 0 0 * * 0 # 00:00 UTC
+
+jobs:
+  citizens:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: data-sources/citizens/
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: npm
+          cache-dependency-path: data-sources/citizens/package-lock.json
+      
+      - name: Install Node.js Packages 🔧
+        run: npm install
+
+      - name: Generate Citizen Count CSV 🧮
+        run: npx tsc generate-citizen-count-csv.ts
+        run: node generate-citizen-count-csv.js
+
+      - name: Generate Citizen Data CSV 🧮
+        run: npx tsc generate-citizens-csv.ts
+        run: node generate-citizens-csv.js
+
+      - name: Generate Citizen Data JSON 🧮
+        run: npx tsc generate-citizens-json.ts
+        run: node generate-citizens-json.js
+
+      - name: Set Environment Variables for PR
+        id: pr_details
+        run: |
+          echo "PULL_REQUEST_TITLE=Generated datasets for week ending $(date +"%B %dth, %Y")" >> $GITHUB_ENV
+          description="This PR was auto-generated on $(date +%Y-%m-%d) to add the latest datasets to our GitHub repo."
+          description="${description//'%'/'%25'}"
+          description="${description//$'\n'/'%0A'}"
+          description="${description//$'\r'/'%0D'}"
+          echo "::set-output name=pr_body::$description"
+
+      - name: Create commit and PR for the changes
+        id: pr
+        uses: peter-evans/create-pull-request@v4.2.0
+        with:
+          branch: generated-datasets
+          branch-suffix: timestamp
+          committer: nation3bot <nation3bot@users.noreply.github.com>
+          author: nation3bot <nation3bot@users.noreply.github.com>
+          commit-message: generate datasets
+          title: ${{ env.PULL_REQUEST_TITLE }}
+          body: ${{ steps.pr_details.outputs.pr_body }}
