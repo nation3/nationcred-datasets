@@ -14,8 +14,8 @@ graph TD
     Discourse-->SourceCred
     Dework
     end
-    Dework-->NationCred
     SourceCred-->NationCred
+    Dework-->NationCred
     
     subgraph Nation3 Governance
     Discord_Karma(Discord)-->Karma
