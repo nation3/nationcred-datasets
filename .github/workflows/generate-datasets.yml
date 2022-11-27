@@ -63,6 +63,7 @@ jobs:
           body: ${{ steps.pr_details.outputs.pr_body }}
 
   karma:
+    needs: citizens
     runs-on: ubuntu-latest
     defaults:
       run:
