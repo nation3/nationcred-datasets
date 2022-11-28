@@ -45,7 +45,7 @@ async function loadSourceCredData() {
     console.info('ethAddress:', ethAddress)
 
     const writer = createObjectCsvWriter({
-      path: `output/sourcecred-${ethAddress}.csv`,
+      path: `output/sourcecred-${passportId}.csv`,
       header: [
         { id: 'week_end', title: 'week_end' },
         { id: 'sourcecred_score', title: 'sourcecred_score' },
