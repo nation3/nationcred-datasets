@@ -22,7 +22,7 @@ async function loadKarmaData() {
     const ethAddress: string = citizen.ethAddress
     console.info('ethAddress:', ethAddress)
 
-    const outputFilePath = `output/karma-${ethAddress}.csv`
+    const outputFilePath = `output/karma-${passportId}.csv`
     console.info('outputFilePath:', outputFilePath)
 
     // let append = false
