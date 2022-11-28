@@ -17,7 +17,7 @@ async function loadDeworkData() {
     console.info('ethAddress:', ethAddress)
 
     const writer = createObjectCsvWriter({
-      path: `output/dework-${ethAddress}.csv`,
+      path: `output/dework-${passportId}.csv`,
       header: [
         { id: 'week_end', title: 'week_end' },
         { id: 'tasks_completed', title: 'tasks_completed' },
