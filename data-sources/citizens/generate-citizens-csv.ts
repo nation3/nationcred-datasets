@@ -50,10 +50,10 @@ async function loadCitizenData() {
     const signerAddress: string = await getSigner(passportId)
     console.info('signerAddress:', signerAddress)
 
-    const ensName: string = await getEnsName(signerAddress)
+    const ensName: string = await getEnsName(ownerAddress)
     console.info('ensName:', ensName)
 
-    const votingPowerWei: number = await getVotingPower(signerAddress)
+    const votingPowerWei: number = await getVotingPower(ownerAddress)
     console.info('votingPowerWei:', votingPowerWei)
     const votingPowerEther: number = web3.utils.fromWei(votingPowerWei)
     console.info('votingPowerEther:', votingPowerEther)
