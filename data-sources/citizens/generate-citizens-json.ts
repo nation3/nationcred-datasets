@@ -24,14 +24,16 @@ async function convertToJSON() {
       console.info('on data, row.passport_id:', row.passport_id)
 
       const passportID: number = Number(row.passport_id)
-      const ethAddress: string = row.eth_address
+      const ownerAddress: string = row.owner_address
+      const signerAddress: string = row.signer_address
       const ensName: string = row.ens_name
       const votingPower: number = Number(row.voting_power)
 
       if (passportID >= 0) {
         const citizenObject = {
           passportId: passportID,
-          ethAddress: ethAddress,
+          ownerAddress: ownerAddress,
+          signerAddress: signerAddress,
           ensName: ensName,
           votingPower: votingPower
         }

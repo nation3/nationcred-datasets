@@ -29,7 +29,8 @@ async function loadCitizenData() {
     path: 'output/citizens.csv',
     header: [
       { id: 'passport_id', title: 'passport_id' },
-      { id: 'eth_address', title: 'eth_address' },
+      { id: 'owner_address', title: 'owner_address' },
+      { id: 'signer_address', title: 'signer_address' },
       { id: 'ens_name', title: 'ens_name' },
       { id: 'voting_power', title: 'voting_power' }
     ]
@@ -42,6 +43,9 @@ async function loadCitizenData() {
   let passportId: number
   for (passportId = 0; passportId < nextId; passportId++) {
     console.info('passportId:', passportId)
+
+    const ownerAddress: string = await getOwner(passportId)
+    console.info('ownerAddress:', ownerAddress)
 
     const signerAddress: string = await getSigner(passportId)
     console.info('signerAddress:', signerAddress)
@@ -57,7 +61,8 @@ async function loadCitizenData() {
     // Export to CSV
     const csvRow = {
       passport_id: passportId,
-      eth_address: signerAddress,
+      owner_address: ownerAddress,
+      signer_address: signerAddress,
       ens_name: ensName,
       voting_power: votingPowerEther
     }
@@ -70,6 +75,11 @@ async function loadCitizenData() {
 async function getNextId(): Promise<number> {
   console.info('getNextId')
   return await PassportContract.methods.getNextId().call()
+}
+
+async function getOwner(passportId: number): Promise<string> {
+  console.info('getOwner')
+  return await PassportContract.methods.ownerOf(passportId).call()
 }
 
 async function getSigner(passportId: number): Promise<string> {
