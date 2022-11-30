@@ -8,7 +8,7 @@ We define an _active_ Citizen as someone who dedicates [at least 1 hour per week
 
 ## Datasets
 
-- `nationcred-<eth_address>.csv`
+- `nationcred-<passportId>.csv`
 
   A Nation3 Citizen's NationCred score week by week.
 
