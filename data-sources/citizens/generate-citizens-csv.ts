@@ -44,11 +44,17 @@ async function loadCitizenData() {
   for (passportId = 0; passportId < nextId; passportId++) {
     console.info('passportId:', passportId)
 
-    const ownerAddress: string = await getOwner(passportId)
+    let ownerAddress: string = await getOwner(passportId)
     console.info('ownerAddress:', ownerAddress)
 
-    const signerAddress: string = await getSigner(passportId)
+    ownerAddress = ownerAddress.toLowerCase()
+    console.info('lowercase ownerAddress:', ownerAddress)
+
+    let signerAddress: string = await getSigner(passportId)
     console.info('signerAddress:', signerAddress)
+
+    signerAddress = signerAddress.toLowerCase()
+    console.info('lowercase signerAddress:', signerAddress)
 
     const ensName: string = await getEnsName(ownerAddress)
     console.info('ensName:', ensName)

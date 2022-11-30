@@ -13,7 +13,7 @@ async function loadDeworkData() {
     const citizen = citizensJson[passportId]
     console.info('citizen:', citizen)
 
-    const ethAddress: string = citizen.ethAddress
+    const ethAddress: string = citizen.owner_address
     console.info('ethAddress:', ethAddress)
 
     const writer = createObjectCsvWriter({

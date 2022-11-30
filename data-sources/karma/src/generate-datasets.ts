@@ -19,7 +19,7 @@ async function loadKarmaData() {
     const citizen = citizensJson[passportId]
     console.info('citizen:', citizen)
 
-    const ethAddress: string = citizen.ethAddress
+    const ethAddress: string = citizen.owner_address
     console.info('ethAddress:', ethAddress)
 
     const outputFilePath = `output/karma-${passportId}.csv`
