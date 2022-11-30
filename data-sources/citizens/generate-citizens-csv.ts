@@ -1,3 +1,5 @@
+export {}
+
 const Web3 = require('web3')
 const Passport = require('./abis/Passport.json')
 const VotingEscrow = require('./abis/VotingEscrow.json')

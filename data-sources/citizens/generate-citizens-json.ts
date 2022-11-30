@@ -1,3 +1,5 @@
+export {}
+
 const fs = require('fs')
 const csvParser = require('csv-parser')
 const jsonfile = require('jsonfile')
@@ -10,7 +12,7 @@ convertToJSON()
 async function convertToJSON() {
   console.info('convertToJSON')
 
-  let citizenObjects = {}
+  let citizenObjects : any = {}
 
   const csvFilePath: string = 'output/citizens.csv'
   console.info('csvFilePath:', csvFilePath)
@@ -20,7 +22,7 @@ async function convertToJSON() {
 
   fs.createReadStream(csvFilePath)
     .pipe(csvParser())
-    .on('data', (row) => {
+    .on('data', (row : any) => {
       console.info('on data, row.passport_id:', row.passport_id)
 
       const passportID: number = Number(row.passport_id)
@@ -38,7 +40,7 @@ async function convertToJSON() {
           votingPower: votingPower
         }
 
-        citizenObjects[passportID] = citizenObject
+        citizenObjects[String(passportID)] = citizenObject
       }
     })
     .on('end', () => {
@@ -47,7 +49,7 @@ async function convertToJSON() {
       // console.info('citizenObjects:\n', citizenObjects)
 
       console.info('Writing JSON to file: ' + jsonFilePath)
-      jsonfile.writeFile(jsonFilePath, citizenObjects, { spaces: 2 }, function(err) {
+      jsonfile.writeFile(jsonFilePath, citizenObjects, { spaces: 2 }, function(err : any) {
         console.info('writeFile complete')
         if (err) {
           console.error('err:', err)
