@@ -1,5 +1,3 @@
-export {}
-
 const Web3 = require('web3')
 const Passport = require('./abis/Passport.json')
 const VotingEscrow = require('./abis/VotingEscrow.json')
@@ -10,13 +8,21 @@ const ethers = require('ethers')
 const web3 = new Web3('https://rpc.ankr.com/eth')
 console.info('web3.version:', web3.version)
 
-const ethersProvider = new ethers.providers.JsonRpcProvider('https://rpc.ankr.com/eth')
+const ethersProvider = new ethers.providers.JsonRpcProvider(
+  'https://rpc.ankr.com/eth'
+)
 console.info('ethersProvider:', ethersProvider)
 
-const PassportContract = new web3.eth.Contract(Passport.abi, '0x3337dac9f251d4e403d6030e18e3cfb6a2cb1333')
+const PassportContract = new web3.eth.Contract(
+  Passport.abi,
+  '0x3337dac9f251d4e403d6030e18e3cfb6a2cb1333'
+)
 console.info('PassportContract._address:', PassportContract._address)
 
-const VotingEscrowContract = new web3.eth.Contract(VotingEscrow.abi, '0xf7def1d2fbda6b74bee7452fdf7894da9201065d')
+const VotingEscrowContract = new web3.eth.Contract(
+  VotingEscrow.abi,
+  '0xf7def1d2fbda6b74bee7452fdf7894da9201065d'
+)
 console.info('VotingEscrowContract._address:', VotingEscrowContract._address)
 
 loadCitizenData()
@@ -34,14 +40,14 @@ async function loadCitizenData() {
       { id: 'owner_address', title: 'owner_address' },
       { id: 'signer_address', title: 'signer_address' },
       { id: 'ens_name', title: 'ens_name' },
-      { id: 'voting_power', title: 'voting_power' }
-    ]
+      { id: 'voting_power', title: 'voting_power' },
+    ],
   })
   let csvRows = []
 
   const nextId: number = await getNextId()
   console.info('nextId:', nextId)
-  
+
   let passportId: number
   for (passportId = 0; passportId < nextId; passportId++) {
     console.info('passportId:', passportId)
@@ -72,7 +78,7 @@ async function loadCitizenData() {
       owner_address: ownerAddress,
       signer_address: signerAddress,
       ens_name: ensName,
-      voting_power: votingPowerEther
+      voting_power: votingPowerEther,
     }
     csvRows.push(csvRow)
   }
@@ -104,3 +110,5 @@ async function getVotingPower(ethAddress: string): Promise<number> {
   console.info('getVotingPower')
   return await VotingEscrowContract.methods.balanceOf(ethAddress).call()
 }
+
+export {}

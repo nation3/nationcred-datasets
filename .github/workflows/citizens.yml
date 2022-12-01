@@ -24,6 +24,5 @@ jobs:
         cache: 'npm'
         cache-dependency-path: data-sources/citizens/package-lock.json
     - run: npm install
-    - run: npx tsc generate-citizen-count-csv.ts
-    - run: npx tsc generate-citizens-csv.ts
-    - run: npx tsc generate-citizens-json.ts
+    - run: npm run build
+    - run: npm run generate
