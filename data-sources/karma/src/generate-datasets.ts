@@ -19,21 +19,21 @@ async function loadKarmaData() {
     const citizen = citizensJson[passportId]
     console.info('citizen:', citizen)
 
-    const ethAddress: string = citizen.ethAddress
+    const ethAddress: string = citizen.ownerAddress
     console.info('ethAddress:', ethAddress)
 
     const outputFilePath = `output/karma-${passportId}.csv`
     console.info('outputFilePath:', outputFilePath)
 
-    // let append = false
-    // if (fs.existsSync(outputFilePath)) {
-    //   append = true
-    // }
-    // console.info('append:', append)
+    let append = false
+    if (fs.existsSync(outputFilePath)) {
+      append = true
+    }
+    console.info('append:', append)
 
     const writer = createObjectCsvWriter({
       path: outputFilePath,
-      // append: append,
+      append: append,
       header: [
         { id: 'week_end', title: 'week_end' },
         { id: 'karma_score', title: 'karma_score' },
