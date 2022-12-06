@@ -129,6 +129,10 @@ function getParticipantsWhoParticipated(
             account.payoutAddresses.values()
           )
         }
+        participant.walletAddress = participant.walletAddress.map((address) =>
+          address.toLowerCase()
+        )
+
         peopleWhoDidStuff.push(participant)
       }
     })
