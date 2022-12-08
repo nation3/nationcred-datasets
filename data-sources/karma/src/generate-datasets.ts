@@ -1,4 +1,4 @@
-import { Delegate, Stat } from "./KarmaTypes"
+import { Delegate, Stat } from './KarmaTypes'
 const fs = require('fs')
 
 /* eslint @typescript-eslint/no-var-requires: "off" */
@@ -19,7 +19,7 @@ async function loadKarmaData() {
     const citizen = citizensJson[passportId]
     console.info('citizen:', citizen)
 
-    const ethAddress: string = citizen.owner_address
+    const ethAddress: string = citizen.ownerAddress
     console.info('ethAddress:', ethAddress)
 
     const outputFilePath = `output/karma-${passportId}.csv`
@@ -38,18 +38,20 @@ async function loadKarmaData() {
         { id: 'week_end', title: 'week_end' },
         { id: 'karma_score', title: 'karma_score' },
         { id: 'karma_score_7d', title: 'karma_score_7d' },
-        { id: 'forum_activity_score_7d', title: 'forum_activity_score_7d' }
-      ]
+        { id: 'forum_activity_score_7d', title: 'forum_activity_score_7d' },
+      ],
     })
     interface CsvRow {
-      week_end: string,
-      karma_score: number,
-      karma_score_7d: number,
+      week_end: string
+      karma_score: number
+      karma_score_7d: number
       forum_activity_score_7d: number
     }
     const csvRows: CsvRow[] = []
 
-    const response: Response = await fetch(`https://api.showkarma.xyz/api/user/${ethAddress}`)
+    const response: Response = await fetch(
+      `https://api.showkarma.xyz/api/user/${ethAddress}`
+    )
     const json = await response.json()
     // console.info('json:', json)
     if (!response.ok) {
@@ -70,7 +72,7 @@ async function loadKarmaData() {
               week_end: weekEndDate.toISOString().substring(0, 10),
               karma_score: delegate.score,
               karma_score_7d: stat.karmaScore,
-              forum_activity_score_7d: stat.forumActivityScore
+              forum_activity_score_7d: stat.forumActivityScore,
             }
             csvRows.push(csvRow)
           }

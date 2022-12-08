@@ -41,7 +41,7 @@ async function loadSourceCredData() {
     const citizen = citizensJson[passportId]
     console.info('citizen:', citizen)
 
-    const ethAddress: string = citizen.owner_address
+    const ethAddress: string = citizen.ownerAddress
     console.info('ethAddress:', ethAddress)
 
     const writer = createObjectCsvWriter({
@@ -128,10 +128,10 @@ function getParticipantsWhoParticipated(
           participant.walletAddress = Array.from(
             account.payoutAddresses.values()
           )
+          participant.walletAddress = participant.walletAddress.map((address) =>
+            address.toLowerCase()
+          )
         }
-        participant.walletAddress = participant.walletAddress.map((address) =>
-          address.toLowerCase()
-        )
 
         peopleWhoDidStuff.push(participant)
       }
