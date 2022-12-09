@@ -41,7 +41,7 @@ async function loadSourceCredData() {
     const citizen = citizensJson[passportId]
     console.info('citizen:', citizen)
 
-    const ethAddress: string = citizen.ethAddress
+    const ethAddress: string = citizen.ownerAddress
     console.info('ethAddress:', ethAddress)
 
     const writer = createObjectCsvWriter({
