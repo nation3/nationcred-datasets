@@ -16,6 +16,10 @@
 
     - Same data as in `citizens.csv`, but stored in JSON format.
 
+- `citizen-<passportId>.csv`
+
+    - Contains a Citizen's voting power week by week.
+
 ## Install
 
 ```
@@ -43,4 +47,11 @@ node generate-citizens-csv.js
 ```
 npx tsc generate-citizens-json.ts
 node generate-citizens-json.js
+```
+
+### Generate Historical Citizen Data CSVs
+
+```
+npx tsc generate-voting-power-datasets.ts
+node generate-voting-power-datasets.js
 ```
