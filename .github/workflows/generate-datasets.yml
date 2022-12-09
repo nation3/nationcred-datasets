@@ -40,6 +40,10 @@ jobs:
       - run: npx tsc generate-citizens-json.ts
       - run: node generate-citizens-json.js
 
+      ### Generate Historical Citizen Data CSVs
+      - run: npx tsc generate-voting-power-datasets.ts
+      - run: node generate-voting-power-datasets.js
+
       - name: Set Environment Variables for PR
         id: pr_details
         run: |
