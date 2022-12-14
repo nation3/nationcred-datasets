@@ -25,4 +25,3 @@ jobs:
         cache-dependency-path: data-sources/citizens/package-lock.json
     - run: npm install
     - run: npm run build
-    - run: npm run generate
