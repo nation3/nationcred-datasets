@@ -55,8 +55,10 @@ async function loadCitizenData() {
 
     const votingPowerWei: number = await getVotingPower(ownerAddress)
     console.info('votingPowerWei:', votingPowerWei)
-    const votingPowerEther: number = web3.utils.fromWei(votingPowerWei)
+    const votingPowerEther: string = web3.utils.fromWei(votingPowerWei)
     console.info('votingPowerEther:', votingPowerEther)
+    const votingPowerRounded: string = new Number(votingPowerEther).toFixed(2)
+    console.info('votingPowerRounded:', votingPowerRounded)
 
     // Export to CSV
     const csvRow = {
@@ -64,7 +66,7 @@ async function loadCitizenData() {
       owner_address: ownerAddress,
       signer_address: signerAddress,
       ens_name: ensName,
-      voting_power: votingPowerEther
+      voting_power: votingPowerRounded
     }
     csvRows.push(csvRow)
   }
