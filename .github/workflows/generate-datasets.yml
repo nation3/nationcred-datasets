@@ -1,4 +1,4 @@
-name: Generate Datasets
+name: Generate Datasets (Weekly Cron Job)
 
 on:
   # A new interval every Sunday (midnight)
