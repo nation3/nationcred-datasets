@@ -63,12 +63,14 @@ async function loadVotingPowerData() {
       console.info('votingPowerWei:', votingPowerWei)
       const votingPowerEther: number = web3.utils.fromWei(votingPowerWei)
       console.info('votingPowerEther:', votingPowerEther)
+      const votingPowerRounded: string = new Number(votingPowerEther).toFixed(2)
+      console.info('votingPowerRounded:', votingPowerRounded)
       
       // Export to CSV
       const csvRow = {
         week_end: weekEndDate.toISOString().substring(0, 10),
         block: blockByDate.block,
-        voting_power: votingPowerEther
+        voting_power: votingPowerRounded
       }
       csvRows.push(csvRow)
 
