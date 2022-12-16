@@ -32,7 +32,7 @@ async function loadNationCredData() {
     if (!fs.existsSync(sourceCredFilePath)) {
       console.error('File does not exist')
     } else {
-      sourceCredData = await loadSourceCredData(sourceCredFilePath, passportId)
+      sourceCredData = await loadSourceCredData(sourceCredFilePath)
     }
     // console.info('sourceCredData:', sourceCredData)
 
@@ -101,7 +101,7 @@ async function loadNationCredData() {
   }
 }
 
-async function loadSourceCredData(filePath: string, passportId: string): Promise<any> {
+async function loadSourceCredData(filePath: string): Promise<any> {
   console.info('loadSourceCredData')
 
   const sourceCredFile: File = fs.readFileSync(filePath)
