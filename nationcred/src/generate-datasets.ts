@@ -1,5 +1,5 @@
 const fs = require('fs')
-const csvParser = require('csv-parser')
+const Papa = require('papaparse')
 
 /* eslint @typescript-eslint/no-var-requires: "off" */
 const createObjectCsvWriter = require('csv-writer').createObjectCsvWriter
@@ -26,7 +26,15 @@ async function loadNationCredData() {
     const csvRows = []
 
     // Load the Citizen's SourceCred dataset
-    // TODO
+    const sourceCredFilePath: string = `../data-sources/sourcecred/output/sourcecred-${passportId}.csv`
+    console.info('sourceCredFilePath:', sourceCredFilePath)
+    let sourceCredData = []
+    if (!fs.existsSync(sourceCredFilePath)) {
+      console.error('File does not exist')
+    } else {
+      sourceCredData = await loadSourceCredData(sourceCredFilePath, passportId)
+    }
+    // console.info('sourceCredData:', sourceCredData)
 
     // Load the Citizen's Dework dataset
     // TODO
@@ -47,20 +55,41 @@ async function loadNationCredData() {
       console.info('week:', `[${weekBeginDate.toISOString()} → ${weekEndDate.toISOString()}]`)
 
       // Calculate the number of hours dedicated to Nation3 value creation by the Citizen
-      // TODO
+      let valueCreationHours: number = 0
+
+      let sourceCredScore: number = 0
+      sourceCredData.forEach((dataRow: any) => {
+        const weekEnd = dataRow.week_end
+        // console.info('weekEnd:', weekEnd)
+        if (weekEnd == weekEndDate.toISOString().substring(0, 10)) {
+          sourceCredScore = dataRow.sourcecred_score
+        }
+      })
+      console.info('sourceCredScore:', sourceCredScore)
+      const sourceCredHours: number = sourceCredScore / 2.5
+      console.info('sourceCredHours:', sourceCredHours)
+
+      valueCreationHours += sourceCredHours
       
       // Calculate the number of hours dedicated to Nation3 governance by the Citizen
+      let governanceHours = undefined
       // TODO
 
       // Calculate the number of hours dedicated to Nation3 operations by the Citizen
+      let operationsHours = undefined
+      // TODO
+
+      // Calculate the Citizen's final NationCred score
+      const nationCredScore: number = valueCreationHours//+ governanceHours + operationsHours
+      console.info('nationCredScore:', nationCredScore)
       
       // Export to CSV
       const csvRow = {
         week_end: weekEndDate.toISOString().substring(0, 10),
-        value_creation_hours: undefined,
-        governance_hours: undefined,
-        operations_hours: undefined,
-        nationcred_score: undefined
+        value_creation_hours: valueCreationHours,
+        governance_hours: governanceHours,
+        operations_hours: operationsHours,
+        nationcred_score: nationCredScore
       }
       csvRows.push(csvRow)
 
@@ -70,4 +99,22 @@ async function loadNationCredData() {
 
     writer.writeRecords(csvRows)
   }
+}
+
+async function loadSourceCredData(filePath: string, passportId: string): Promise<any> {
+  console.info('loadSourceCredData')
+
+  const sourceCredFile: File = fs.readFileSync(filePath)
+  const csvData = sourceCredFile.toString()
+  console.debug('csvData:\n', csvData)
+
+  return new Promise(resolve => {
+    Papa.parse(csvData, {
+      header: true,
+      complete: (results: any) => {
+        console.log('complete')
+        resolve(results.data)
+      }
+    })
+  })
 }
