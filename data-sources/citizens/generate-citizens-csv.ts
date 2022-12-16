@@ -63,8 +63,8 @@ async function loadCitizenData() {
     // Export to CSV
     const csvRow = {
       passport_id: passportId,
-      owner_address: ownerAddress,
-      signer_address: signerAddress,
+      owner_address: ownerAddress.toLowerCase(),
+      signer_address: signerAddress.toLowerCase(),
       ens_name: ensName,
       voting_power: votingPowerRounded
     }
