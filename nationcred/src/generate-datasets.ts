@@ -26,7 +26,7 @@ async function loadNationCredData() {
     const csvRows = []
 
     // Load the Citizen's SourceCred dataset
-    const sourceCredFilePath: string = `../data-sources/sourcecred/output/sourcecred-${passportId}.csv`
+    const sourceCredFilePath = `../data-sources/sourcecred/output/sourcecred-${passportId}.csv`
     console.info('sourceCredFilePath:', sourceCredFilePath)
     let sourceCredData = []
     if (!fs.existsSync(sourceCredFilePath)) {
@@ -55,9 +55,9 @@ async function loadNationCredData() {
       console.info('week:', `[${weekBeginDate.toISOString()} → ${weekEndDate.toISOString()}]`)
 
       // Calculate the number of hours dedicated to Nation3 value creation by the Citizen
-      let valueCreationHours: number = 0
+      let valueCreationHours = 0
 
-      let sourceCredScore: number = 0
+      let sourceCredScore = 0
       sourceCredData.forEach((dataRow: any) => {
         const weekEnd = dataRow.week_end
         // console.info('weekEnd:', weekEnd)
@@ -72,11 +72,11 @@ async function loadNationCredData() {
       valueCreationHours += sourceCredHours
       
       // Calculate the number of hours dedicated to Nation3 governance by the Citizen
-      let governanceHours = undefined
+      const governanceHours = undefined
       // TODO
 
       // Calculate the number of hours dedicated to Nation3 operations by the Citizen
-      let operationsHours = undefined
+      const operationsHours = undefined
       // TODO
 
       // Calculate the Citizen's final NationCred score
