@@ -4,6 +4,12 @@
   "description": "Nation3 Citizens",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
+    "generate-count": "node generate-citizen-count-csv.js",
+    "generate-csv": "node generate-citizens-csv.js",
+    "generate-json": "node generate-citizens-json.js",
+    "generate-power": "node generate-voting-power-datasets.js",
+    "generate": "npm run generate-count && npm run generate-csv && npm run generate-json && npm run generate-power",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
