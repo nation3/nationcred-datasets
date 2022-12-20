@@ -86,10 +86,10 @@ async function loadNationCredData() {
       // Export to CSV
       const csvRow = {
         week_end: weekEndDate.toISOString().substring(0, 10),
-        value_creation_hours: valueCreationHours,
+        value_creation_hours: Number(valueCreationHours.toFixed(2)),
         governance_hours: governanceHours,
         operations_hours: operationsHours,
-        nationcred_score: nationCredScore
+        nationcred_score: Number(nationCredScore.toFixed(2))
       }
       csvRows.push(csvRow)
 
