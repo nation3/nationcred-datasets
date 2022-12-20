@@ -40,7 +40,7 @@ jobs:
       - run: npx tsc generate-citizens-json.ts
       - run: node generate-citizens-json.js
 
-      ### Generate Historical Citizen Data CSVs
+        # Generate Historical Citizen Data CSVs 🧮
       - run: npx tsc generate-voting-power-datasets.ts
       - run: node generate-voting-power-datasets.js
 
