@@ -69,10 +69,10 @@ async function loadSourceCredData() {
         : ({ sourcecred: 0, discord: 0, discourse: 0, github: 0 } as Cred)
       const csvRow = {
         week_end: interval[0].endDate,
-        sourcecred_score: scForIdentity.sourcecred,
-        discord_score: scForIdentity.discord,
-        discourse_score: scForIdentity.discourse,
-        github_score: scForIdentity.github,
+        sourcecred_score: Number(scForIdentity.sourcecred.toFixed(2)),
+        discord_score: Number(scForIdentity.discord.toFixed(2)),
+        discourse_score: Number(scForIdentity.discourse.toFixed(2)),
+        github_score: Number(scForIdentity.github.toFixed(2)),
       }
       csvRows.push(csvRow)
     })
