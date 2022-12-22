@@ -27,22 +27,21 @@ jobs:
       
       - name: Install Node.js Packages 🔧
         run: npm install
+        
+      - name: Build
+        run: npm run build
 
         # Generate Citizen Count CSV 🧮
-      - run: npx tsc generate-citizen-count-csv.ts
-      - run: node generate-citizen-count-csv.js
+      - run: npm run generate count
 
         # Generate Citizen Data CSV 🧮
-      - run: npx tsc generate-citizens-csv.ts
-      - run: node generate-citizens-csv.js
+      - run: npm run generate-csv
 
         # Generate Citizen Data JSON 🧮
-      - run: npx tsc generate-citizens-json.ts
-      - run: node generate-citizens-json.js
+      - run: npm run geneate-json
 
         # Generate Historical Citizen Data CSVs 🧮
-      - run: npx tsc generate-voting-power-datasets.ts
-      - run: node generate-voting-power-datasets.js
+      - run: npm run generate-power
 
       - name: Set Environment Variables for PR
         id: pr_details
