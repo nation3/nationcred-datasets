@@ -38,7 +38,7 @@ jobs:
       - run: npm run generate-csv
 
         # Generate Citizen Data JSON 🧮
-      - run: npm run geneate-json
+      - run: npm run generate-json
 
         # Generate Historical Citizen Data CSVs 🧮
       - run: npm run generate-power
