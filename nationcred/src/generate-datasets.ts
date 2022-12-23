@@ -20,7 +20,8 @@ async function loadNationCredData() {
         { id: 'value_creation_hours', title: 'value_creation_hours' },
         { id: 'governance_hours', title: 'governance_hours' },
         { id: 'operations_hours', title: 'operations_hours' },
-        { id: 'nationcred_score', title: 'nationcred_score' }
+        { id: 'nationcred_score', title: 'nationcred_score' },
+        { id: 'is_active', title: 'is_active' }
       ]
     })
     const csvRows = []
@@ -44,6 +45,12 @@ async function loadNationCredData() {
 
     // Load the Citizen's Snapshot dataset
     // TODO
+
+    // Prepare variables for keeping track of NationCred scores during the past 4 weeks
+    let nationCredScore4WeeksAgo = undefined
+    let nationCredScore3WeeksAgo = undefined
+    let nationCredScore2WeeksAgo = undefined
+    let nationCredScore1WeekAgo = undefined
 
     // Iterate every week from the week of [Sun May-29-2022 → Sun Jun-05-2022] until now
     const weekEndDate: Date = new Date('2022-06-05T00:00:00Z')
@@ -82,6 +89,18 @@ async function loadNationCredData() {
       // Calculate the Citizen's final NationCred score
       const nationCredScore: number = valueCreationHours//+ governanceHours + operationsHours
       console.info('nationCredScore:', nationCredScore)
+
+      // Check the if the Citizen is active or not (based on the NationCred score for the past 4 weeks)
+      nationCredScore4WeeksAgo = nationCredScore3WeeksAgo
+      nationCredScore3WeeksAgo = nationCredScore2WeeksAgo
+      nationCredScore2WeeksAgo = nationCredScore1WeekAgo
+      nationCredScore1WeekAgo = nationCredScore
+      const activeThreshold = 1.00
+      const isActive = (nationCredScore4WeeksAgo && (nationCredScore4WeeksAgo > activeThreshold))
+                    && (nationCredScore3WeeksAgo && (nationCredScore3WeeksAgo > activeThreshold))
+                    && (nationCredScore2WeeksAgo && (nationCredScore2WeeksAgo > activeThreshold))
+                    && (nationCredScore1WeekAgo && (nationCredScore1WeekAgo > activeThreshold))
+      console.info('isActive:', isActive)
       
       // Export to CSV
       const csvRow = {
@@ -89,7 +108,8 @@ async function loadNationCredData() {
         value_creation_hours: Number(valueCreationHours.toFixed(2)),
         governance_hours: governanceHours,
         operations_hours: operationsHours,
-        nationcred_score: Number(nationCredScore.toFixed(2))
+        nationcred_score: Number(nationCredScore.toFixed(2)),
+        is_active: Boolean(isActive)
       }
       csvRows.push(csvRow)
 
