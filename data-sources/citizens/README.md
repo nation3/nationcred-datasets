@@ -28,30 +28,32 @@ npm install
 
 ## Build & Run
 
+### Build
+
+```
+npm run build
+```
+
 ### Generate Citizen Count CSV
 
 ```
-npx tsc generate-citizen-count-csv.ts
-node generate-citizen-count-csv.js
+npm run generate-count
 ```
 
 ### Generate Citizen Data CSV
 
 ```
-npx tsc generate-citizens-csv.ts
-node generate-citizens-csv.js
+npm run generate-csv
 ```
 
 ### Generate Citizen Data JSON
 
 ```
-npx tsc generate-citizens-json.ts
-node generate-citizens-json.js
+npm run generate-json
 ```
 
 ### Generate Historical Citizen Data CSVs
 
 ```
-npx tsc generate-voting-power-datasets.ts
-node generate-voting-power-datasets.js
+npm run generate-power
 ```
