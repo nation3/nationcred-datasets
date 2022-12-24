@@ -51,7 +51,7 @@ async function loadActivityData() {
       // Lookup the matching week
       nationCredData.forEach((dataRow: any) => {
         const weekEnd = dataRow.week_end
-        console.info('weekEnd:', weekEnd)
+        // console.info('weekEnd:', weekEnd)
         if (weekEnd == weekEndDate.toISOString().substring(0, 10)) {
           const isActive = (dataRow.is_active === 'true')
           console.info('isActive', isActive)
