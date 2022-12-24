@@ -31,7 +31,7 @@ async function loadActivityData() {
     console.info('week:', `[${weekBeginDate.toISOString()} → ${weekEndDate.toISOString()}]`)
 
     // Get the current week's active Citizens
-    let activeCitizens: any[] = []
+    const activeCitizens: any[] = []
 
     const citizensJson = require('../../data-sources/citizens/output/citizens.json')
     for (const passportId in citizensJson) {
