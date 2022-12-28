@@ -49,6 +49,9 @@ async function loadPassportMintsByWeek() {
     weekCount++
 
     while (timestamp > weekEndDate.getTime() / 1_000) {
+      const weekBeginDate: Date = new Date(weekEndDate.getTime() - 7*24*60*60*1000)
+      console.info('week:', `[${weekBeginDate.toISOString()} → ${weekEndDate.toISOString()}]`)
+
       // Export previous week's count to CSV
       const csvRow = {
         week_end: weekEndDate.toISOString().substring(0, 10),
@@ -59,7 +62,6 @@ async function loadPassportMintsByWeek() {
 
       // Increase week end date by 7 days
       weekEndDate.setDate(weekEndDate.getDate() + 7)
-      console.info('weekEndDate:', weekEndDate)
     }
   }
 
