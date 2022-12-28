@@ -32,7 +32,7 @@ jobs:
         run: npm run build
 
         # Generate Citizen Count CSV 🧮
-      - run: npm run generate count
+      - run: npm run generate-count
 
         # Generate Citizen Data CSV 🧮
       - run: npm run generate-csv
