@@ -24,7 +24,8 @@ async function loadPassportMintsByWeek() {
     path: 'output/citizen-count-per-week.csv',
     header: [
       { id: 'week_end', title: 'week_end' },
-      { id: 'total_citizens', title: 'total_citizens' }
+      { id: 'total_citizens', title: 'total_citizens' },
+      { id: 'new_citizens', title: 'new_citizens' }
     ]
   })
   let csvRows = []
@@ -43,10 +44,14 @@ async function loadPassportMintsByWeek() {
     const weekBeginDate: Date = new Date(weekEndDate.getTime() - 7*24*60*60*1000)
     console.info('week:', `[${weekBeginDate.toISOString()} → ${weekEndDate.toISOString()}]`)
 
+    let newCitizensCount: number = 0
     if (id < nextId) {
       while (await getTimestamp(id) < (weekEndDate.getTime() / 1000)) {
         id++
         console.info('id:', id)
+
+        newCitizensCount++
+        console.info('newCitizensCount:', newCitizensCount)
 
         if (id == nextId) {
           console.info('Reached last passport ID:', id)
@@ -58,7 +63,8 @@ async function loadPassportMintsByWeek() {
     // Export to CSV
     const csvRow = {
       week_end: weekEndDate.toISOString().substring(0, 10),
-      total_citizens: id + 1
+      total_citizens: id + 1,
+      new_citizens: newCitizensCount
     }
     csvRows.push(csvRow)
 
