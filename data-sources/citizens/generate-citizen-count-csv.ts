@@ -32,35 +32,38 @@ async function loadPassportMintsByWeek() {
   const nextId: number = await getNextId()
   console.info('nextId:', nextId)
 
-  // The first NFT passport was minted on Sunday May-29-2022 04:13:24 PM +UTC:  https://etherscan.io/tx/0x688d147d2e23192eef6acb567feba2ef6b2e4838e8fe79933984e87170c3dc78
+  let id: number = 0
+
+  // Iterate every week from the week of [Sun May-29-2022 → Sun Jun-05-2022] until now
   const weekEndDate: Date = new Date('2022-06-05T00:00:00Z')
   console.info('weekEndDate:', weekEndDate)
+  const nowDate: Date = new Date()
+  console.info('nowDate:', nowDate)
+  while (nowDate.getTime() > weekEndDate.getTime()) {
+    const weekBeginDate: Date = new Date(weekEndDate.getTime() - 7*24*60*60*1000)
+    console.info('week:', `[${weekBeginDate.toISOString()} → ${weekEndDate.toISOString()}]`)
 
-  // Iterate all passport NFTs, and count how many were minted by the end of each week
-  let id: number = 0
-  let weekCount: number = 0
-  for (id = 0; id < nextId; id++) {
-    console.info('id:', id)
+    if (id < nextId) {
+      while (await getTimestamp(id) < (weekEndDate.getTime() / 1000)) {
+        id++
+        console.info('id:', id)
 
-    const timestamp: number = await getTimestamp(id)
-    console.info('timestamp:', timestamp)
-
-    weekCount++
-
-    while (timestamp > weekEndDate.getTime() / 1_000) {
-      const weekBeginDate: Date = new Date(weekEndDate.getTime() - 7*24*60*60*1000)
-      console.info('week:', `[${weekBeginDate.toISOString()} → ${weekEndDate.toISOString()}]`)
-
-      // Export previous week's count to CSV
-      const csvRow = {
-        week_end: weekEndDate.toISOString().substring(0, 10),
-        total_citizens: weekCount
+        if (id == nextId) {
+          console.info('Reached last passport ID:', id)
+          break
+        }
       }
-      csvRows.push(csvRow)
-
-      // Increase week end date by 7 days
-      weekEndDate.setDate(weekEndDate.getDate() + 7)
     }
+    
+    // Export to CSV
+    const csvRow = {
+      week_end: weekEndDate.toISOString().substring(0, 10),
+      total_citizens: id + 1
+    }
+    csvRows.push(csvRow)
+
+    // Increase week end date by 7 days
+    weekEndDate.setDate(weekEndDate.getDate() + 7)
   }
 
   writer.writeRecords(csvRows)
