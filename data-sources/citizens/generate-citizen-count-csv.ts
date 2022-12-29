@@ -1,5 +1,5 @@
 const Web3 = require('web3')
-const Passport = require('./abis/Passport.json')
+const Passport = require('../abis/Passport.json')
 const csvWriter = require('csv-writer')
 const fs = require('fs')
 
@@ -24,9 +24,8 @@ async function loadPassportMintsByWeek() {
     path: 'output/citizen-count-per-week.csv',
     header: [
       { id: 'week_end', title: 'week_end' },
-      { id: 'total_citizens', title: 'total_citizens' },
-      { id: 'active_citizens', title: 'active_citizens' },
-    ],
+      { id: 'total_citizens', title: 'total_citizens' }
+    ]
   })
   let csvRows = []
 
@@ -55,8 +54,7 @@ async function loadPassportMintsByWeek() {
       // Export previous week's count to CSV
       const csvRow = {
         week_end: weekEndDate.toISOString().substring(0, 10),
-        total_citizens: weekCount,
-        active_citizens: 0, // TODO: Fetch from https://github.com/nation3/nationcred-datasets/tree/main/nationcred
+        total_citizens: weekCount
       }
       csvRows.push(csvRow)
 
