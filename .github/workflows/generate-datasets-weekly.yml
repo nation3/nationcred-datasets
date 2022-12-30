@@ -43,25 +43,17 @@ jobs:
         # Generate Historical Citizen Data CSVs 🧮
       - run: npm run generate-power
 
-      - name: Set Environment Variables for PR
-        id: pr_details
+      - name: Commit Changes
         run: |
-          echo "PULL_REQUEST_TITLE=Generated Citizens datasets for week ending $(date +"%B %dth, %Y")" >> $GITHUB_ENV
-          description="This PR was auto-generated on $(date +%Y-%m-%d)."
-          description="${description//'%'/'%25'}"
-          description="${description//$'\n'/'%0A'}"
-          description="${description//$'\r'/'%0D'}"
-          echo "::set-output name=pr_body::$description"
-
-      - name: Create commit and PR for the changes
-        id: pr
-        uses: peter-evans/create-pull-request@v4.2.0
-        with:
-          branch: generated-datasets
-          branch-suffix: timestamp
-          commit-message: generate citizens datasets
-          title: ${{ env.PULL_REQUEST_TITLE }}
-          body: ${{ steps.pr_details.outputs.pr_body }}
+          git config user.name 'NationCred bot'
+          git config user.email 'nationcred.bot@nation3.org'
+          git fetch
+          git pull
+          git add output/*
+          git commit --allow-empty -m 'generate citizens datasets'
+      
+      - name: Push Changes
+        run: git push
 
   sourcecred:
     needs: citizens
@@ -85,25 +77,17 @@ jobs:
       - run: npm run build
       - run: npm run generate
 
-      - name: Set Environment Variables for PR
-        id: pr_details
+      - name: Commit Changes
         run: |
-          echo "PULL_REQUEST_TITLE=Generated SourceCred datasets for week ending $(date +"%B %dth, %Y")" >> $GITHUB_ENV
-          description="This PR was auto-generated on $(date +%Y-%m-%d)."
-          description="${description//'%'/'%25'}"
-          description="${description//$'\n'/'%0A'}"
-          description="${description//$'\r'/'%0D'}"
-          echo "::set-output name=pr_body::$description"
-
-      - name: Create commit and PR for the changes
-        id: pr
-        uses: peter-evans/create-pull-request@v4.2.0
-        with:
-          branch: generated-datasets
-          branch-suffix: timestamp
-          commit-message: generate sourcecred datasets
-          title: ${{ env.PULL_REQUEST_TITLE }}
-          body: ${{ steps.pr_details.outputs.pr_body }}
+          git config user.name 'NationCred bot'
+          git config user.email 'nationcred.bot@nation3.org'
+          git fetch
+          git pull
+          git add output/*
+          git commit --allow-empty -m 'generate sourcecred datasets'
+      
+      - name: Push Changes
+        run: git push
 
   dework:
     needs: citizens
@@ -127,25 +111,17 @@ jobs:
       - run: npm run build
       - run: npm run generate
 
-      - name: Set Environment Variables for PR
-        id: pr_details
+      - name: Commit Changes
         run: |
-          echo "PULL_REQUEST_TITLE=Generated Dework datasets for week ending $(date +"%B %dth, %Y")" >> $GITHUB_ENV
-          description="This PR was auto-generated on $(date +%Y-%m-%d)."
-          description="${description//'%'/'%25'}"
-          description="${description//$'\n'/'%0A'}"
-          description="${description//$'\r'/'%0D'}"
-          echo "::set-output name=pr_body::$description"
-
-      - name: Create commit and PR for the changes
-        id: pr
-        uses: peter-evans/create-pull-request@v4.2.0
-        with:
-          branch: generated-datasets
-          branch-suffix: timestamp
-          commit-message: generate dework datasets
-          title: ${{ env.PULL_REQUEST_TITLE }}
-          body: ${{ steps.pr_details.outputs.pr_body }}
+          git config user.name 'NationCred bot'
+          git config user.email 'nationcred.bot@nation3.org'
+          git fetch
+          git pull
+          git add output/*
+          git commit --allow-empty -m 'generate dework datasets'
+      
+      - name: Push Changes
+        run: git push
 
   karma:
     needs: citizens
@@ -169,25 +145,17 @@ jobs:
       - run: npm run build
       - run: npm run generate
 
-      - name: Set Environment Variables for PR
-        id: pr_details
+      - name: Commit Changes
         run: |
-          echo "PULL_REQUEST_TITLE=Generated Karma datasets for week ending $(date +"%B %dth, %Y")" >> $GITHUB_ENV
-          description="This PR was auto-generated on $(date +%Y-%m-%d)."
-          description="${description//'%'/'%25'}"
-          description="${description//$'\n'/'%0A'}"
-          description="${description//$'\r'/'%0D'}"
-          echo "::set-output name=pr_body::$description"
-
-      - name: Create commit and PR for the changes
-        id: pr
-        uses: peter-evans/create-pull-request@v4.2.0
-        with:
-          branch: generated-datasets
-          branch-suffix: timestamp
-          commit-message: generate karma datasets
-          title: ${{ env.PULL_REQUEST_TITLE }}
-          body: ${{ steps.pr_details.outputs.pr_body }}
+          git config user.name 'NationCred bot'
+          git config user.email 'nationcred.bot@nation3.org'
+          git fetch
+          git pull
+          git add output/*
+          git commit --allow-empty -m 'generate karma datasets'
+      
+      - name: Push Changes
+        run: git push
 
   nationcred:
     needs: sourcecred
@@ -211,22 +179,14 @@ jobs:
       - run: npm run build
       - run: npm run generate
 
-      - name: Set Environment Variables for PR
-        id: pr_details
+      - name: Commit Changes
         run: |
-          echo "PULL_REQUEST_TITLE=Generated NationCred datasets for week ending $(date +"%B %dth, %Y")" >> $GITHUB_ENV
-          description="This PR was auto-generated on $(date +%Y-%m-%d)."
-          description="${description//'%'/'%25'}"
-          description="${description//$'\n'/'%0A'}"
-          description="${description//$'\r'/'%0D'}"
-          echo "::set-output name=pr_body::$description"
-
-      - name: Create commit and PR for the changes
-        id: pr
-        uses: peter-evans/create-pull-request@v4.2.0
-        with:
-          branch: generated-datasets
-          branch-suffix: timestamp
-          commit-message: generate nationcred datasets
-          title: ${{ env.PULL_REQUEST_TITLE }}
-          body: ${{ steps.pr_details.outputs.pr_body }}
+          git config user.name 'NationCred bot'
+          git config user.email 'nationcred.bot@nation3.org'
+          git fetch
+          git pull
+          git add output/*
+          git commit --allow-empty -m 'generate nationcred datasets'
+      
+      - name: Push Changes
+        run: git push
