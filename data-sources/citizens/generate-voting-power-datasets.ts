@@ -2,7 +2,7 @@
 const createObjectCsvWriter = require('csv-writer').createObjectCsvWriter
 
 const Web3 = require('web3')
-const VotingEscrow = require('./abis/VotingEscrow.json')
+const VotingEscrow = require('../abis/VotingEscrow.json')
 const csvWriter = require('csv-writer')
 const fs = require('fs')
 const ethers = require('ethers')
