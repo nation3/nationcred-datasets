@@ -65,6 +65,9 @@ jobs:
           git config user.email 'nationcred.bot@nation3.org'
           git add output/*
           git commit --allow-empty -m 'generate citizens datasets'
+      
+      - name: Push Changes
+        run: git push
 
   sourcecred:
     needs: citizens
@@ -110,6 +113,9 @@ jobs:
           git config user.email 'nationcred.bot@nation3.org'
           git add output/*
           git commit --allow-empty -m 'generate sourcecred datasets'
+      
+      - name: Push Changes
+        run: git push
 
   dework:
     needs: citizens
@@ -155,6 +161,9 @@ jobs:
           git config user.email 'nationcred.bot@nation3.org'
           git add output/*
           git commit --allow-empty -m 'generate dework datasets'
+      
+      - name: Push Changes
+        run: git push
 
   karma:
     needs: citizens
@@ -200,6 +209,9 @@ jobs:
           git config user.email 'nationcred.bot@nation3.org'
           git add output/*
           git commit --allow-empty -m 'generate karma datasets'
+      
+      - name: Push Changes
+        run: git push
 
   nationcred:
     needs: sourcecred
@@ -245,3 +257,6 @@ jobs:
           git config user.email 'nationcred.bot@nation3.org'
           git add output/*
           git commit --allow-empty -m 'generate nationcred datasets'
+      
+      - name: Push Changes
+        run: git push
