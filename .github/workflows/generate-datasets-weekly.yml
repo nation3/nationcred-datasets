@@ -43,21 +43,21 @@ jobs:
         # Generate Historical Citizen Data CSVs 🧮
       - run: npm run generate-power
 
-      - name: Set Environment Variables for PR
-        id: pr_details
-        run: |
-          echo "PULL_REQUEST_TITLE=Generated datasets for week ending $(date +"%B %dth, %Y")" >> $GITHUB_ENV
-          description="This PR was auto-generated on $(date +"%Y-%m-%d %H:%M:%S %Z")."
-          echo "::set-output name=pr_body::$description"
+      # - name: Set Environment Variables for PR
+      #   id: pr_details
+      #   run: |
+      #     echo "PULL_REQUEST_TITLE=Generated datasets for week ending $(date +"%B %dth, %Y")" >> $GITHUB_ENV
+      #     description="This PR was auto-generated on $(date +"%Y-%m-%d %H:%M:%S %Z")."
+      #     echo "::set-output name=pr_body::$description"
 
-      - name: Create commit and PR for the changes
-        id: pr
-        uses: peter-evans/create-pull-request@v4.2.0
-        with:
-          branch: generated-datasets
-          commit-message: generate citizens datasets
-          title: ${{ env.PULL_REQUEST_TITLE }}
-          body: ${{ steps.pr_details.outputs.pr_body }}
+      # - name: Create commit and PR for the changes
+      #   id: pr
+      #   uses: peter-evans/create-pull-request@v4.2.0
+      #   with:
+      #     branch: generated-datasets
+      #     commit-message: generate citizens datasets
+      #     title: ${{ env.PULL_REQUEST_TITLE }}
+      #     body: ${{ steps.pr_details.outputs.pr_body }}
 
   sourcecred:
     needs: citizens
