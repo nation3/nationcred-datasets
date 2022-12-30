@@ -4,7 +4,7 @@
     "ownerAddress": "0xe4be9b821f84ec062865372914c8392ca8f31464",
     "signerAddress": "0xe4be9b821f84ec062865372914c8392ca8f31464",
     "ensName": "",
-    "votingPower": 1029.31
+    "votingPower": 1027.19
   },
   "1": {
     "passportId": 1,
@@ -25,7 +25,7 @@
     "ownerAddress": "0x443d40b2aa10cb01884a97281dc8ac3ccb0eef2a",
     "signerAddress": "0x443d40b2aa10cb01884a97281dc8ac3ccb0eef2a",
     "ensName": "tingfei.eth",
-    "votingPower": 2.02
+    "votingPower": 2.01
   },
   "4": {
     "passportId": 4,
@@ -39,14 +39,14 @@
     "ownerAddress": "0x85cb2a16698b38d48d010bd5dd0b98cdd89f570f",
     "signerAddress": "0x85cb2a16698b38d48d010bd5dd0b98cdd89f570f",
     "ensName": "erken.eth",
-    "votingPower": 2.22
+    "votingPower": 2.21
   },
   "6": {
     "passportId": 6,
     "ownerAddress": "0xd8de315eb7a00f4155d1ea9eb4eb6888ae715631",
     "signerAddress": "0xd8de315eb7a00f4155d1ea9eb4eb6888ae715631",
     "ensName": "hugo168.eth",
-    "votingPower": 1.82
+    "votingPower": 1.81
   },
   "7": {
     "passportId": 7,
@@ -74,7 +74,7 @@
     "ownerAddress": "0x144cebfb9bebcbdeecd5429466044c9026df403c",
     "signerAddress": "0x144cebfb9bebcbdeecd5429466044c9026df403c",
     "ensName": "384000.eth",
-    "votingPower": 2.89
+    "votingPower": 2.88
   },
   "11": {
     "passportId": 11,
@@ -88,7 +88,7 @@
     "ownerAddress": "0xa0a0e4c41eac834d12f83120e298cd24fd6de1aa",
     "signerAddress": "0xa0a0e4c41eac834d12f83120e298cd24fd6de1aa",
     "ensName": "cryptomage.eth",
-    "votingPower": 2.08
+    "votingPower": 2.07
   },
   "13": {
     "passportId": 13,
@@ -116,7 +116,7 @@
     "ownerAddress": "0x636d65212c815b93b8e5b069f7082169cec851b7",
     "signerAddress": "0x636d65212c815b93b8e5b069f7082169cec851b7",
     "ensName": "gallego.eth",
-    "votingPower": 51.33
+    "votingPower": 50.54
   },
   "17": {
     "passportId": 17,
@@ -144,7 +144,7 @@
     "ownerAddress": "0x24b1edfd5fe28e4a50b0d0bc248d1d84fd91d62a",
     "signerAddress": "0x24b1edfd5fe28e4a50b0d0bc248d1d84fd91d62a",
     "ensName": "",
-    "votingPower": 1.82
+    "votingPower": 1.81
   },
   "21": {
     "passportId": 21,
@@ -158,7 +158,7 @@
     "ownerAddress": "0x199c719c83d8246559700c00fff8cde14182e192",
     "signerAddress": "0x199c719c83d8246559700c00fff8cde14182e192",
     "ensName": "cbdao.eth",
-    "votingPower": 1.91
+    "votingPower": 1.9
   },
   "23": {
     "passportId": 23,
@@ -193,7 +193,7 @@
     "ownerAddress": "0x763ad28bc4436590fd61998561730b0f7790e955",
     "signerAddress": "0x763ad28bc4436590fd61998561730b0f7790e955",
     "ensName": "hellobike.eth",
-    "votingPower": 1.83
+    "votingPower": 1.82
   },
   "28": {
     "passportId": 28,
@@ -242,7 +242,7 @@
     "ownerAddress": "0x200b5f0de160646cbb988e2d9c4602779bc12681",
     "signerAddress": "0x200b5f0de160646cbb988e2d9c4602779bc12681",
     "ensName": "",
-    "votingPower": 2.23
+    "votingPower": 2.22
   },
   "35": {
     "passportId": 35,
@@ -277,7 +277,7 @@
     "ownerAddress": "0x222eef670389407353f536662aea3c4eafd7b0a5",
     "signerAddress": "0x222eef670389407353f536662aea3c4eafd7b0a5",
     "ensName": "ringo.eth",
-    "votingPower": 1.82
+    "votingPower": 1.81
   },
   "40": {
     "passportId": 40,
@@ -298,7 +298,7 @@
     "ownerAddress": "0x8bf1e340055c7de62f11229a149d3a1918de3d74",
     "signerAddress": "0x8bf1e340055c7de62f11229a149d3a1918de3d74",
     "ensName": "juar.eth",
-    "votingPower": 12.16
+    "votingPower": 11.97
   },
   "43": {
     "passportId": 43,
@@ -340,14 +340,14 @@
     "ownerAddress": "0xeba5a44937596429d8a8fc117fb6e514783bd7e9",
     "signerAddress": "0xeba5a44937596429d8a8fc117fb6e514783bd7e9",
     "ensName": "solnfttrade.eth",
-    "votingPower": 2.11
+    "votingPower": 2.1
   },
   "49": {
     "passportId": 49,
     "ownerAddress": "0x84837167155c104e0dd9d4be8557fb5d4160dd81",
     "signerAddress": "0x84837167155c104e0dd9d4be8557fb5d4160dd81",
     "ensName": "misslida.eth",
-    "votingPower": 3.53
+    "votingPower": 3.52
   },
   "50": {
     "passportId": 50,
@@ -382,7 +382,7 @@
     "ownerAddress": "0x186bad94057591918c3265c4ddb12874324be8ac",
     "signerAddress": "0x186bad94057591918c3265c4ddb12874324be8ac",
     "ensName": "dashuo.eth",
-    "votingPower": 2.09
+    "votingPower": 2.08
   },
   "55": {
     "passportId": 55,
@@ -417,7 +417,7 @@
     "ownerAddress": "0x0d75363981488f3376fdce70fb5a6dd47c1ed935",
     "signerAddress": "0x0d75363981488f3376fdce70fb5a6dd47c1ed935",
     "ensName": "adela.eth",
-    "votingPower": 2.09
+    "votingPower": 2.08
   },
   "60": {
     "passportId": 60,
@@ -445,14 +445,14 @@
     "ownerAddress": "0x7a43c0f2f3f7ec470d200295f72292c98fd55307",
     "signerAddress": "0x7a43c0f2f3f7ec470d200295f72292c98fd55307",
     "ensName": "",
-    "votingPower": 2.57
+    "votingPower": 2.56
   },
   "64": {
     "passportId": 64,
     "ownerAddress": "0x5e1c3834d5200fec3e01a51ccb70f6f00a2418aa",
     "signerAddress": "0x5e1c3834d5200fec3e01a51ccb70f6f00a2418aa",
     "ensName": "",
-    "votingPower": 1.9
+    "votingPower": 1.89
   },
   "65": {
     "passportId": 65,
@@ -466,28 +466,28 @@
     "ownerAddress": "0x503ffec4cb59b4d8cd2308fc793f6abce32cef0a",
     "signerAddress": "0x503ffec4cb59b4d8cd2308fc793f6abce32cef0a",
     "ensName": "",
-    "votingPower": 137.79
+    "votingPower": 135.67
   },
   "67": {
     "passportId": 67,
     "ownerAddress": "0xca933e8a503e33be92a209d3abdee69ee747f019",
     "signerAddress": "0xca933e8a503e33be92a209d3abdee69ee747f019",
     "ensName": "",
-    "votingPower": 2.51
+    "votingPower": 2.5
   },
   "68": {
     "passportId": 68,
     "ownerAddress": "0xc173d302bd62b45754dc0abfad1407dddb40d050",
     "signerAddress": "0xc173d302bd62b45754dc0abfad1407dddb40d050",
     "ensName": "",
-    "votingPower": 583.55
+    "votingPower": 581.43
   },
   "69": {
     "passportId": 69,
     "ownerAddress": "0x39a3fba9bfdd5f0fc7e83a9cd32c9fa425a40c80",
     "signerAddress": "0x39a3fba9bfdd5f0fc7e83a9cd32c9fa425a40c80",
     "ensName": "",
-    "votingPower": 2.45
+    "votingPower": 2.44
   },
   "70": {
     "passportId": 70,
@@ -564,7 +564,7 @@
     "ownerAddress": "0x29fe8aa2798116332bc9a9dfac9a0072ad7c4196",
     "signerAddress": "0x29fe8aa2798116332bc9a9dfac9a0072ad7c4196",
     "ensName": "alicegame.eth",
-    "votingPower": 2.09
+    "votingPower": 2.08
   },
   "81": {
     "passportId": 81,
@@ -634,14 +634,14 @@
     "ownerAddress": "0xc8d4a8970035f9f3fd01dbd238c97b5348aa3199",
     "signerAddress": "0xc8d4a8970035f9f3fd01dbd238c97b5348aa3199",
     "ensName": "",
-    "votingPower": 1.83
+    "votingPower": 1.82
   },
   "91": {
     "passportId": 91,
     "ownerAddress": "0x6b2b69c6e5490be701abfbfa440174f808c1a33b",
     "signerAddress": "0x6b2b69c6e5490be701abfbfa440174f808c1a33b",
     "ensName": "izqui.eth",
-    "votingPower": 1.73
+    "votingPower": 1.72
   },
   "92": {
     "passportId": 92,
@@ -655,7 +655,7 @@
     "ownerAddress": "0x25ad71e78af2b33b3aeb2573c1df93aa078a6216",
     "signerAddress": "0x25ad71e78af2b33b3aeb2573c1df93aa078a6216",
     "ensName": "brayton.eth",
-    "votingPower": 1.78
+    "votingPower": 1.77
   },
   "94": {
     "passportId": 94,
@@ -669,7 +669,7 @@
     "ownerAddress": "0xdc260da83cd84772e3bc12de2066aff673e0b654",
     "signerAddress": "0xdc260da83cd84772e3bc12de2066aff673e0b654",
     "ensName": "",
-    "votingPower": 1.8
+    "votingPower": 1.79
   },
   "96": {
     "passportId": 96,
@@ -711,7 +711,7 @@
     "ownerAddress": "0xaf4807d083287f205d897e6d00c6fde1bf0a241a",
     "signerAddress": "0xaf4807d083287f205d897e6d00c6fde1bf0a241a",
     "ensName": "wilsonng.eth",
-    "votingPower": 1.9
+    "votingPower": 1.89
   },
   "102": {
     "passportId": 102,
@@ -760,28 +760,28 @@
     "ownerAddress": "0xd15b5fa5370f0c3cc068f107b7691e6dab678799",
     "signerAddress": "0xd15b5fa5370f0c3cc068f107b7691e6dab678799",
     "ensName": "abing.eth",
-    "votingPower": 2.39
+    "votingPower": 2.38
   },
   "109": {
     "passportId": 109,
     "ownerAddress": "0x2337f09ef3192aebd8477cdc34d029804f7edb92",
     "signerAddress": "0x2337f09ef3192aebd8477cdc34d029804f7edb92",
     "ensName": "luka077.eth",
-    "votingPower": 1.9
+    "votingPower": 1.89
   },
   "110": {
     "passportId": 110,
     "ownerAddress": "0x8c9c8a244c71a23b45ebbdd9d881afe993d5b13d",
     "signerAddress": "0x8c9c8a244c71a23b45ebbdd9d881afe993d5b13d",
     "ensName": "afurmanczyk.eth",
-    "votingPower": 3.42
+    "votingPower": 3.41
   },
   "111": {
     "passportId": 111,
     "ownerAddress": "0xad9f9194c68bd83250a534a7da574687e1f102ff",
     "signerAddress": "0xad9f9194c68bd83250a534a7da574687e1f102ff",
     "ensName": "",
-    "votingPower": 1.79
+    "votingPower": 1.78
   },
   "112": {
     "passportId": 112,
@@ -816,14 +816,14 @@
     "ownerAddress": "0x8e6d23050db78798c682a05393c881f8e6b76ea3",
     "signerAddress": "0x8e6d23050db78798c682a05393c881f8e6b76ea3",
     "ensName": "ruiyandou.eth",
-    "votingPower": 2.16
+    "votingPower": 2.15
   },
   "117": {
     "passportId": 117,
     "ownerAddress": "0x1fa400cf5129f681e436b89413d96ff0fe40af46",
     "signerAddress": "0x1fa400cf5129f681e436b89413d96ff0fe40af46",
     "ensName": "120120.eth",
-    "votingPower": 1.85
+    "votingPower": 1.84
   },
   "118": {
     "passportId": 118,
@@ -844,14 +844,14 @@
     "ownerAddress": "0xca48be2cee86c3c1c9775b40cc20bd7fdcbef436",
     "signerAddress": "0xca48be2cee86c3c1c9775b40cc20bd7fdcbef436",
     "ensName": "malatang.eth",
-    "votingPower": 1.8
+    "votingPower": 1.79
   },
   "121": {
     "passportId": 121,
     "ownerAddress": "0xc36edf48e21cf395b206352a1819de658fd7f988",
     "signerAddress": "0xc36edf48e21cf395b206352a1819de658fd7f988",
     "ensName": "ecdsa.eth",
-    "votingPower": 2.16
+    "votingPower": 2.15
   },
   "122": {
     "passportId": 122,
@@ -879,21 +879,21 @@
     "ownerAddress": "0x30c35950f2a8b8b76338bcd0b4d6fe67c98d2439",
     "signerAddress": "0x30c35950f2a8b8b76338bcd0b4d6fe67c98d2439",
     "ensName": "",
-    "votingPower": 1.1
+    "votingPower": 1.08
   },
   "126": {
     "passportId": 126,
     "ownerAddress": "0x57bd982d577660ab22d0a65d2c0a32e482112348",
     "signerAddress": "0x57bd982d577660ab22d0a65d2c0a32e482112348",
     "ensName": "",
-    "votingPower": 1.66
+    "votingPower": 1.65
   },
   "127": {
     "passportId": 127,
     "ownerAddress": "0x3316263c19bed1a29a88f3d7f8e95b15eae9a385",
     "signerAddress": "0x3316263c19bed1a29a88f3d7f8e95b15eae9a385",
     "ensName": "dysthymia.eth",
-    "votingPower": 1.76
+    "votingPower": 1.75
   },
   "128": {
     "passportId": 128,
@@ -921,14 +921,14 @@
     "ownerAddress": "0xfafda3727fe0406e50230bf6092be5ded68cd9e9",
     "signerAddress": "0xc6dc43634bbc028eebbffd909c9ac9f5796258a7",
     "ensName": "",
-    "votingPower": 20.12
+    "votingPower": 20.09
   },
   "132": {
     "passportId": 132,
     "ownerAddress": "0x319e8bcd816478270e0698c251e5bbbfb4928b60",
     "signerAddress": "0x319e8bcd816478270e0698c251e5bbbfb4928b60",
     "ensName": "mdmdiidbs.eth",
-    "votingPower": 2.02
+    "votingPower": 2.01
   },
   "133": {
     "passportId": 133,
@@ -1033,14 +1033,14 @@
     "ownerAddress": "0xcdb1f3e47a0f58920d22e82fad9d3eb4784a466e",
     "signerAddress": "0xcdb1f3e47a0f58920d22e82fad9d3eb4784a466e",
     "ensName": "people2021.eth",
-    "votingPower": 1.82
+    "votingPower": 1.81
   },
   "148": {
     "passportId": 148,
     "ownerAddress": "0x5a9e91b826be005b2613441de1f2d9cfcd8b1fad",
     "signerAddress": "0x5a9e91b826be005b2613441de1f2d9cfcd8b1fad",
     "ensName": "xyxno1.eth",
-    "votingPower": 1.72
+    "votingPower": 1.71
   },
   "149": {
     "passportId": 149,
@@ -1054,7 +1054,7 @@
     "ownerAddress": "0x9842621d0bcf1b05dce353ce149bdeea98bac6ee",
     "signerAddress": "0x9842621d0bcf1b05dce353ce149bdeea98bac6ee",
     "ensName": "8287.eth",
-    "votingPower": 1.89
+    "votingPower": 1.88
   },
   "151": {
     "passportId": 151,
@@ -1075,7 +1075,7 @@
     "ownerAddress": "0x8c702a9a6e0cd14a53251c630743c4f5327edde8",
     "signerAddress": "0x8c702a9a6e0cd14a53251c630743c4f5327edde8",
     "ensName": "calman.eth",
-    "votingPower": 2.13
+    "votingPower": 2.12
   },
   "154": {
     "passportId": 154,
@@ -1124,14 +1124,14 @@
     "ownerAddress": "0x38123a191e9685448658d2207b0543e2fb9282cc",
     "signerAddress": "0x38123a191e9685448658d2207b0543e2fb9282cc",
     "ensName": "palyfi.eth",
-    "votingPower": 2.15
+    "votingPower": 2.14
   },
   "161": {
     "passportId": 161,
     "ownerAddress": "0x02131a5831b2e46cfe867ad3e3344fc3edab59da",
     "signerAddress": "0x02131a5831b2e46cfe867ad3e3344fc3edab59da",
     "ensName": "btcoin10w.eth",
-    "votingPower": 2.05
+    "votingPower": 2.04
   },
   "162": {
     "passportId": 162,
@@ -1152,14 +1152,14 @@
     "ownerAddress": "0x9fc9ba827f682c19bbc9c7657a424dfe2c98ee52",
     "signerAddress": "0x9fc9ba827f682c19bbc9c7657a424dfe2c98ee52",
     "ensName": "beiying.eth",
-    "votingPower": 2.07
+    "votingPower": 2.06
   },
   "165": {
     "passportId": 165,
     "ownerAddress": "0xe44358e670e5084ca16a5ea41e24d81e66a1f14a",
     "signerAddress": "0xe44358e670e5084ca16a5ea41e24d81e66a1f14a",
     "ensName": "bttb.eth",
-    "votingPower": 2.13
+    "votingPower": 2.12
   },
   "166": {
     "passportId": 166,
@@ -1208,7 +1208,7 @@
     "ownerAddress": "0xedd000b7db3cb8931d4e0cb1d0dbe6b947ceb09a",
     "signerAddress": "0xedd000b7db3cb8931d4e0cb1d0dbe6b947ceb09a",
     "ensName": "0xfad3.eth",
-    "votingPower": 8.97
+    "votingPower": 8.96
   },
   "173": {
     "passportId": 173,
@@ -1271,21 +1271,21 @@
     "ownerAddress": "0x42e6dd8d517abb3e4f6611ca53a8d1243c183fb0",
     "signerAddress": "0x42e6dd8d517abb3e4f6611ca53a8d1243c183fb0",
     "ensName": "leuts.eth",
-    "votingPower": 1.92
+    "votingPower": 1.91
   },
   "182": {
     "passportId": 182,
     "ownerAddress": "0xd4630e7eb57b9076a21f3d8960f9197ae737330a",
     "signerAddress": "0xd4630e7eb57b9076a21f3d8960f9197ae737330a",
     "ensName": "xway.eth",
-    "votingPower": 1.83
+    "votingPower": 1.82
   },
   "183": {
     "passportId": 183,
     "ownerAddress": "0x0ef6e547dd86de09f0e8ece1e5a9f5ccb335ade1",
     "signerAddress": "0x0ef6e547dd86de09f0e8ece1e5a9f5ccb335ade1",
     "ensName": "",
-    "votingPower": 2.09
+    "votingPower": 2.08
   },
   "184": {
     "passportId": 184,
@@ -1313,21 +1313,21 @@
     "ownerAddress": "0xf755556f009e1c66ca32296d6f74444f37ecf1f1",
     "signerAddress": "0xf755556f009e1c66ca32296d6f74444f37ecf1f1",
     "ensName": "bcool.eth",
-    "votingPower": 1.96
+    "votingPower": 1.95
   },
   "188": {
     "passportId": 188,
     "ownerAddress": "0x507c20ef269726b2d0b8efe9f6b75a4ddd9ef741",
     "signerAddress": "0x507c20ef269726b2d0b8efe9f6b75a4ddd9ef741",
     "ensName": "0xgazpacho.eth",
-    "votingPower": 1.98
+    "votingPower": 1.97
   },
   "189": {
     "passportId": 189,
     "ownerAddress": "0xe66dc9470db6aaed3ce50f371eca4ec0b4fa6b91",
     "signerAddress": "0xe66dc9470db6aaed3ce50f371eca4ec0b4fa6b91",
     "ensName": "",
-    "votingPower": 1.98
+    "votingPower": 1.97
   },
   "190": {
     "passportId": 190,
@@ -1404,7 +1404,7 @@
     "ownerAddress": "0xf987899db190759486356386fe92676bccdad18c",
     "signerAddress": "0xf987899db190759486356386fe92676bccdad18c",
     "ensName": "turtl3inv.eth",
-    "votingPower": 1.94
+    "votingPower": 1.93
   },
   "201": {
     "passportId": 201,
@@ -1418,21 +1418,21 @@
     "ownerAddress": "0xadc73eb8e4673e5fd5a9c709c4379c074991f2d3",
     "signerAddress": "0xadc73eb8e4673e5fd5a9c709c4379c074991f2d3",
     "ensName": "okhai.eth",
-    "votingPower": 2.99
+    "votingPower": 2.98
   },
   "203": {
     "passportId": 203,
     "ownerAddress": "0xb00d51d3992bc412f783d0e21edcf952ce651d91",
     "signerAddress": "0xb00d51d3992bc412f783d0e21edcf952ce651d91",
     "ensName": "huangnanlv.eth",
-    "votingPower": 1.95
+    "votingPower": 1.94
   },
   "204": {
     "passportId": 204,
     "ownerAddress": "0x0f465f7ce5a1e26c402177194653c12e7222f127",
     "signerAddress": "0x0f465f7ce5a1e26c402177194653c12e7222f127",
     "ensName": "xiangren131419.eth",
-    "votingPower": 1.98
+    "votingPower": 1.97
   },
   "205": {
     "passportId": 205,
@@ -1453,7 +1453,7 @@
     "ownerAddress": "0xd67a083e546da29ffb839a0fa741503a432cb101",
     "signerAddress": "0xd67a083e546da29ffb839a0fa741503a432cb101",
     "ensName": "jaybaba.eth",
-    "votingPower": 2.39
+    "votingPower": 2.38
   },
   "208": {
     "passportId": 208,
@@ -1481,7 +1481,7 @@
     "ownerAddress": "0x51f144d6b9370be879943dc1ba149353a8778033",
     "signerAddress": "0x51f144d6b9370be879943dc1ba149353a8778033",
     "ensName": "byteland.eth",
-    "votingPower": 2.03
+    "votingPower": 2.02
   },
   "212": {
     "passportId": 212,
@@ -1551,7 +1551,7 @@
     "ownerAddress": "0xa2eae2a749103c5631d5525d136ec7b956dd7c85",
     "signerAddress": "0xa2eae2a749103c5631d5525d136ec7b956dd7c85",
     "ensName": "superalloy.eth",
-    "votingPower": 1.95
+    "votingPower": 1.94
   },
   "222": {
     "passportId": 222,
@@ -1579,7 +1579,7 @@
     "ownerAddress": "0x540e9f78d6265aaa9ad320f31ac38ff2553f6f5f",
     "signerAddress": "0x540e9f78d6265aaa9ad320f31ac38ff2553f6f5f",
     "ensName": "0xmaxim.eth",
-    "votingPower": 2.91
+    "votingPower": 2.9
   },
   "226": {
     "passportId": 226,
@@ -1607,14 +1607,14 @@
     "ownerAddress": "0x68f9d801c96ac6ccf562f3600cef77c4504449b6",
     "signerAddress": "0x68f9d801c96ac6ccf562f3600cef77c4504449b6",
     "ensName": "brukhman.eth",
-    "votingPower": 1.9
+    "votingPower": 1.89
   },
   "230": {
     "passportId": 230,
     "ownerAddress": "0x9fe442832cda0a96b75404fbedce97a7b50d4c4a",
     "signerAddress": "0x9fe442832cda0a96b75404fbedce97a7b50d4c4a",
     "ensName": "reco.eth",
-    "votingPower": 1.95
+    "votingPower": 1.94
   },
   "231": {
     "passportId": 231,
@@ -1677,13 +1677,13 @@
     "ownerAddress": "0xf3b06b503652a5e075d423f97056dfde0c4b066f",
     "signerAddress": "0xf3b06b503652a5e075d423f97056dfde0c4b066f",
     "ensName": "ferran.eth",
-    "votingPower": 2.02
+    "votingPower": 2.01
   },
   "240": {
     "passportId": 240,
     "ownerAddress": "0x6c0aff3a716292f37c79bc726964941f1d8ee819",
     "signerAddress": "0x6c0aff3a716292f37c79bc726964941f1d8ee819",
     "ensName": "alexmc.eth",
-    "votingPower": 2.03
+    "votingPower": 2.02
   }
 }
