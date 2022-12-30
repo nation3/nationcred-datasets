@@ -46,11 +46,8 @@ jobs:
       - name: Set Environment Variables for PR
         id: pr_details
         run: |
-          echo "PULL_REQUEST_TITLE=Generated Citizens datasets for week ending $(date +"%B %dth, %Y")" >> $GITHUB_ENV
-          description="This PR was auto-generated on $(date +%Y-%m-%d)."
-          description="${description//'%'/'%25'}"
-          description="${description//$'\n'/'%0A'}"
-          description="${description//$'\r'/'%0D'}"
+          echo "PULL_REQUEST_TITLE=Generated datasets for week ending $(date +"%B %dth, %Y")" >> $GITHUB_ENV
+          description="This PR was auto-generated on $(date +%Y-%m-%d %H:%M:%S %Z)."
           echo "::set-output name=pr_body::$description"
 
       - name: Create commit and PR for the changes
@@ -87,11 +84,8 @@ jobs:
       - name: Set Environment Variables for PR
         id: pr_details
         run: |
-          echo "PULL_REQUEST_TITLE=Generated SourceCred datasets for week ending $(date +"%B %dth, %Y")" >> $GITHUB_ENV
-          description="This PR was auto-generated on $(date +%Y-%m-%d)."
-          description="${description//'%'/'%25'}"
-          description="${description//$'\n'/'%0A'}"
-          description="${description//$'\r'/'%0D'}"
+          echo "PULL_REQUEST_TITLE=Generated datasets for week ending $(date +"%B %dth, %Y")" >> $GITHUB_ENV
+          description="This PR was auto-generated on $(date +%Y-%m-%d %H:%M:%S %Z)."
           echo "::set-output name=pr_body::$description"
 
       - name: Create commit and PR for the changes
@@ -128,11 +122,8 @@ jobs:
       - name: Set Environment Variables for PR
         id: pr_details
         run: |
-          echo "PULL_REQUEST_TITLE=Generated Dework datasets for week ending $(date +"%B %dth, %Y")" >> $GITHUB_ENV
-          description="This PR was auto-generated on $(date +%Y-%m-%d)."
-          description="${description//'%'/'%25'}"
-          description="${description//$'\n'/'%0A'}"
-          description="${description//$'\r'/'%0D'}"
+          echo "PULL_REQUEST_TITLE=Generated datasets for week ending $(date +"%B %dth, %Y")" >> $GITHUB_ENV
+          description="This PR was auto-generated on $(date +%Y-%m-%d %H:%M:%S %Z)."
           echo "::set-output name=pr_body::$description"
 
       - name: Create commit and PR for the changes
@@ -169,11 +160,8 @@ jobs:
       - name: Set Environment Variables for PR
         id: pr_details
         run: |
-          echo "PULL_REQUEST_TITLE=Generated Karma datasets for week ending $(date +"%B %dth, %Y")" >> $GITHUB_ENV
-          description="This PR was auto-generated on $(date +%Y-%m-%d)."
-          description="${description//'%'/'%25'}"
-          description="${description//$'\n'/'%0A'}"
-          description="${description//$'\r'/'%0D'}"
+          echo "PULL_REQUEST_TITLE=Generated datasets for week ending $(date +"%B %dth, %Y")" >> $GITHUB_ENV
+          description="This PR was auto-generated on $(date +%Y-%m-%d %H:%M:%S %Z)."
           echo "::set-output name=pr_body::$description"
 
       - name: Create commit and PR for the changes
@@ -210,11 +198,8 @@ jobs:
       - name: Set Environment Variables for PR
         id: pr_details
         run: |
-          echo "PULL_REQUEST_TITLE=Generated NationCred datasets for week ending $(date +"%B %dth, %Y")" >> $GITHUB_ENV
-          description="This PR was auto-generated on $(date +%Y-%m-%d)."
-          description="${description//'%'/'%25'}"
-          description="${description//$'\n'/'%0A'}"
-          description="${description//$'\r'/'%0D'}"
+          echo "PULL_REQUEST_TITLE=Generated datasets for week ending $(date +"%B %dth, %Y")" >> $GITHUB_ENV
+          description="This PR was auto-generated on $(date +%Y-%m-%d %H:%M:%S %Z)."
           echo "::set-output name=pr_body::$description"
 
       - name: Create commit and PR for the changes
