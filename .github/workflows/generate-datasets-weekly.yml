@@ -59,6 +59,11 @@ jobs:
       #     title: ${{ env.PULL_REQUEST_TITLE }}
       #     body: ${{ steps.pr_details.outputs.pr_body }}
 
+      - name: Commit Changes
+        run: |
+          git add output/*
+          git commit --allow-empty -m 'generate citizens datasets'
+
   sourcecred:
     needs: citizens
     runs-on: ubuntu-latest
@@ -81,21 +86,26 @@ jobs:
       - run: npm run build
       - run: npm run generate
 
-      - name: Set Environment Variables for PR
-        id: pr_details
-        run: |
-          echo "PULL_REQUEST_TITLE=Generated datasets for week ending $(date +"%B %dth, %Y")" >> $GITHUB_ENV
-          description="This PR was auto-generated on $(date +"%Y-%m-%d %H:%M:%S %Z")."
-          echo "::set-output name=pr_body::$description"
+      # - name: Set Environment Variables for PR
+      #   id: pr_details
+      #   run: |
+      #     echo "PULL_REQUEST_TITLE=Generated datasets for week ending $(date +"%B %dth, %Y")" >> $GITHUB_ENV
+      #     description="This PR was auto-generated on $(date +"%Y-%m-%d %H:%M:%S %Z")."
+      #     echo "::set-output name=pr_body::$description"
 
-      - name: Create commit and PR for the changes
-        id: pr
-        uses: peter-evans/create-pull-request@v4.2.0
-        with:
-          branch: generated-datasets
-          commit-message: generate sourcecred datasets
-          title: ${{ env.PULL_REQUEST_TITLE }}
-          body: ${{ steps.pr_details.outputs.pr_body }}
+      # - name: Create commit and PR for the changes
+      #   id: pr
+      #   uses: peter-evans/create-pull-request@v4.2.0
+      #   with:
+      #     branch: generated-datasets
+      #     commit-message: generate sourcecred datasets
+      #     title: ${{ env.PULL_REQUEST_TITLE }}
+      #     body: ${{ steps.pr_details.outputs.pr_body }}
+
+      - name: Commit Changes
+        run: |
+          git add output/*
+          git commit --allow-empty -m 'generate sourcecred datasets'
 
   dework:
     needs: citizens
@@ -119,21 +129,26 @@ jobs:
       - run: npm run build
       - run: npm run generate
 
-      - name: Set Environment Variables for PR
-        id: pr_details
-        run: |
-          echo "PULL_REQUEST_TITLE=Generated datasets for week ending $(date +"%B %dth, %Y")" >> $GITHUB_ENV
-          description="This PR was auto-generated on $(date +"%Y-%m-%d %H:%M:%S %Z")."
-          echo "::set-output name=pr_body::$description"
+      # - name: Set Environment Variables for PR
+      #   id: pr_details
+      #   run: |
+      #     echo "PULL_REQUEST_TITLE=Generated datasets for week ending $(date +"%B %dth, %Y")" >> $GITHUB_ENV
+      #     description="This PR was auto-generated on $(date +"%Y-%m-%d %H:%M:%S %Z")."
+      #     echo "::set-output name=pr_body::$description"
 
-      - name: Create commit and PR for the changes
-        id: pr
-        uses: peter-evans/create-pull-request@v4.2.0
-        with:
-          branch: generated-datasets
-          commit-message: generate dework datasets
-          title: ${{ env.PULL_REQUEST_TITLE }}
-          body: ${{ steps.pr_details.outputs.pr_body }}
+      # - name: Create commit and PR for the changes
+      #   id: pr
+      #   uses: peter-evans/create-pull-request@v4.2.0
+      #   with:
+      #     branch: generated-datasets
+      #     commit-message: generate dework datasets
+      #     title: ${{ env.PULL_REQUEST_TITLE }}
+      #     body: ${{ steps.pr_details.outputs.pr_body }}
+
+      - name: Commit Changes
+        run: |
+          git add output/*
+          git commit --allow-empty -m 'generate dework datasets'
 
   karma:
     needs: citizens
@@ -157,21 +172,26 @@ jobs:
       - run: npm run build
       - run: npm run generate
 
-      - name: Set Environment Variables for PR
-        id: pr_details
-        run: |
-          echo "PULL_REQUEST_TITLE=Generated datasets for week ending $(date +"%B %dth, %Y")" >> $GITHUB_ENV
-          description="This PR was auto-generated on $(date +"%Y-%m-%d %H:%M:%S %Z")."
-          echo "::set-output name=pr_body::$description"
+      # - name: Set Environment Variables for PR
+      #   id: pr_details
+      #   run: |
+      #     echo "PULL_REQUEST_TITLE=Generated datasets for week ending $(date +"%B %dth, %Y")" >> $GITHUB_ENV
+      #     description="This PR was auto-generated on $(date +"%Y-%m-%d %H:%M:%S %Z")."
+      #     echo "::set-output name=pr_body::$description"
 
-      - name: Create commit and PR for the changes
-        id: pr
-        uses: peter-evans/create-pull-request@v4.2.0
-        with:
-          branch: generated-datasets
-          commit-message: generate karma datasets
-          title: ${{ env.PULL_REQUEST_TITLE }}
-          body: ${{ steps.pr_details.outputs.pr_body }}
+      # - name: Create commit and PR for the changes
+      #   id: pr
+      #   uses: peter-evans/create-pull-request@v4.2.0
+      #   with:
+      #     branch: generated-datasets
+      #     commit-message: generate karma datasets
+      #     title: ${{ env.PULL_REQUEST_TITLE }}
+      #     body: ${{ steps.pr_details.outputs.pr_body }}
+
+      - name: Commit Changes
+        run: |
+          git add output/*
+          git commit --allow-empty -m 'generate karma datasets'
 
   nationcred:
     needs: sourcecred
@@ -195,18 +215,23 @@ jobs:
       - run: npm run build
       - run: npm run generate
 
-      - name: Set Environment Variables for PR
-        id: pr_details
-        run: |
-          echo "PULL_REQUEST_TITLE=Generated datasets for week ending $(date +"%B %dth, %Y")" >> $GITHUB_ENV
-          description="This PR was auto-generated on $(date +"%Y-%m-%d %H:%M:%S %Z")."
-          echo "::set-output name=pr_body::$description"
+      # - name: Set Environment Variables for PR
+      #   id: pr_details
+      #   run: |
+      #     echo "PULL_REQUEST_TITLE=Generated datasets for week ending $(date +"%B %dth, %Y")" >> $GITHUB_ENV
+      #     description="This PR was auto-generated on $(date +"%Y-%m-%d %H:%M:%S %Z")."
+      #     echo "::set-output name=pr_body::$description"
 
-      - name: Create commit and PR for the changes
-        id: pr
-        uses: peter-evans/create-pull-request@v4.2.0
-        with:
-          branch: generated-datasets
-          commit-message: generate nationcred datasets
-          title: ${{ env.PULL_REQUEST_TITLE }}
-          body: ${{ steps.pr_details.outputs.pr_body }}
+      # - name: Create commit and PR for the changes
+      #   id: pr
+      #   uses: peter-evans/create-pull-request@v4.2.0
+      #   with:
+      #     branch: generated-datasets
+      #     commit-message: generate nationcred datasets
+      #     title: ${{ env.PULL_REQUEST_TITLE }}
+      #     body: ${{ steps.pr_details.outputs.pr_body }}
+
+      - name: Commit Changes
+        run: |
+          git add output/*
+          git commit --allow-empty -m 'generate nationcred datasets'
