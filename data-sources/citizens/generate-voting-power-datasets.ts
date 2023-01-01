@@ -25,7 +25,7 @@ loadVotingPowerData()
 async function loadVotingPowerData() {
   console.info('loadVotingPowerData')
 
-  const citizensJson = require('./output/citizens.json')
+  const citizensJson = require('../output/citizens.json')
   for (const passportId in citizensJson) {
     console.info('passportId:', passportId)
 
