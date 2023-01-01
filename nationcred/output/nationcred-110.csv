@@ -7,7 +7,7 @@ week_end,value_creation_hours,governance_hours,operations_hours,nationcred_score
 2022-07-10,3.18,,,3.18,false
 2022-07-17,2.32,,,2.32,false
 2022-07-24,5.96,,,5.96,true
-2022-07-31,1.21,,,1.21,true
+2022-07-31,1.2,,,1.2,true
 2022-08-07,1.9,,,1.9,true
 2022-08-14,0.56,,,0.56,false
 2022-08-21,1.14,,,1.14,false
@@ -18,9 +18,9 @@ week_end,value_creation_hours,governance_hours,operations_hours,nationcred_score
 2022-09-25,14.1,,,14.1,false
 2022-10-02,1.73,,,1.73,false
 2022-10-09,2.67,,,2.67,true
-2022-10-16,5.49,,,5.49,true
-2022-10-23,3.63,,,3.63,true
-2022-10-30,0.73,,,0.73,false
+2022-10-16,5.5,,,5.5,true
+2022-10-23,3.76,,,3.76,true
+2022-10-30,0.74,,,0.74,false
 2022-11-06,1.87,,,1.87,false
 2022-11-13,0.43,,,0.43,false
 2022-11-20,0.08,,,0.08,false
@@ -29,3 +29,4 @@ week_end,value_creation_hours,governance_hours,operations_hours,nationcred_score
 2022-12-11,2.5,,,2.5,false
 2022-12-18,1.66,,,1.66,false
 2022-12-25,0.4,,,0.4,false
+2023-01-01,2.4,,,2.4,false
