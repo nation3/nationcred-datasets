@@ -182,14 +182,14 @@ function buildIntervals(credGrainView: any): Array<[Interval, number]> {
 
   console.info(
     `Building interval map starting at week ending ${new Date(
-      startDate
+      weekEndDate
     ).toUTCString()}`
   )
 
   let intervalsWeCareAbout: Array<[Interval, number]> = []
   const now = Date.now()
   credGrainView.intervals().forEach((interval: Interval, index: number) => {
-    if (interval.endTimeMs < startDate || interval.endTimeMs > now) return
+    if (interval.endTimeMs < weekEndDate || interval.endTimeMs > now) return
     interval.endDate = new Date(interval.endTimeMs)
       .toISOString()
       .substring(0, 10)
