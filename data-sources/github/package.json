@@ -1,0 +1,29 @@
+{
+  "name": "github",
+  "version": "1.0.0",
+  "description": "GitHub usernames",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "generate-github-csv": "node dist/generate-github-csv.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nation3/nationcred-datasets.git"
+  },
+  "author": "Nation3",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/nation3/nationcred-datasets/issues"
+  },
+  "homepage": "https://github.com/nation3/nationcred-datasets#readme",
+  "dependencies": {
+    "@types/node": "^18.11.9",
+    "csv-parser": "^3.0.0",
+    "csv-writer": "^1.6.0",
+    "ethers": "^5.7.2",
+    "typescript": "^4.8.4",
+    "web3": "^1.8.1"
+  }
+}
