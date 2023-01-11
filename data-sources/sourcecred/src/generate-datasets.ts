@@ -177,7 +177,8 @@ function buildIntervals(credGrainView: any): Array<[Interval, number]> {
   //the intervals list in the credGrainView facilitates indexing into the cred array on
   //each participant
   //we are interested in data since June-05-2022 00:00:00 AM +UTC
-  const startDate: number = new Date('2022-06-05').setUTCHours(0, 0, 0, 0)
+  const weekEndDate: number = new Date('2022-06-05').setUTCHours(0, 0, 0, 0)
+
 
   console.info(
     `Building interval map starting at week ending ${new Date(
