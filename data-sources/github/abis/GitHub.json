@@ -1,0 +1,31 @@
+{
+	"abi": [{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	}, {
+		"inputs": [{
+			"internalType": "string",
+			"name": "username",
+			"type": "string"
+		}],
+		"name": "updateUsername",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}, {
+		"inputs": [{
+			"internalType": "address",
+			"name": "",
+			"type": "address"
+		}],
+		"name": "usernames",
+		"outputs": [{
+			"internalType": "string",
+			"name": "",
+			"type": "string"
+		}],
+		"stateMutability": "view",
+		"type": "function"
+	}]
+}
