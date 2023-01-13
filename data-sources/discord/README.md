@@ -1,6 +1,6 @@
-# GitHub
+# Discord
 
-https://github.com/nation3
+https://n3.gg/discord
 
 ## Datasets
 

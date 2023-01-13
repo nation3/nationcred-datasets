@@ -1,6 +1,6 @@
 # Dework
 
-https://app.dework.xyz/nation3
+https://dework.xyz/nation3
 
 ## Datasets
 
