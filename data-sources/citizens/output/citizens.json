@@ -4,7 +4,7 @@
     "ownerAddress": "0xe4be9b821f84ec062865372914c8392ca8f31464",
     "signerAddress": "0xe4be9b821f84ec062865372914c8392ca8f31464",
     "ensName": "",
-    "votingPower": 1007.7
+    "votingPower": 1007.67
   },
   "1": {
     "passportId": 1,
@@ -116,7 +116,7 @@
     "ownerAddress": "0x636d65212c815b93b8e5b069f7082169cec851b7",
     "signerAddress": "0x636d65212c815b93b8e5b069f7082169cec851b7",
     "ensName": "gallego.eth",
-    "votingPower": 43.28
+    "votingPower": 43.27
   },
   "17": {
     "passportId": 17,
@@ -466,7 +466,7 @@
     "ownerAddress": "0x503ffec4cb59b4d8cd2308fc793f6abce32cef0a",
     "signerAddress": "0x503ffec4cb59b4d8cd2308fc793f6abce32cef0a",
     "ensName": "",
-    "votingPower": 116.18
+    "votingPower": 116.15
   },
   "67": {
     "passportId": 67,
@@ -480,7 +480,7 @@
     "ownerAddress": "0xc173d302bd62b45754dc0abfad1407dddb40d050",
     "signerAddress": "0xc173d302bd62b45754dc0abfad1407dddb40d050",
     "ensName": "",
-    "votingPower": 561.94
+    "votingPower": 561.91
   },
   "69": {
     "passportId": 69,
