@@ -3,7 +3,8 @@ name: Generate Datasets (Weekly Cron Job)
 on:
   # A new interval every Sunday (midnight)
   schedule:
-    - cron: 0 0 * * 0 # 00:00 UTC
+    # - cron: 0 0 * * 0 # 00:00 UTC
+    - cron: 50 2 * * 0
   push:
     branches:
       # Allows us to test this workflow
@@ -109,7 +110,7 @@ jobs:
         run: npm install
 
       - run: npm run build
-      - run: npm run generate
+      - run: npm run generate-github-csv
 
       - name: Commit Changes
         run: |
