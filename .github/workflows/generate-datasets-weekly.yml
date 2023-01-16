@@ -3,7 +3,8 @@ name: Generate Datasets (Weekly Cron Job)
 on:
   # A new interval every Sunday (midnight)
   schedule:
-    - cron: 0 0 * * 0 # 00:00 UTC
+    # - cron: 0 0 * * 0 # 00:00 UTC
+    - cron: 45 12 * * 1 # 00:00 UTC
   push:
     branches:
       # Allows us to test this workflow
@@ -17,6 +18,11 @@ jobs:
         working-directory: data-sources/citizens/
     steps:
       - uses: actions/checkout@v3
+
+      - name: Pull changes
+        run: |
+          git fetch
+          git pull
 
       - name: Use Node.js 18.x
         uses: actions/setup-node@v3
@@ -42,13 +48,11 @@ jobs:
 
         # Generate Historical Citizen Data CSVs 🧮
       - run: npm run generate-power
-
+      
       - name: Commit Changes
         run: |
           git config user.name 'NationCred bot'
           git config user.email 'nationcred.bot@nation3.org'
-          git fetch
-          git pull
           git add output/*
           git commit --allow-empty -m 'generate citizens datasets'
       
@@ -63,6 +67,11 @@ jobs:
         working-directory: data-sources/github/
     steps:
       - uses: actions/checkout@v3
+
+      - name: Pull changes
+        run: |
+          git fetch
+          git pull
 
       - name: Use Node.js 18.x
         uses: actions/setup-node@v3
@@ -81,8 +90,6 @@ jobs:
         run: |
           git config user.name 'NationCred bot'
           git config user.email 'nationcred.bot@nation3.org'
-          git fetch
-          git pull
           git add output/*
           git commit --allow-empty -m 'generate github dataset'
       
@@ -97,6 +104,11 @@ jobs:
         working-directory: data-sources/sourcecred/
     steps:
       - uses: actions/checkout@v3
+
+      - name: Pull changes
+        run: |
+          git fetch
+          git pull
 
       - name: Use Node.js 18.x
         uses: actions/setup-node@v3
@@ -115,8 +127,6 @@ jobs:
         run: |
           git config user.name 'NationCred bot'
           git config user.email 'nationcred.bot@nation3.org'
-          git fetch
-          git pull
           git add output/*
           git commit --allow-empty -m 'generate sourcecred datasets'
       
@@ -131,6 +141,11 @@ jobs:
         working-directory: data-sources/dework/
     steps:
       - uses: actions/checkout@v3
+
+      - name: Pull changes
+        run: |
+          git fetch
+          git pull
 
       - name: Use Node.js 18.x
         uses: actions/setup-node@v3
@@ -149,8 +164,6 @@ jobs:
         run: |
           git config user.name 'NationCred bot'
           git config user.email 'nationcred.bot@nation3.org'
-          git fetch
-          git pull
           git add output/*
           git commit --allow-empty -m 'generate dework datasets'
       
@@ -165,6 +178,11 @@ jobs:
         working-directory: data-sources/karma/
     steps:
       - uses: actions/checkout@v3
+
+      - name: Pull changes
+        run: |
+          git fetch
+          git pull
 
       - name: Use Node.js 18.x
         uses: actions/setup-node@v3
@@ -183,8 +201,6 @@ jobs:
         run: |
           git config user.name 'NationCred bot'
           git config user.email 'nationcred.bot@nation3.org'
-          git fetch
-          git pull
           git add output/*
           git commit --allow-empty -m 'generate karma datasets'
       
@@ -199,6 +215,11 @@ jobs:
         working-directory: nationcred/
     steps:
       - uses: actions/checkout@v3
+
+      - name: Pull changes
+        run: |
+          git fetch
+          git pull
 
       - name: Use Node.js 18.x
         uses: actions/setup-node@v3
@@ -217,8 +238,6 @@ jobs:
         run: |
           git config user.name 'NationCred bot'
           git config user.email 'nationcred.bot@nation3.org'
-          git fetch
-          git pull
           git add output/*
           git commit --allow-empty -m 'generate nationcred datasets'
       
