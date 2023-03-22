@@ -1,0 +1,43 @@
+{
+	"abi": [{
+		"anonymous": false,
+		"inputs": [],
+		"name": "UsernameDeleted",
+		"type": "event"
+	}, {
+		"anonymous": false,
+		"inputs": [],
+		"name": "UsernameUpdated",
+		"type": "event"
+	}, {
+		"inputs": [],
+		"name": "deleteUsername",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}, {
+		"inputs": [{
+			"internalType": "string",
+			"name": "username",
+			"type": "string"
+		}],
+		"name": "updateUsername",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}, {
+		"inputs": [{
+			"internalType": "address",
+			"name": "",
+			"type": "address"
+		}],
+		"name": "usernames",
+		"outputs": [{
+			"internalType": "string",
+			"name": "",
+			"type": "string"
+		}],
+		"stateMutability": "view",
+		"type": "function"
+	}]
+}
