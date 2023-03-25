@@ -14,7 +14,7 @@ async function loadKarmaData() {
 
   const citizensJson = require('../../citizens/output/citizens.json')
   for (const passportId in citizensJson) {
-    console.info('passportId:', passportId)
+    console.info('\npassportId:', passportId)
 
     const citizen = citizensJson[passportId]
     console.info('citizen:', citizen)
@@ -52,12 +52,12 @@ async function loadKarmaData() {
     const response: Response = await fetch(
       `https://api.showkarma.xyz/api/user/${ethAddress}`
     )
-    const json = await response.json()
-    // console.info('json:', json)
     if (!response.ok) {
       console.error('response.status:', response.status)
       continue
     }
+    const json = await response.json()
+    // console.info('json:', json)
 
     const delegates: Delegate[] = json.data.delegates
     // console.info('delegates:', delegates)
