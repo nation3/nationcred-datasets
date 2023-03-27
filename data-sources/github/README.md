@@ -25,5 +25,5 @@ npm run build
 ### Generate GitHub Usernames CSV
 
 ```
-npm run generate-github-csv
+npm run generate-csv
 ```
