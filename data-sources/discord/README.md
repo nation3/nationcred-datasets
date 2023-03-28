@@ -14,6 +14,12 @@ https://n3.gg/discord
 npm install
 ```
 
+## Lint
+
+```
+npm run lint
+```
+
 ## Build & Run
 
 ### Build
@@ -25,5 +31,5 @@ npm run build
 ### Generate Discord Usernames CSV
 
 ```
-npm run generate-discord-csv
+npm run generate-csv
 ```

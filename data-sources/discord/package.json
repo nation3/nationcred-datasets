@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint . --ext .ts",
     "build": "tsc",
-    "generate-github-csv": "node dist/generate-discord-csv.js",
+    "generate-csv": "node dist/generate-csv.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

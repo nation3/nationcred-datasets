@@ -17,7 +17,7 @@ generateData()
 async function generateData() {
   console.info('generateData')
 
-  const outputFilePath: string = 'output/discord-usernames.csv'
+  const outputFilePath = 'output/discord-usernames.csv'
   console.info('outputFilePath:', outputFilePath)
 
   const writer = csvWriter.createObjectCsvWriter({
@@ -28,7 +28,7 @@ async function generateData() {
       { id: 'discord_username', title: 'discord_username' }
     ]
   })
-  let csvRows: any[] = []
+  const csvRows: any[] = []
 
   const citizensJson = require('../../citizens/output/citizens.json')
   for (const passportId in citizensJson) {
