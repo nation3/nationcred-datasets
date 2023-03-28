@@ -32,7 +32,7 @@ async function generateData() {
 
   const citizensJson = require('../../citizens/output/citizens.json')
   for (const passportId in citizensJson) {
-    console.info('passportId:', passportId)
+    console.info('\npassportId:', passportId)
 
     const citizen = citizensJson[passportId]
     // console.info('citizen:', citizen)
