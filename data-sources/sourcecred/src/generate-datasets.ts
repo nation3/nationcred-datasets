@@ -12,7 +12,7 @@ const sc = require('sourcecred')
 const createObjectCsvWriter = require('csv-writer').createObjectCsvWriter
 
 const SOURCECRED_URL =
-  'https://raw.githubusercontent.com/nation3/nationcred-instance/gh-pages/'
+  'https://raw.githubusercontent.com/nation3/sourcecred-instance/gh-pages/'
 
 loadSourceCredData()
 

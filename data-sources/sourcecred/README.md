@@ -1,6 +1,6 @@
 # SourceCred
 
-https://nation3.github.io/nationcred-instance/#/explorer
+https://nation3.github.io/sourcecred-instance/#/explorer
 
 ## Datasets
 

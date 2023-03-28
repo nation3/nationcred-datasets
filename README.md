@@ -43,3 +43,9 @@ See [`data-sources/`](data-sources/)
 ## NationCred
 
 See [`nationcred/`](nationcred/)
+
+
+## Weekly Cron Job
+
+[![Generate Datasets (Weekly Cron Job)](https://github.com/nation3/nationcred-datasets/actions/workflows/generate-datasets-weekly.yml/badge.svg)](https://github.com/nation3/nationcred-datasets/actions/workflows/generate-datasets-weekly.yml)
+
