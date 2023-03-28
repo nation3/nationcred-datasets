@@ -78,7 +78,7 @@ async function getGitHubUsername(address: string): Promise<string> {
 }
 
 async function getENSTextRecord(ensName: string): Promise<string> {
-  console.info('getGitHubUsername')
+  console.info('getENSTextRecord')
   const resolver = await ethersProvider.getResolver(ensName)
   const textRecord = await resolver.getText('com.github')
   return textRecord
