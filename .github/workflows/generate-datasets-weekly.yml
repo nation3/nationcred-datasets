@@ -83,7 +83,7 @@ jobs:
         run: npm install
 
       - run: npm run build
-      - run: npm run generate-github-csv
+      - run: npm run generate-csv
 
       - name: Commit Changes
         run: |
