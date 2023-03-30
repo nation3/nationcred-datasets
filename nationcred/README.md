@@ -24,3 +24,17 @@ npm run lint
 npm run build
 npm run generate
 ```
+
+## Update NationCred Smart Contract
+
+Set the private key of the smart contract owner account in `.env`:
+
+```
+cp .env.sample .env
+```
+
+Update the smart contract (using the passport IDs in `output/nationcred-active-citizens.csv`):
+
+```
+npm run update-smart-contract
+```
