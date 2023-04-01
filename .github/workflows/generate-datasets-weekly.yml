@@ -316,3 +316,8 @@ jobs:
       
       - name: Push Changes
         run: git push
+      
+      - name: Update NationCred smart contract
+        env:
+          CONTRACT_OWNER_PRIVATE_KEY: ${{ secrets.CONTRACT_OWNER_PRIVATE_KEY }}
+        run: npm run update-smart-contract
