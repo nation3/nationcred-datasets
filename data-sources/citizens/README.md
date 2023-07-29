@@ -3,10 +3,6 @@
 https://etherscan.io/token/0x3337dac9f251d4e403d6030e18e3cfb6a2cb1333#inventory
 
 ## Datasets
-
-- `citizen-count-peer-week.csv`
-
-    - Contains the total number of Nation3 Citizens week by week, and the total number of [_active_](https://github.com/nation3/nationcred-datasets/tree/main/nationcred#definition-of-active) Citizens week by week.
     
 - `citizens.csv`
 
@@ -22,6 +18,10 @@ https://etherscan.io/token/0x3337dac9f251d4e403d6030e18e3cfb6a2cb1333#inventory
 
     - Contains a Citizen's voting power week by week.
 
+- `citizen-count-peer-week.csv`
+
+    - Contains the total number of Nation3 Citizens week by week, and the total number of [_active_](https://github.com/nation3/nationcred-datasets/tree/main/nationcred#definition-of-active) Citizens week by week.
+
 ## Install
 
 ```
@@ -34,12 +34,6 @@ npm install
 
 ```
 npm run build
-```
-
-### Generate Citizen Count CSV
-
-```
-npm run generate-count
 ```
 
 ### Generate Citizen Data CSV
@@ -58,4 +52,10 @@ npm run generate-json
 
 ```
 npm run generate-power
+```
+
+### Generate Citizen Count CSV
+
+```
+npm run generate-count
 ```
