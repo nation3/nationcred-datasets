@@ -2,6 +2,7 @@ const Web3 = require('web3')
 const Passport = require('../abis/Passport.json')
 const csvWriter = require('csv-writer')
 const fs = require('fs')
+const Papa = require('papaparse')
 
 const web3 = new Web3('https://rpc.ankr.com/eth')
 console.info('web3.version:', web3.version)
@@ -25,7 +26,8 @@ async function loadPassportMintsByWeek() {
     header: [
       { id: 'week_end', title: 'week_end' },
       { id: 'total_citizens', title: 'total_citizens' },
-      { id: 'new_citizens', title: 'new_citizens' }
+      { id: 'new_citizens', title: 'new_citizens' },
+      { id: 'total_expired_passports', title: 'total_expired_passports' }
     ]
   })
   let csvRows = []
@@ -45,26 +47,28 @@ async function loadPassportMintsByWeek() {
     console.info('week:', `[${weekBeginDate.toISOString()} → ${weekEndDate.toISOString()}]`)
 
     let newCitizensCount: number = 0
-    if (id < nextId) {
-      while (await getTimestamp(id) < (weekEndDate.getTime() / 1000)) {
-        id++
-        console.info('id:', id)
-
-        newCitizensCount++
-        console.info('newCitizensCount:', newCitizensCount)
-
-        if (id == nextId) {
-          console.info('Reached last passport ID:', id)
-          break
-        }
+    while (await getTimestamp(id) < (weekEndDate.getTime() / 1000)) {
+      console.info('id:', id)
+      
+      newCitizensCount++
+      console.info('newCitizensCount:', newCitizensCount)
+      
+      id++
+      if (id == nextId) {
+        console.info('Reached last passport ID:', (nextId - 1))
+        break
       }
     }
+
+    const totalExpiredPassports: number = getTotalExpiredPassports(weekEndDate, id)
+    console.info('totalExpiredPassports:', totalExpiredPassports)
     
     // Export to CSV
     const csvRow = {
       week_end: weekEndDate.toISOString().substring(0, 10),
-      total_citizens: id + 1,
-      new_citizens: newCitizensCount
+      total_citizens: id,
+      new_citizens: newCitizensCount,
+      total_expired_passports: totalExpiredPassports
     }
     csvRows.push(csvRow)
 
@@ -83,6 +87,44 @@ async function getNextId(): Promise<number> {
 async function getTimestamp(id: number): Promise<number> {
   console.info('getTimestamp')
   return await PassportContract.methods.timestampOf(id).call()
+}
+
+function getTotalExpiredPassports(weekEndDate: Date, maxPassportID: number): number {
+  console.info('getTotalExpiredPassports')
+
+  const weekEndDateString: string = weekEndDate.toISOString().substring(0, 10)
+
+  let totalExpiredPassports = 0
+  for (let passportID = 0; passportID < maxPassportID; passportID++) {
+    console.info(`weekEndDate: ${weekEndDateString}, passportID: ${passportID}`)
+
+    // Fetch voting power data from the citizen's data CSV
+    const citizenFilePath: string = `output/citizen-${passportID}.csv`
+    console.info('Fetching citizen data:', citizenFilePath)
+    const file: File = fs.readFileSync(citizenFilePath)
+    const csvData = file.toString()
+    // console.info('csvData:\n', csvData)
+    Papa.parse(csvData, {
+      header: true,
+      skipEmptyLines: true,
+      dynamicTyping: true,
+      complete: (result: any) => {
+        // console.info('result:', result)
+        result.data.forEach((row: any, i: number) => {
+          if (row.week_end == weekEndDateString) {
+            console.info(`row.week_end ${row.week_end}, row.voting_power: ${row.voting_power}`)
+            if (row.voting_power < 1.5) {
+              // https://etherscan.io/address/0x279c0b6bfcbba977eaf4ad1b2ffe3c208aa068ac#readContract#F9
+              console.info('Passport ID expired:', passportID)
+              totalExpiredPassports++
+            }
+          }
+        })
+      }
+    })
+  }
+
+  return totalExpiredPassports
 }
 
 export {}
