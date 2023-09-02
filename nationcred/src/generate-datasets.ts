@@ -73,7 +73,7 @@ async function loadNationCredData() {
         }
       })
       console.info('sourceCredScore:', sourceCredScore)
-      const sourceCredHours: number = sourceCredScore / 2.5
+      const sourceCredHours: number = sourceCredScore / 3.125
       console.info('sourceCredHours:', sourceCredHours)
 
       valueCreationHours += sourceCredHours
