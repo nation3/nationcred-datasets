@@ -50,7 +50,7 @@ async function loadDeworkData() {
       // console.info('weekBeginDate:', weekBeginDate)
       if (tasks.length > 0) {
         tasks.forEach((task: any) => {
-          if (task.workspace.organization.name == 'Nation3') {
+          if (task.workspace.organization.name == 'Nation3 DAO') {
             const taskDate: Date = new Date(task.date)
             if (
               taskDate.getTime() > weekBeginDate.getTime() &&
