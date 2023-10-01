@@ -47,17 +47,13 @@ async function loadPassportMintsByWeek() {
     console.info('week:', `[${weekBeginDate.toISOString()} → ${weekEndDate.toISOString()}]`)
 
     let newCitizensCount: number = 0
-    while (await getTimestamp(id) < (weekEndDate.getTime() / 1000)) {
+    while ((id < nextId) && (await getTimestamp(id) < (weekEndDate.getTime() / 1000))) {
       console.info('id:', id)
       
       newCitizensCount++
       console.info('newCitizensCount:', newCitizensCount)
       
       id++
-      if (id == nextId) {
-        console.info('Reached last passport ID:', (nextId - 1))
-        break
-      }
     }
 
     const totalExpiredPassports: number = getTotalExpiredPassports(weekEndDate, id)
@@ -85,7 +81,7 @@ async function getNextId(): Promise<number> {
 }
 
 async function getTimestamp(id: number): Promise<number> {
-  console.info('getTimestamp')
+  console.info('getTimestamp, id:', id)
   return await PassportContract.methods.timestampOf(id).call()
 }
 
