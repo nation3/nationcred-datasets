@@ -95,12 +95,22 @@ async function getNextId(): Promise<number> {
 
 async function getOwner(passportId: number): Promise<string> {
   console.info('getOwner')
-  return await PassportContract.methods.ownerOf(passportId).call()
+  try {
+    return await PassportContract.methods.ownerOf(passportId).call()
+  } catch (err) {
+    console.error('err:', err)
+    return ethers.constants.AddressZero
+  }
 }
 
 async function getSigner(passportId: number): Promise<string> {
   console.info('getSigner')
-  return await PassportContract.methods.signerOf(passportId).call()
+  try {
+    return await PassportContract.methods.signerOf(passportId).call()
+  } catch (err) {
+    console.error('err:', err)
+    return ethers.constants.AddressZero
+  }
 }
 
 async function getEnsName(ethAddress: string): Promise<string> {
