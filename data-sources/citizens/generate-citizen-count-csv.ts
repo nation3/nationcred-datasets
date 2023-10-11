@@ -82,7 +82,12 @@ async function getNextId(): Promise<number> {
 
 async function getTimestamp(id: number): Promise<number> {
   console.info('getTimestamp, id:', id)
-  return await PassportContract.methods.timestampOf(id).call()
+  try {
+    return await PassportContract.methods.timestampOf(id).call()
+  } catch (err) {
+    console.error('err:', err)
+    return 0
+  }
 }
 
 function getTotalExpiredPassports(weekEndDate: Date, maxPassportID: number): number {
