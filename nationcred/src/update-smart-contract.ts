@@ -68,7 +68,7 @@ const lookupActiveCitizensFromCSV = async (): Promise<number[]> => {
   console.log('signer.getAddress():', await signer.getAddress())
   console.log('signer.getBalance():', `${ethers.utils.formatUnits(await signer.getBalance())} ether`)
 
-  const nationCredContract = new ethers.Contract("0xff5F7A95D6dd29a0543f661a148ba1B9ac554763", NationCred.abi, signer)
+  const nationCredContract = new ethers.Contract("0x7794F0Eb1eA812fBcdaBD559551Fb26A79720925", NationCred.abi, signer)
   console.log('nationCredContract.address:', nationCredContract.address)
   console.log('nationCredContract.owner():', await nationCredContract.owner())
   
