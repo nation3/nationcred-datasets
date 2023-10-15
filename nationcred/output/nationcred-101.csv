@@ -15,7 +15,7 @@ week_end,value_creation_hours,governance_hours,operations_hours,nationcred_score
 2022-09-04,0,,,0,false
 2022-09-11,0,,,0,false
 2022-09-18,0.01,,,0.01,false
-2022-09-25,0.05,,,0.05,false
+2022-09-25,0.06,,,0.06,false
 2022-10-02,0.03,,,0.03,false
 2022-10-09,0,,,0,false
 2022-10-16,0,,,0,false
@@ -70,3 +70,4 @@ week_end,value_creation_hours,governance_hours,operations_hours,nationcred_score
 2023-09-24,0,,,0,false
 2023-10-01,0,,,0,false
 2023-10-08,0,,,0,false
+2023-10-15,0,,,0,false
