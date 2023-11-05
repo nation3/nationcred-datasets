@@ -2,7 +2,7 @@ week_end,value_creation_hours,governance_hours,operations_hours,nationcred_score
 2022-06-05,7.88,,,7.88,false
 2022-06-12,18.5,,,18.5,false
 2022-06-19,14.78,,,14.78,false
-2022-06-26,21.68,,,21.68,true
+2022-06-26,21.67,,,21.67,true
 2022-07-03,3.65,,,3.65,true
 2022-07-10,7.8,,,7.8,true
 2022-07-17,8.04,,,8.04,true
@@ -10,7 +10,7 @@ week_end,value_creation_hours,governance_hours,operations_hours,nationcred_score
 2022-07-31,11.51,,,11.51,true
 2022-08-07,8.04,,,8.04,true
 2022-08-14,7.02,,,7.02,true
-2022-08-21,6.5,,,6.5,true
+2022-08-21,6.49,,,6.49,true
 2022-08-28,8.05,,,8.05,true
 2022-09-04,5.03,,,5.03,true
 2022-09-11,3.85,,,3.85,true
@@ -18,8 +18,8 @@ week_end,value_creation_hours,governance_hours,operations_hours,nationcred_score
 2022-09-25,6.82,,,6.82,true
 2022-10-02,7.4,,,7.4,true
 2022-10-09,12.27,,,12.27,true
-2022-10-16,11.14,,,11.14,true
-2022-10-23,13.71,,,13.71,true
+2022-10-16,11.13,,,11.13,true
+2022-10-23,13.7,,,13.7,true
 2022-10-30,6.07,,,6.07,true
 2022-11-06,13.3,,,13.3,true
 2022-11-13,14.36,,,14.36,true
@@ -37,9 +37,9 @@ week_end,value_creation_hours,governance_hours,operations_hours,nationcred_score
 2023-02-05,1.83,,,1.83,true
 2023-02-12,1.77,,,1.77,true
 2023-02-19,6.42,,,6.42,true
-2023-02-26,4.58,,,4.58,true
+2023-02-26,4.57,,,4.57,true
 2023-03-05,0.76,,,0.76,false
-2023-03-12,2.01,,,2.01,false
+2023-03-12,2,,,2,false
 2023-03-19,2.44,,,2.44,false
 2023-03-26,5.24,,,5.24,false
 2023-04-02,11.04,,,11.04,true
@@ -62,7 +62,7 @@ week_end,value_creation_hours,governance_hours,operations_hours,nationcred_score
 2023-07-30,3.22,,,3.22,false
 2023-08-06,2.28,,,2.28,true
 2023-08-13,14.67,,,14.67,true
-2023-08-20,2.86,,,2.86,true
+2023-08-20,2.85,,,2.85,true
 2023-08-27,1.11,,,1.11,true
 2023-09-03,3.36,,,3.36,true
 2023-09-10,1.31,,,1.31,true
@@ -71,5 +71,6 @@ week_end,value_creation_hours,governance_hours,operations_hours,nationcred_score
 2023-10-01,3.21,,,3.21,true
 2023-10-08,0.84,,,0.84,false
 2023-10-15,0.12,,,0.12,false
-2023-10-22,0.37,,,0.37,false
-2023-10-29,0.14,,,0.14,false
+2023-10-22,0.38,,,0.38,false
+2023-10-29,0.25,,,0.25,false
+2023-11-05,1.19,,,1.19,false
