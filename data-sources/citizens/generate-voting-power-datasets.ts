@@ -8,7 +8,7 @@ const fs = require('fs')
 const ethers = require('ethers')
 const EthDater = require('ethereum-block-by-date')
 
-const web3 = new Web3('https://rpc.ankr.com/eth')
+const web3 = new Web3('https://eth.llamarpc.com')
 console.info('web3.version:', web3.version)
 
 const dater = new EthDater(web3)
