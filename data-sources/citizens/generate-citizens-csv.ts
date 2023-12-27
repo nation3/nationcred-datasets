@@ -5,11 +5,11 @@ const csvWriter = require('csv-writer')
 const fs = require('fs')
 const ethers = require('ethers')
 
-const web3 = new Web3('https://rpc.ankr.com/eth')
+const web3 = new Web3('https://eth.llamarpc.com')
 console.info('web3.version:', web3.version)
 
 const ethersProvider = new ethers.providers.JsonRpcProvider(
-  'https://rpc.ankr.com/eth'
+  'https://eth.llamarpc.com'
 )
 console.info('ethersProvider:', ethersProvider)
 

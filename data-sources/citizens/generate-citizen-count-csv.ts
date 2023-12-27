@@ -4,7 +4,7 @@ const csvWriter = require('csv-writer')
 const fs = require('fs')
 const Papa = require('papaparse')
 
-const web3 = new Web3('https://rpc.ankr.com/eth')
+const web3 = new Web3('https://eth.llamarpc.com')
 console.info('web3.version:', web3.version)
 
 const PassportContract = new web3.eth.Contract(
