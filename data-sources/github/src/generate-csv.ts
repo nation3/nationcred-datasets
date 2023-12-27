@@ -3,10 +3,10 @@ const Web3 = require('web3')
 const ethers = require('ethers')
 const GitHub = require('../abis/GitHub.json')
 
-const web3 = new Web3('https://rpc.ankr.com/eth')
+const web3 = new Web3('https://eth.llamarpc.com')
 console.info('web3.version:', web3.version)
 
-const ethersProvider = new ethers.providers.JsonRpcProvider('https://rpc.ankr.com/eth')
+const ethersProvider = new ethers.providers.JsonRpcProvider('https://eth.llamarpc.com')
 console.info('ethersProvider:', ethersProvider)
 
 const GitHubContract = new web3.eth.Contract(GitHub.abi, '0xb989c0c17a3bce679d7586d9e55b6eab11c18687')

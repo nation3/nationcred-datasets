@@ -14,7 +14,7 @@ console.info('web3.version:', web3.version)
 const dater = new EthDater(web3)
 console.info('dater:', dater)
 
-const ethersProvider = new ethers.providers.JsonRpcProvider('https://rpc.ankr.com/eth')
+const ethersProvider = new ethers.providers.JsonRpcProvider('https://eth.llamarpc.com')
 console.info('ethersProvider:', ethersProvider)
 
 const VotingEscrowContract = new web3.eth.Contract(VotingEscrow.abi, '0xf7def1d2fbda6b74bee7452fdf7894da9201065d')
