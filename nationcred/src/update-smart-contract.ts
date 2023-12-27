@@ -54,7 +54,7 @@ const lookupActiveCitizensFromCSV = async (): Promise<number[]> => {
   const wallet = new ethers.Wallet(privateKey)
   console.log('wallet.address:', wallet.address)
 
-  const provider = new ethers.providers.JsonRpcProvider('https://eth.llamarpc.com')
+  const provider = new ethers.providers.JsonRpcProvider('https://rpc.ankr.com/eth')
   console.log('provider.getNetwork().name:', (await provider.getNetwork()).name)
 
   const feeData = await provider.getFeeData()
