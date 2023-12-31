@@ -25,7 +25,7 @@
     "@types/node": "^18.11.9",
     "csv-parser": "^3.0.0",
     "csv-writer": "^1.6.0",
-    "ethereum-block-by-date": "^1.4.6",
+    "ethereum-block-by-date": "^1.4.9",
     "ethers": "^6.9.1",
     "jsonfile": "^6.1.0",
     "papaparse": "^5.4.1",
