@@ -1,24 +1,23 @@
 /* eslint @typescript-eslint/no-var-requires: "off" */
 const createObjectCsvWriter = require('csv-writer').createObjectCsvWriter
 
-const Web3 = require('web3')
 const VotingEscrow = require('../abis/VotingEscrow.json')
-const csvWriter = require('csv-writer')
-const fs = require('fs')
-const ethers = require('ethers')
+import { ethers } from 'ethers'
 const EthDater = require('ethereum-block-by-date')
 
-const web3 = new Web3('https://eth.llamarpc.com')
-console.info('web3.version:', web3.version)
-
-const dater = new EthDater(web3)
-console.info('dater:', dater)
-
-const ethersProvider = new ethers.providers.JsonRpcProvider('https://eth.llamarpc.com')
+const ethersProvider = new ethers.JsonRpcProvider(
+  'https://rpc.ankr.com/eth'
+)
 console.info('ethersProvider:', ethersProvider)
 
-const VotingEscrowContract = new web3.eth.Contract(VotingEscrow.abi, '0xf7def1d2fbda6b74bee7452fdf7894da9201065d')
-console.info('VotingEscrowContract._address:', VotingEscrowContract._address)
+const dater = new EthDater(ethersProvider)
+console.info('dater:', dater)
+
+const votingEscrowContract = new ethers.Contract(
+  '0xf7def1d2fbda6b74bee7452fdf7894da9201065d',
+  VotingEscrow.abi,
+  ethersProvider
+)
 
 loadVotingPowerData()
 
@@ -61,7 +60,7 @@ async function loadVotingPowerData() {
       // Get Citizen's voting power at the current block
       const votingPowerWei: number = await getVotingPowerAtBlock(ethAddress, blockByDate.block)
       console.info('votingPowerWei:', votingPowerWei)
-      const votingPowerEther: number = web3.utils.fromWei(votingPowerWei)
+      const votingPowerEther: string = ethers.formatUnits(votingPowerWei)
       console.info('votingPowerEther:', votingPowerEther)
       const votingPowerRounded: string = new Number(votingPowerEther).toFixed(2)
       console.info('votingPowerRounded:', votingPowerRounded)
@@ -84,5 +83,5 @@ async function loadVotingPowerData() {
 
 async function getVotingPowerAtBlock(ethAddress: string, blockNumber: number): Promise<number> {
   console.info('getVotingPowerAtBlock')
-  return await VotingEscrowContract.methods.balanceOfAt(ethAddress, blockNumber).call()
+  return await votingEscrowContract.balanceOfAt(ethAddress, blockNumber)
 }
