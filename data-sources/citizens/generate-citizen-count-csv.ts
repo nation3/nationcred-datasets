@@ -1,17 +1,19 @@
-const Web3 = require('web3')
+import { ethers } from 'ethers'
 const Passport = require('../abis/Passport.json')
 const csvWriter = require('csv-writer')
 const fs = require('fs')
 const Papa = require('papaparse')
 
-const web3 = new Web3('https://eth.llamarpc.com')
-console.info('web3.version:', web3.version)
-
-const PassportContract = new web3.eth.Contract(
-  Passport.abi,
-  '0x3337dac9f251d4e403d6030e18e3cfb6a2cb1333'
+const ethersProvider = new ethers.JsonRpcProvider(
+  'https://rpc.ankr.com/eth'
 )
-console.info('PassportContract._address:', PassportContract._address)
+console.info('ethersProvider:', ethersProvider)
+
+const passportContract = new ethers.Contract(
+  '0x3337dac9f251d4e403d6030e18e3cfb6a2cb1333',
+  Passport.abi,
+  ethersProvider
+)
 
 loadPassportMintsByWeek()
 
@@ -77,13 +79,13 @@ async function loadPassportMintsByWeek() {
 
 async function getNextId(): Promise<number> {
   console.info('getNextId')
-  return await PassportContract.methods.getNextId().call()
+  return await passportContract.getNextId()
 }
 
 async function getTimestamp(id: number): Promise<number> {
   console.info('getTimestamp, id:', id)
   try {
-    return await PassportContract.methods.timestampOf(id).call()
+    return await passportContract.timestampOf(id)
   } catch (err) {
     console.error('err:', err)
     return 0
