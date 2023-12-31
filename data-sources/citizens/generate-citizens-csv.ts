@@ -1,29 +1,24 @@
-const Web3 = require('web3')
 const Passport = require('../abis/Passport.json')
 const VotingEscrow = require('../abis/VotingEscrow.json')
 const csvWriter = require('csv-writer')
-const fs = require('fs')
-const ethers = require('ethers')
+import { ethers } from 'ethers'
 
-const web3 = new Web3('https://eth.llamarpc.com')
-console.info('web3.version:', web3.version)
-
-const ethersProvider = new ethers.providers.JsonRpcProvider(
-  'https://eth.llamarpc.com'
+const ethersProvider = new ethers.JsonRpcProvider(
+  'https://rpc.ankr.com/eth'
 )
 console.info('ethersProvider:', ethersProvider)
 
-const PassportContract = new web3.eth.Contract(
+const passportContract = new ethers.Contract(
+  '0x3337dac9f251d4e403d6030e18e3cfb6a2cb1333',
   Passport.abi,
-  '0x3337dac9f251d4e403d6030e18e3cfb6a2cb1333'
+  ethersProvider
 )
-console.info('PassportContract._address:', PassportContract._address)
 
-const VotingEscrowContract = new web3.eth.Contract(
+const votingEscrowContract = new ethers.Contract(
+  '0xf7def1d2fbda6b74bee7452fdf7894da9201065d',
   VotingEscrow.abi,
-  '0xf7def1d2fbda6b74bee7452fdf7894da9201065d'
+  ethersProvider
 )
-console.info('VotingEscrowContract._address:', VotingEscrowContract._address)
 
 loadCitizenData()
 
@@ -64,12 +59,12 @@ async function loadCitizenData() {
     signerAddress = signerAddress.toLowerCase()
     console.info('lowercase signerAddress:', signerAddress)
 
-    const ensName: string = await getEnsName(ownerAddress)
+    const ensName: string | null = await getEnsName(ownerAddress)
     console.info('ensName:', ensName)
 
     const votingPowerWei: number = await getVotingPower(ownerAddress)
     console.info('votingPowerWei:', votingPowerWei)
-    const votingPowerEther: string = web3.utils.fromWei(votingPowerWei)
+    const votingPowerEther: string = ethers.formatUnits(votingPowerWei)
     console.info('votingPowerEther:', votingPowerEther)
     const votingPowerRounded: string = new Number(votingPowerEther).toFixed(2)
     console.info('votingPowerRounded:', votingPowerRounded)
@@ -90,37 +85,37 @@ async function loadCitizenData() {
 
 async function getNextId(): Promise<number> {
   console.info('getNextId')
-  return await PassportContract.methods.getNextId().call()
+  return await passportContract.getNextId()
 }
 
 async function getOwner(passportId: number): Promise<string> {
   console.info('getOwner')
   try {
-    return await PassportContract.methods.ownerOf(passportId).call()
+    return await passportContract.ownerOf(passportId)
   } catch (err) {
     console.error('err:', err)
-    return ethers.constants.AddressZero
+    return ethers.ZeroAddress
   }
 }
 
 async function getSigner(passportId: number): Promise<string> {
   console.info('getSigner')
   try {
-    return await PassportContract.methods.signerOf(passportId).call()
+    return await passportContract.signerOf(passportId)
   } catch (err) {
     console.error('err:', err)
-    return ethers.constants.AddressZero
+    return ethers.ZeroAddress
   }
 }
 
-async function getEnsName(ethAddress: string): Promise<string> {
+async function getEnsName(ethAddress: string): Promise<string | null> {
   console.info('getEnsName')
   return await ethersProvider.lookupAddress(ethAddress)
 }
 
 async function getVotingPower(ethAddress: string): Promise<number> {
   console.info('getVotingPower')
-  return await VotingEscrowContract.methods.balanceOf(ethAddress).call()
+  return await votingEscrowContract.balanceOf(ethAddress)
 }
 
 export {}
