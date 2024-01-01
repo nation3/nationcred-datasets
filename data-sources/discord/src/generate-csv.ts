@@ -1,16 +1,17 @@
 const csvWriter = require('csv-writer')
-const Web3 = require('web3')
-const ethers = require('ethers')
+import { ethers } from 'ethers'
 const Discord = require('../abis/Discord.json')
 
-const web3 = new Web3('https://eth.llamarpc.com')
-console.info('web3.version:', web3.version)
-
-const ethersProvider = new ethers.providers.JsonRpcProvider('https://eth.llamarpc.com')
+const ethersProvider = new ethers.JsonRpcProvider(
+  'https://rpc.ankr.com/eth'
+)
 console.info('ethersProvider:', ethersProvider)
 
-const DiscordContract = new web3.eth.Contract(Discord.abi, '0x3415f4ffb9f89fba0ab446da4a78223e4cd73bad')
-console.info('DiscordContract._address:', DiscordContract._address)
+const discordContract = new ethers.Contract(
+  '0x3415f4ffb9f89fba0ab446da4a78223e4cd73bad',
+  Discord.abi,
+  ethersProvider
+)
 
 generateData()
 
@@ -74,14 +75,18 @@ async function generateData() {
 
 async function getDiscordUsername(address: string): Promise<string> {
   console.info('getDiscordUsername')
-  return await DiscordContract.methods.usernames(address).call()
+  return await discordContract.usernames(address)
 }
 
-async function getENSTextRecord(ensName: string): Promise<string> {
+async function getENSTextRecord(ensName: string): Promise<string | null> {
   console.info('getENSTextRecord')
   const resolver = await ethersProvider.getResolver(ensName)
-  const textRecord = await resolver.getText('com.discord')
-  return textRecord
+  if (resolver == null) {
+    return null
+  } else {
+    const textRecord = await resolver.getText('com.discord')
+    return textRecord
+  }
 }
 
 export {}
