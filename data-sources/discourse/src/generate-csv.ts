@@ -1,16 +1,17 @@
 const csvWriter = require('csv-writer')
-const Web3 = require('web3')
-const ethers = require('ethers')
+import { ethers } from 'ethers'
 const Discourse = require('../abis/Discourse.json')
 
-const web3 = new Web3('https://eth.llamarpc.com')
-console.info('web3.version:', web3.version)
-
-const ethersProvider = new ethers.providers.JsonRpcProvider('https://eth.llamarpc.com')
+const ethersProvider = new ethers.JsonRpcProvider(
+  'https://rpc.ankr.com/eth'
+)
 console.info('ethersProvider:', ethersProvider)
 
-const DiscourseContract = new web3.eth.Contract(Discourse.abi, '0xC396F3536Cc67913bbE1e5E454c10BBA4ae8928F')
-console.info('DiscourseContract._address:', DiscourseContract._address)
+const discourseContract = new ethers.Contract(
+  '0xC396F3536Cc67913bbE1e5E454c10BBA4ae8928F',
+  Discourse.abi,
+  ethersProvider
+)
 
 generateData()
 
@@ -62,7 +63,7 @@ async function generateData() {
 
 async function getDiscourseUsername(address: string): Promise<string> {
   console.info('getDiscourseUsername')
-  return await DiscourseContract.methods.usernames(address).call()
+  return await discourseContract.usernames(address)
 }
 
 export {}
