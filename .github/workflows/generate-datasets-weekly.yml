@@ -58,8 +58,45 @@ jobs:
       - name: Push Changes
         run: git push
 
-  github:
+  coordinape:
     needs: citizens
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: data-sources/coordinape/
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Pull changes
+        run: |
+          git fetch
+          git pull
+
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: npm
+          cache-dependency-path: data-sources/coordinape/package-lock.json
+      
+      - name: Install Node.js Packages 🔧
+        run: npm install
+
+      - run: npm run build
+      - run: npm run generate-csv
+
+      - name: Commit Changes
+        run: |
+          git config user.name 'NationCred bot'
+          git config user.email 'nationcred.bot@nation3.org'
+          git add output/*
+          git commit --allow-empty -m 'generate coordinape dataset'
+      
+      - name: Push Changes
+        run: git push
+
+  github:
+    needs: coordinape
     runs-on: ubuntu-latest
     defaults:
       run:
