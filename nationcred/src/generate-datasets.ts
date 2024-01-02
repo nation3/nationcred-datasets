@@ -33,9 +33,20 @@ async function loadNationCredData() {
     if (!fs.existsSync(sourceCredFilePath)) {
       console.error('File does not exist')
     } else {
-      sourceCredData = await loadSourceCredData(sourceCredFilePath)
+      sourceCredData = await loadCSVData(sourceCredFilePath)
     }
     // console.info('sourceCredData:', sourceCredData)
+
+    // Load the Citizen's Coordinape dataset
+    const coordinapeFilePath = `../data-sources/coordinape/output/coordinape-${passportId}.csv`
+    console.info('coordinapeFilePath:', coordinapeFilePath)
+    let coordinapeData = []
+    if (!fs.existsSync(coordinapeFilePath)) {
+      console.error('File does not exist')
+    } else {
+      coordinapeData = await loadCSVData(coordinapeFilePath)
+    }
+    // console.info('coordinapeData:', coordinapeData)
 
     // Load the Citizen's Dework dataset
     // TODO
@@ -75,19 +86,28 @@ async function loadNationCredData() {
       console.info('sourceCredScore:', sourceCredScore)
       const sourceCredHours: number = sourceCredScore / 3.125
       console.info('sourceCredHours:', sourceCredHours)
-
       valueCreationHours += sourceCredHours
       
       // Calculate the number of hours dedicated to Nation3 governance by the Citizen
-      const governanceHours = undefined
+      const governanceHours = 0
+
       // TODO
 
       // Calculate the number of hours dedicated to Nation3 operations by the Citizen
-      const operationsHours = undefined
-      // TODO
+      let operationsHours = 0
+      
+      let coordinapeOpsHours = 0
+      coordinapeData.forEach((dataRow: any) => {
+        const weekEnd = dataRow.week_end
+        if (weekEnd == weekEndDate.toISOString().substring(0, 10)) {
+          coordinapeOpsHours = Number(dataRow.ops_hours)
+        }
+      })
+      console.info('coordinapeOpsHours:', coordinapeOpsHours)
+      operationsHours += coordinapeOpsHours
 
       // Calculate the Citizen's final NationCred score
-      const nationCredScore: number = valueCreationHours//+ governanceHours + operationsHours
+      const nationCredScore: number = valueCreationHours + governanceHours + operationsHours
       console.info('nationCredScore:', nationCredScore)
 
       // Check the if the Citizen is active or not (based on the NationCred score for the past 4 weeks)
@@ -106,8 +126,8 @@ async function loadNationCredData() {
       const csvRow = {
         week_end: weekEndDate.toISOString().substring(0, 10),
         value_creation_hours: Number(valueCreationHours.toFixed(2)),
-        governance_hours: governanceHours,
-        operations_hours: operationsHours,
+        governance_hours: Number(governanceHours.toFixed(2)),
+        operations_hours: Number(operationsHours.toFixed(2)),
         nationcred_score: Number(nationCredScore.toFixed(2)),
         is_active: Boolean(isActive)
       }
@@ -121,11 +141,11 @@ async function loadNationCredData() {
   }
 }
 
-async function loadSourceCredData(filePath: string): Promise<any> {
-  console.info('loadSourceCredData')
+async function loadCSVData(filePath: string): Promise<any> {
+  console.info('loadCSVData')
 
-  const sourceCredFile: File = fs.readFileSync(filePath)
-  const csvData = sourceCredFile.toString()
+  const dataFile: File = fs.readFileSync(filePath)
+  const csvData = dataFile.toString()
   console.debug('csvData:\n', csvData)
 
   return new Promise(resolve => {

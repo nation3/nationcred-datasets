@@ -10,7 +10,7 @@
     "update-smart-contract": "node dist/update-smart-contract.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Nation3",
+  "author": "Nation3 DAO",
   "license": "GPL-3.0-or-later",
   "devDependencies": {
     "@types/node": "^18.11.9",
