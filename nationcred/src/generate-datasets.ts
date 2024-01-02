@@ -87,6 +87,16 @@ async function loadNationCredData() {
       const sourceCredHours: number = sourceCredScore / 3.125
       console.info('sourceCredHours:', sourceCredHours)
       valueCreationHours += sourceCredHours
+
+      let coordinapeMarketingHours = 0
+      coordinapeData.forEach((dataRow: any) => {
+        const weekEnd = dataRow.week_end
+        if (weekEnd == weekEndDate.toISOString().substring(0, 10)) {
+          coordinapeMarketingHours = Number(dataRow.marketing_hours)
+        }
+      })
+      console.info('coordinapeMarketingHours:', coordinapeMarketingHours)
+      valueCreationHours += coordinapeMarketingHours
       
       // Calculate the number of hours dedicated to Nation3 governance by the Citizen
       const governanceHours = 0
