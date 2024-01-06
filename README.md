@@ -13,9 +13,11 @@ graph TD
         Discord-->SourceCred
         Discourse-->SourceCred
         Dework
+        Marketing_Guild(Marketing Guild)
     end
     SourceCred-->NationCred
     Dework-->NationCred
+    Marketing_Guild-->NationCred
     
     subgraph Nation3 Governance
         Discord_Karma(Discord)-->Karma
@@ -27,29 +29,11 @@ graph TD
     subgraph Nation3 Operations
         Aragon(Aragon OSx DAO Agents)
         Safe(Safe Multisig)
-        Coordinape(Coordinape CoVaults)
+        Ops_Guild(Ops Guild)
     end
     Aragon-->NationCred
     Safe-->NationCred
-    Coordinape-->NationCred
-    
-    subgraph Nation3 Activity
-        NationCred
-    end
-```
-
-```mermaid
-graph TD
-    subgraph coordinape [Coordinape Contributions]
-        coordinape_dev(Development Guild)
-        coordinape_marketing(Marketing Guild)
-        coordinape_ops(Operations Guild)
-        coordinape_ecoride(EcoRide Network)
-    end
-    coordinape_dev-->NationCred
-    coordinape_marketing-->NationCred
-    coordinape_ops-->NationCred
-    coordinape_ecoride-->NationCred
+    Ops_Guild-->NationCred
     
     subgraph Nation3 Activity
         NationCred
