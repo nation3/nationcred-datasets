@@ -4,7 +4,7 @@ const csvWriter = require('csv-writer')
 import { ethers } from 'ethers'
 
 const ethersProvider = new ethers.JsonRpcProvider(
-  'https://rpc.ankr.com/eth'
+  'https://eth.llamarpc.com'
 )
 console.info('ethersProvider:', ethersProvider)
 

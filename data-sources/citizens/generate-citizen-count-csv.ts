@@ -5,7 +5,7 @@ const fs = require('fs')
 const Papa = require('papaparse')
 
 const ethersProvider = new ethers.JsonRpcProvider(
-  'https://rpc.ankr.com/eth'
+  'https://eth.llamarpc.com'
 )
 console.info('ethersProvider:', ethersProvider)
 

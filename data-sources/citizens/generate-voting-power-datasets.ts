@@ -6,7 +6,7 @@ import { ethers } from 'ethers'
 const EthDater = require('ethereum-block-by-date')
 
 const ethersProvider = new ethers.JsonRpcProvider(
-  'https://rpc.ankr.com/eth'
+  'https://eth.llamarpc.com'
 )
 console.info('ethersProvider:', ethersProvider)
 
