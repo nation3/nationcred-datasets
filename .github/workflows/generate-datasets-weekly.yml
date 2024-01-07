@@ -238,7 +238,7 @@ jobs:
           git config user.name 'NationCred bot'
           git config user.email 'nationcred.bot@nation3.org'
           git add output/*
-          git commit --allow-empty -m 'generate sourcecred datasets'
+          git commit --allow-empty -m '🛞 generate sourcecred datasets'
       
       - name: Push Changes
         run: git push
@@ -275,7 +275,7 @@ jobs:
           git config user.name 'NationCred bot'
           git config user.email 'nationcred.bot@nation3.org'
           git add output/*
-          git commit --allow-empty -m 'generate dework datasets'
+          git commit --allow-empty -m '👷 generate dework datasets'
       
       - name: Push Changes
         run: git push
@@ -312,7 +312,7 @@ jobs:
           git config user.name 'NationCred bot'
           git config user.email 'nationcred.bot@nation3.org'
           git add output/*
-          git commit --allow-empty -m 'generate karma datasets'
+          git commit --allow-empty -m '😇 generate karma datasets'
       
       - name: Push Changes
         run: git push
@@ -349,7 +349,7 @@ jobs:
           git config user.name 'NationCred bot'
           git config user.email 'nationcred.bot@nation3.org'
           git add output/*
-          git commit --allow-empty -m 'generate nationcred datasets'
+          git commit --allow-empty -m '🎗️ generate nationcred datasets'
       
       - name: Push Changes
         run: git push
