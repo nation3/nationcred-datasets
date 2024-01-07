@@ -53,7 +53,7 @@ jobs:
           git config user.name 'NationCred bot'
           git config user.email 'nationcred.bot@nation3.org'
           git add output/*
-          git commit --allow-empty -m 'generate citizens datasets'
+          git commit --allow-empty -m '🛂 generate citizens datasets'
       
       - name: Push Changes
         run: git push
@@ -90,7 +90,7 @@ jobs:
           git config user.name 'NationCred bot'
           git config user.email 'nationcred.bot@nation3.org'
           git add output/*
-          git commit --allow-empty -m 'generate coordinape dataset'
+          git commit --allow-empty -m '🐒 generate coordinape dataset'
       
       - name: Push Changes
         run: git push
@@ -127,7 +127,7 @@ jobs:
           git config user.name 'NationCred bot'
           git config user.email 'nationcred.bot@nation3.org'
           git add output/*
-          git commit --allow-empty -m 'generate github dataset'
+          git commit --allow-empty -m '💻 generate github dataset'
       
       - name: Push Changes
         run: git push
@@ -164,7 +164,7 @@ jobs:
           git config user.name 'NationCred bot'
           git config user.email 'nationcred.bot@nation3.org'
           git add output/*
-          git commit --allow-empty -m 'generate discourse dataset'
+          git commit --allow-empty -m '🗳️ generate discourse dataset'
       
       - name: Push Changes
         run: git push
@@ -201,7 +201,7 @@ jobs:
           git config user.name 'NationCred bot'
           git config user.email 'nationcred.bot@nation3.org'
           git add output/*
-          git commit --allow-empty -m 'generate discord dataset'
+          git commit --allow-empty -m '💬 generate discord dataset'
       
       - name: Push Changes
         run: git push
