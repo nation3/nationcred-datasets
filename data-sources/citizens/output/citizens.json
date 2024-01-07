@@ -382,7 +382,7 @@
     "ownerAddress": "0x186bad94057591918c3265c4ddb12874324be8ac",
     "signerAddress": "0x186bad94057591918c3265c4ddb12874324be8ac",
     "ensName": "dashuo.eth",
-    "votingPower": 1.45
+    "votingPower": 1.44
   },
   "55": {
     "passportId": 55,
@@ -417,7 +417,7 @@
     "ownerAddress": "0x0d75363981488f3376fdce70fb5a6dd47c1ed935",
     "signerAddress": "0x0d75363981488f3376fdce70fb5a6dd47c1ed935",
     "ensName": "adela.eth",
-    "votingPower": 1.45
+    "votingPower": 1.44
   },
   "60": {
     "passportId": 60,
@@ -564,7 +564,7 @@
     "ownerAddress": "0x29fe8aa2798116332bc9a9dfac9a0072ad7c4196",
     "signerAddress": "0x29fe8aa2798116332bc9a9dfac9a0072ad7c4196",
     "ensName": "alicegame.eth",
-    "votingPower": 1.45
+    "votingPower": 1.44
   },
   "81": {
     "passportId": 81,
@@ -928,7 +928,7 @@
     "ownerAddress": "0x319e8bcd816478270e0698c251e5bbbfb4928b60",
     "signerAddress": "0x319e8bcd816478270e0698c251e5bbbfb4928b60",
     "ensName": "mdmdiidbs.eth",
-    "votingPower": 1.83
+    "votingPower": 1.82
   },
   "133": {
     "passportId": 133,
@@ -1201,7 +1201,7 @@
     "ownerAddress": "0x47d80912400ef8f8224531ebeb1ce8f2acf4b75a",
     "signerAddress": "0x47d80912400ef8f8224531ebeb1ce8f2acf4b75a",
     "ensName": "abuusama.eth",
-    "votingPower": 3.53
+    "votingPower": 3.52
   },
   "172": {
     "passportId": 172,
@@ -1229,7 +1229,7 @@
     "ownerAddress": "0xc2585a806e3c8f6ae3b79d363348ae8cad8a3b45",
     "signerAddress": "0xc2585a806e3c8f6ae3b79d363348ae8cad8a3b45",
     "ensName": "sebi.eth",
-    "votingPower": 1.39
+    "votingPower": 1.38
   },
   "176": {
     "passportId": 176,
@@ -1362,7 +1362,7 @@
     "ownerAddress": "0x15fab1cc5262d69853b1196f74d38c7fc96fc6d7",
     "signerAddress": "0x15fab1cc5262d69853b1196f74d38c7fc96fc6d7",
     "ensName": "promisesk.eth",
-    "votingPower": 1.6
+    "votingPower": 1.59
   },
   "195": {
     "passportId": 195,
@@ -1831,7 +1831,7 @@
     "ownerAddress": "0x46d80c684703367559cca9dbb1448493d7ec12a7",
     "signerAddress": "0x46d80c684703367559cca9dbb1448493d7ec12a7",
     "ensName": "",
-    "votingPower": 1.61
+    "votingPower": 1.6
   },
   "262": {
     "passportId": 262,
