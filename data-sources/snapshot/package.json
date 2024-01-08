@@ -1,0 +1,18 @@
+{
+  "name": "snapshot",
+  "version": "1.0.0",
+  "description": "Snapshot voting activity",
+  "main": "fetch-profiles.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "generate": "node dist/generate-datasets.js"
+  },
+  "author": "Nation3 DAO",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "@types/node": "^20.10.7",
+    "csv-stringify": "^6.4.4",
+    "typescript": "^5.3.3"
+  }
+}
