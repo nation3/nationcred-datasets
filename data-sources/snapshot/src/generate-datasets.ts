@@ -49,7 +49,7 @@ function exportToCSV(votes: any) {
 
     const citizen = citizensJson[passportId]
 
-    const filename = `output/nationcred-${passportId}.csv`
+    const filename = `output/snapshot-${passportId}.csv`
     const writeableStream = fs.createWriteStream(filename)
     const columns = [
         'week_end',
