@@ -18,6 +18,7 @@ async function loadSnapshotData() {
         query: `
           query VotesQuery {
             votes (
+              first: 1000
               where: {
                 space: "nation3.eth"
               }
