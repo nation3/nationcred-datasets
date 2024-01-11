@@ -55,7 +55,15 @@ async function loadNationCredData() {
     // TODO
 
     // Load the Citizen's Snapshot dataset
-    // TODO
+    const snapshotFilePath = `../data-sources/snapshot/output/snapshot-${passportId}.csv`
+    console.info('snapshotFilePath:', snapshotFilePath)
+    let snapshotData = []
+    if (!fs.existsSync(snapshotFilePath)) {
+      console.error('File does not exist')
+    } else {
+      snapshotData = await loadCSVData(snapshotFilePath)
+    }
+    // console.info('snapshotData:', snapshotData)
 
     // Prepare variables for keeping track of NationCred scores during the past 4 weeks
     let nationCredScore4WeeksAgo = undefined
@@ -78,7 +86,6 @@ async function loadNationCredData() {
       let sourceCredScore = 0
       sourceCredData.forEach((dataRow: any) => {
         const weekEnd = dataRow.week_end
-        // console.info('weekEnd:', weekEnd)
         if (weekEnd == weekEndDate.toISOString().substring(0, 10)) {
           sourceCredScore = dataRow.sourcecred_score
         }
@@ -99,9 +106,18 @@ async function loadNationCredData() {
       valueCreationHours += coordinapeMarketingHours
       
       // Calculate the number of hours dedicated to Nation3 governance by the Citizen
-      const governanceHours = 0
+      let governanceHours = 0
 
-      // TODO
+      let snapshotScore = 0
+      snapshotData.forEach((dataRow: any) => {
+        const weekEnd = dataRow.week_end
+        if (weekEnd == weekEndDate.toISOString().substring(0, 10)) {
+          const votesCount: number = dataRow.votes_count
+          snapshotScore = votesCount * 0.17 // Assume ~10 minutes dedicated per vote - https://forum.nation3.org/t/poll-how-much-time-do-you-spend-on-each-snapshot-vote/818
+        }
+      })
+      console.info('snapshotScore:', snapshotScore)
+      governanceHours += snapshotScore
 
       // Calculate the number of hours dedicated to Nation3 operations by the Citizen
       let operationsHours = 0

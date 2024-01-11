@@ -46,7 +46,7 @@ async function loadActivityData() {
       } else {
         nationCredData = await loadNationCredData(nationCredFilePath)
       }
-      console.info('nationCredData:', nationCredData)
+      // console.info('nationCredData:', nationCredData)
 
       // Lookup the matching week
       nationCredData.forEach((dataRow: any) => {
@@ -85,7 +85,7 @@ async function loadNationCredData(filePath: string): Promise<any> {
 
   const nationCredFile: File = fs.readFileSync(filePath)
   const csvData = nationCredFile.toString()
-  console.debug('csvData:\n', csvData)
+  // console.debug('csvData:\n', csvData)
 
   return new Promise(resolve => {
     Papa.parse(csvData, {
