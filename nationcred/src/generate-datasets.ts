@@ -21,6 +21,7 @@ async function loadNationCredData() {
         { id: 'governance_hours', title: 'governance_hours' },
         { id: 'operations_hours', title: 'operations_hours' },
         { id: 'nationcred_score', title: 'nationcred_score' },
+        { id: 'nationcred_score_accumulated', title: 'nationcred_score_accumulated' },
         { id: 'is_active', title: 'is_active' }
       ]
     })
@@ -70,6 +71,8 @@ async function loadNationCredData() {
     let nationCredScore3WeeksAgo = undefined
     let nationCredScore2WeeksAgo = undefined
     let nationCredScore1WeekAgo = undefined
+
+    let nationCredScoreAccumulated = 0
 
     // Iterate every week from the week of [Sun May-29-2022 → Sun Jun-05-2022] until now
     const weekEndDate: Date = new Date('2022-06-05T00:00:00Z')
@@ -136,6 +139,8 @@ async function loadNationCredData() {
       const nationCredScore: number = valueCreationHours + governanceHours + operationsHours
       console.info('nationCredScore:', nationCredScore)
 
+      nationCredScoreAccumulated += nationCredScore
+
       // Check the if the Citizen is active or not (based on the NationCred score for the past 4 weeks)
       nationCredScore4WeeksAgo = nationCredScore3WeeksAgo
       nationCredScore3WeeksAgo = nationCredScore2WeeksAgo
@@ -155,6 +160,7 @@ async function loadNationCredData() {
         governance_hours: Number(governanceHours.toFixed(2)),
         operations_hours: Number(operationsHours.toFixed(2)),
         nationcred_score: Number(nationCredScore.toFixed(2)),
+        nationcred_score_accumulated: Number(nationCredScoreAccumulated.toFixed(2)),
         is_active: Boolean(isActive)
       }
       csvRows.push(csvRow)
