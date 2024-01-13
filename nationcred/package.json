@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint . --ext .ts",
     "build": "tsc",
-    "generate": "node dist/generate-datasets.js; node dist/generate-active-citizens.js;",
+    "generate": "node dist/generate-datasets.js; node dist/generate-nationcred-scores.js; node dist/generate-active-citizens.js;",
     "update-smart-contract": "node dist/update-smart-contract.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

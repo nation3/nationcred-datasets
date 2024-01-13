@@ -12,6 +12,10 @@ We define an _active_ Citizen as someone who dedicates [at least 1 hour per week
 
   A Nation3 Citizen's NationCred score week by week.
 
+- `output/nationcred-scores.csv`
+
+  A list of last week's NationCred score and accumulated NationCred score of each citizen.
+
 - `output/nationcred-active-citizens.csv`
 
   Contains a list of Ethereum addresses belonging to _active_ Nation3 Citizens, week by week.
