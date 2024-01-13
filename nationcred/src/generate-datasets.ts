@@ -116,7 +116,8 @@ async function loadNationCredData() {
         const weekEnd = dataRow.week_end
         if (weekEnd == weekEndDate.toISOString().substring(0, 10)) {
           const votesCount: number = dataRow.votes_count
-          snapshotScore = votesCount * 0.17 // Assume ~10 minutes dedicated per vote - https://forum.nation3.org/t/poll-how-much-time-do-you-spend-on-each-snapshot-vote/818
+          const proposalsCount: number = dataRow.proposals_count
+          snapshotScore = (votesCount * 0.17) + (proposalsCount * 0.67) // Assume ~10 minutes dedicated per vote and ~40 minutes per proposal - https://forum.nation3.org/t/poll-how-much-time-do-you-spend-on-each-snapshot-vote/818
         }
       })
       console.info('snapshotScore:', snapshotScore)
