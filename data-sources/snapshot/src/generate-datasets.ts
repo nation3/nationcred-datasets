@@ -9,7 +9,7 @@ loadSnapshotData()
 async function loadSnapshotData() {
   console.log('loadSnapshotData')
 
-  const response = await fetch(GRAPHQL_URL, {
+  const votesResponse = await fetch(GRAPHQL_URL, {
     method: 'POST',
     headers: {
         'content-type': 'application/json'
@@ -34,14 +34,39 @@ async function loadSnapshotData() {
         `
     })
   })
+  const { data: votesData } = await votesResponse.json()
+  console.log('votesData:', votesData)
 
-  const { data } = await response.json()
-  console.log('data:', data)
+  const proposalsResponse = await fetch(GRAPHQL_URL, {
+    method: 'POST',
+    headers: {
+        'content-type': 'application/json'
+    },
+    body: JSON.stringify({
+        query: `
+          query ProposalsQuery{
+            proposals (
+              first: 1000
+              where:{
+                space: "nation3.eth"
+              }
+            ) {
+              id
+              title
+              created
+              author
+            }
+          }
+        `
+    })
+  })
+  const { data: proposalsData } = await proposalsResponse.json()
+  console.log('proposalsData:', proposalsData)
 
-  exportToCSV(data.votes)
+  exportToCSV(votesData.votes, proposalsData.proposals)
 }
 
-function exportToCSV(votes: any) {
+function exportToCSV(votes: any, proposals: any) {
   console.log('exportToCSV');
 
   const citizensJson = require('../../citizens/output/citizens.json')
@@ -66,7 +91,6 @@ function exportToCSV(votes: any) {
       const weekBeginDate: Date = new Date(weekEndDate.getTime() - 7*24*60*60*1000)
 
       let votesCount: number = 0
-      let proposalsCount: number = 0
       for (const vote of votes) {
         const voterAddress: string = String(vote.voter).toLowerCase()
         const voteCreatedTimestamp: Date = new Date(vote.created * 1_000)
@@ -74,6 +98,17 @@ function exportToCSV(votes: any) {
             && (voteCreatedTimestamp.getTime() >= weekBeginDate.getTime())
             && (voteCreatedTimestamp.getTime() < weekEndDate.getTime())) {
           votesCount++
+        }
+      }
+
+      let proposalsCount: number = 0
+      for (const proposal of proposals) {
+        const authorAddress: string = String(proposal.author).toLowerCase()
+        const proposalCreatedTimestamp: Date = new Date(proposal.created * 1_000)
+        if ((authorAddress == citizen.ownerAddress)
+            && (proposalCreatedTimestamp.getTime() >= weekBeginDate.getTime())
+            && (proposalCreatedTimestamp.getTime() < weekEndDate.getTime())) {
+          proposalsCount++
         }
       }
 
