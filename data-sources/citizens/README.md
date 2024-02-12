@@ -33,6 +33,7 @@ npm install
 ### Build
 
 ```
+cd data-sources/citizens/
 npm run build
 ```
 
