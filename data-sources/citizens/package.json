@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "generate-csv": "node dist/generate-citizens-csv.js",
-    "generate-json": "node dist/generate-citizens-json.js",
-    "generate-power": "node dist/generate-voting-power-datasets.js",
-    "generate-count": "node dist/generate-citizen-count-csv.js",
+    "generate-1-csv": "node dist/generate-1-citizens-csv.js",
+    "generate-2-json": "node dist/generate-2-citizens-json.js",
+    "generate-3-voting-escrow": "node dist/generate-3-voting-escrow-datasets.js",
+    "generate-4-count": "node dist/generate-4-citizen-count-csv.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

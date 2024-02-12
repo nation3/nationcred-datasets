@@ -1,4 +1,4 @@
-passport_id,owner_address,signer_address,ens_name,voting_power
+passport_id,owner_address,signer_address,ens_name,voting_escrow
 0,0x0000000000000000000000000000000000000000,0x0000000000000000000000000000000000000000,,0.00
 1,0x05a4448597935c508e4ad0d2cf56d56bedb246ce,0x05a4448597935c508e4ad0d2cf56d56bedb246ce,wefet.eth,1.66
 2,0x69a5c0db191697d11b0ac5637c3445d38af4b15b,0x69a5c0db191697d11b0ac5637c3445d38af4b15b,incrediblez7.eth,1.54

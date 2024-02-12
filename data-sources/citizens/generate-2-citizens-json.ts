@@ -27,7 +27,7 @@ async function convertToJSON() {
       const ownerAddress: string = row.owner_address
       const signerAddress: string = row.signer_address
       const ensName: string = row.ens_name
-      const votingPower: number = Number(row.voting_power)
+      const votingEscrow: number = Number(row.voting_escrow)
 
       if (passportID >= 0) {
         const citizenObject = {
@@ -35,7 +35,7 @@ async function convertToJSON() {
           ownerAddress: ownerAddress,
           signerAddress: signerAddress,
           ensName: ensName,
-          votingPower: votingPower,
+          votingEscrow: votingEscrow,
         }
 
         citizenObjects[String(passportID)] = citizenObject

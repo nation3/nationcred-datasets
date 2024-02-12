@@ -36,17 +36,17 @@ jobs:
       - name: Build
         run: npm run build
 
-        # Generate Citizen Data CSV 🧮
-      - run: npm run generate-csv
+        # 1. Generate Citizen Data CSV 🧮
+      - run: npm run generate-1-csv
 
-        # Generate Citizen Data JSON 🧮
-      - run: npm run generate-json
+        # 2. Generate Citizen Data JSON 🧮
+      - run: npm run generate-2-json
 
-        # Generate Historical Citizen Data CSVs 🧮
-      - run: npm run generate-power
+        # 3. Generate Historical Citizen Data CSVs 🧮
+      - run: npm run generate-3-voting-escrow
 
-        # Generate Citizen Count CSV 🧮
-      - run: npm run generate-count
+        # 4. Generate Citizen Count CSV 🧮
+      - run: npm run generate-4-count
       
       - name: Commit Changes
         run: |
