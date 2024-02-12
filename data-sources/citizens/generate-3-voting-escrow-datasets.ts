@@ -19,10 +19,10 @@ const votingEscrowContract = new ethers.Contract(
   ethersProvider
 )
 
-loadVotingPowerData()
+loadVotingEscrowData()
 
-async function loadVotingPowerData() {
-  console.info('loadVotingPowerData')
+async function loadVotingEscrowData() {
+  console.info('loadVotingEscrowData')
 
   const citizensJson = require('../output/citizens.json')
   for (const passportId in citizensJson) {
@@ -39,7 +39,7 @@ async function loadVotingPowerData() {
       header: [
         { id: 'week_end', title: 'week_end' },
         { id: 'block', title: 'block' },
-        { id: 'voting_power', title: 'voting_power' }
+        { id: 'voting_escrow', title: 'voting_escrow' }
       ]
     })
     const csvRows = []
@@ -57,19 +57,19 @@ async function loadVotingPowerData() {
       const blockByDate = await dater.getDate(weekEndDate)
       // console.debug('blockByDate:', blockByDate)
       
-      // Get Citizen's voting power at the current block
-      const votingPowerWei: number = await getVotingPowerAtBlock(ethAddress, blockByDate.block)
-      console.info('votingPowerWei:', votingPowerWei)
-      const votingPowerEther: string = ethers.formatUnits(votingPowerWei)
-      console.info('votingPowerEther:', votingPowerEther)
-      const votingPowerRounded: string = new Number(votingPowerEther).toFixed(2)
-      console.info('votingPowerRounded:', votingPowerRounded)
+      // Get Citizen's voting escrow at the current block
+      const votingEscrowWei: number = await getVotingEscrowAtBlock(ethAddress, blockByDate.block)
+      console.info('votingEscrowWei:', votingEscrowWei)
+      const votingEscrowEther: string = ethers.formatUnits(votingEscrowWei)
+      console.info('votingEscrowEther:', votingEscrowEther)
+      const votingEscrowRounded: string = new Number(votingEscrowEther).toFixed(2)
+      console.info('votingEscrowRounded:', votingEscrowRounded)
       
       // Export to CSV
       const csvRow = {
         week_end: weekEndDate.toISOString().substring(0, 10),
         block: blockByDate.block,
-        voting_power: votingPowerRounded
+        voting_escrow: votingEscrowRounded
       }
       csvRows.push(csvRow)
 
@@ -81,7 +81,7 @@ async function loadVotingPowerData() {
   }
 }
 
-async function getVotingPowerAtBlock(ethAddress: string, blockNumber: number): Promise<number> {
-  console.info('getVotingPowerAtBlock')
+async function getVotingEscrowAtBlock(ethAddress: string, blockNumber: number): Promise<number> {
+  console.info('getVotingEscrowAtBlock')
   return await votingEscrowContract.balanceOfAt(ethAddress, blockNumber)
 }

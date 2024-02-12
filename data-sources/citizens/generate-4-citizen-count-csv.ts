@@ -101,7 +101,7 @@ function getTotalExpiredPassports(weekEndDate: Date, maxPassportID: number): num
   for (let passportID = 0; passportID < maxPassportID; passportID++) {
     console.info(`weekEndDate: ${weekEndDateString}, passportID: ${passportID}`)
 
-    // Fetch voting power data from the citizen's data CSV
+    // Fetch voting escrow data from the citizen's data CSV
     const citizenFilePath: string = `output/citizen-${passportID}.csv`
     console.info('Fetching citizen data:', citizenFilePath)
     const file: File = fs.readFileSync(citizenFilePath)
@@ -115,8 +115,8 @@ function getTotalExpiredPassports(weekEndDate: Date, maxPassportID: number): num
         // console.info('result:', result)
         result.data.forEach((row: any, i: number) => {
           if (row.week_end == weekEndDateString) {
-            console.info(`row.week_end ${row.week_end}, row.voting_power: ${row.voting_power}`)
-            if (row.voting_power < 1.5) {
+            console.info(`row.week_end ${row.week_end}, row.voting_escrow: ${row.voting_escrow}`)
+            if (row.voting_escrow < 1.5) {
               // https://etherscan.io/address/0x279c0b6bfcbba977eaf4ad1b2ffe3c208aa068ac#readContract#F9
               console.info('Passport ID expired:', passportID)
               totalExpiredPassports++

@@ -6,7 +6,7 @@ https://etherscan.io/token/0x3337dac9f251d4e403d6030e18e3cfb6a2cb1333#inventory
     
 - `citizens.csv`
 
-    - Contains the NFT Passport ID, owner/signer Ethereum address and ENS name (if any) of each Nation3 Citizen.  And the `voting_power` column is the Citizen's [`$veNATION`](https://wiki.nation3.org/token/#venation) balance.
+    - Contains the NFT Passport ID, owner/signer Ethereum address and ENS name (if any) of each Nation3 Citizen.  And the `voting_escrow` column is the Citizen's [`$veNATION`](https://wiki.nation3.org/token/#venation) balance.
 
     - The `owner_address` is the Ethereum address used for linking a Citizen to activity in Dework/GitHub/Karma/Snapshot/SourceCred.
 
@@ -16,7 +16,7 @@ https://etherscan.io/token/0x3337dac9f251d4e403d6030e18e3cfb6a2cb1333#inventory
 
 - `citizen-<passportId>.csv`
 
-    - Contains a Citizen's voting power week by week.
+    - Contains a Citizen's voting escrow week by week.
 
 - `citizen-count-peer-week.csv`
 
@@ -36,26 +36,26 @@ npm install
 npm run build
 ```
 
-### Generate Citizen Data CSV
+### 1. Generate Citizen Data CSV
 
 ```
-npm run generate-csv
+npm run generate-1-csv
 ```
 
-### Generate Citizen Data JSON
+### 2. Generate Citizen Data JSON
 
 ```
-npm run generate-json
+npm run generate-2-json
 ```
 
-### Generate Historical Citizen Data CSVs
+### 3. Generate Historical Citizen Data CSVs
 
 ```
-npm run generate-power
+npm run generate-3-voting-escrow
 ```
 
-### Generate Citizen Count CSV
+### 4. Generate Citizen Count CSV
 
 ```
-npm run generate-count
+npm run generate-4-count
 ```

@@ -35,7 +35,7 @@ async function loadCitizenData() {
       { id: 'owner_address', title: 'owner_address' },
       { id: 'signer_address', title: 'signer_address' },
       { id: 'ens_name', title: 'ens_name' },
-      { id: 'voting_power', title: 'voting_power' },
+      { id: 'voting_escrow', title: 'voting_escrow' },
     ],
   })
   let csvRows = []
@@ -62,12 +62,12 @@ async function loadCitizenData() {
     const ensName: string | null = await getEnsName(ownerAddress)
     console.info('ensName:', ensName)
 
-    const votingPowerWei: number = await getVotingPower(ownerAddress)
-    console.info('votingPowerWei:', votingPowerWei)
-    const votingPowerEther: string = ethers.formatUnits(votingPowerWei)
-    console.info('votingPowerEther:', votingPowerEther)
-    const votingPowerRounded: string = new Number(votingPowerEther).toFixed(2)
-    console.info('votingPowerRounded:', votingPowerRounded)
+    const votingEscrowWei: number = await getVotingEscrow(ownerAddress)
+    console.info('votingEscrowWei:', votingEscrowWei)
+    const votingEscrowEther: string = ethers.formatUnits(votingEscrowWei)
+    console.info('votingEscrowEther:', votingEscrowEther)
+    const votingEscrowRounded: string = new Number(votingEscrowEther).toFixed(2)
+    console.info('votingEscrowRounded:', votingEscrowRounded)
 
     // Export to CSV
     const csvRow = {
@@ -75,7 +75,7 @@ async function loadCitizenData() {
       owner_address: ownerAddress.toLowerCase(),
       signer_address: signerAddress.toLowerCase(),
       ens_name: ensName,
-      voting_power: votingPowerRounded
+      voting_escrow: votingEscrowRounded
     }
     csvRows.push(csvRow)
   }
@@ -113,8 +113,8 @@ async function getEnsName(ethAddress: string): Promise<string | null> {
   return await ethersProvider.lookupAddress(ethAddress)
 }
 
-async function getVotingPower(ethAddress: string): Promise<number> {
-  console.info('getVotingPower')
+async function getVotingEscrow(ethAddress: string): Promise<number> {
+  console.info('getVotingEscrow')
   return await votingEscrowContract.balanceOf(ethAddress)
 }
 
