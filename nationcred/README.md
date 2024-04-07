@@ -4,7 +4,7 @@ Each Nation3 Citizen has a NationCred score, which is used to measure how _activ
 
 ## Definition of _Active_
 
-We define an _active_ Citizen as someone who dedicates [at least 1 hour per week](https://forum.nation3.org/t/proposal-set-q4-2022-goals/747) to Nation3.
+We define an _active_ Citizen as someone who dedicates [at least 2 hour per week](https://snapshot.org/#/nation3.eth/proposal/0xc20deac472610e9bc514c0d8625809b68e2953f0609457093418afbbfa6ab65e) to Nation3.
 
 ## Datasets
 
