@@ -149,8 +149,8 @@ async function loadNationCredData() {
       nationCredScore1WeekAgo = nationCredScore
       const activeThreshold = 1.00
 
-      let first2Week = (nationCredScore4WeeksAgo ?? 0) + (nationCredScore3WeeksAgo ?? 0)
-      let last2Week = (nationCredScore1WeekAgo ?? 0) + (nationCredScore2WeeksAgo ?? 0)
+      const first2Week = (nationCredScore4WeeksAgo ?? 0) + (nationCredScore3WeeksAgo ?? 0)
+      const last2Week = (nationCredScore1WeekAgo ?? 0) + (nationCredScore2WeeksAgo ?? 0)
 
       const isActive = first2Week >= activeThreshold && last2Week >= activeThreshold
       console.info('isActive:', isActive)
