@@ -148,14 +148,12 @@ async function loadNationCredData() {
       nationCredScore2WeeksAgo = nationCredScore1WeekAgo
       nationCredScore1WeekAgo = nationCredScore
       const activeThreshold = 1.00
-      const isActive = (nationCredScore4WeeksAgo && (nationCredScore4WeeksAgo > activeThreshold))
-        && (nationCredScore3WeeksAgo && (nationCredScore3WeeksAgo > activeThreshold))
-        && (nationCredScore2WeeksAgo && (nationCredScore2WeeksAgo > activeThreshold))
-        && (nationCredScore1WeekAgo && (nationCredScore1WeekAgo > activeThreshold))
-      console.info('isActive:', isActive)
 
-      const isInactive = nationCredScore1WeekAgo && (nationCredScore1WeekAgo <= activeThreshold)
-        && nationCredScore2WeeksAgo && (nationCredScore2WeeksAgo <= activeThreshold);
+      let first2Week = (nationCredScore4WeeksAgo ?? 0) + (nationCredScore3WeeksAgo ?? 0)
+      let last2Week = (nationCredScore1WeekAgo ?? 0) + (nationCredScore2WeeksAgo ?? 0)
+
+      const isActive = first2Week >= activeThreshold && last2Week >= activeThreshold
+      console.info('isActive:', isActive)
 
       // Export to CSV
       const csvRow = {
@@ -165,7 +163,7 @@ async function loadNationCredData() {
         operations_hours: Number(operationsHours.toFixed(2)),
         nationcred_score: Number(nationCredScore.toFixed(2)),
         nationcred_score_accumulated: Number(nationCredScoreAccumulated.toFixed(2)),
-        is_active: Boolean(isActive && !isInactive)
+        is_active: Boolean(isActive)
       }
       csvRows.push(csvRow)
 
