@@ -66,7 +66,8 @@ async function loadNationCredData() {
     }
     // console.info('snapshotData:', snapshotData)
 
-    // Prepare variables for keeping track of NationCred scores during the past 4 weeks
+    // Prepare variables for keeping track of NationCred scores during the past 5 weeks
+    let nationCredScore5WeeksAgo = undefined
     let nationCredScore4WeeksAgo = undefined
     let nationCredScore3WeeksAgo = undefined
     let nationCredScore2WeeksAgo = undefined
@@ -142,16 +143,22 @@ async function loadNationCredData() {
 
       nationCredScoreAccumulated += nationCredScore
 
-      // Check the if the Citizen is active or not (based on the NationCred score for the past 4 weeks)
+      // Check the if the Citizen is active or not (based on the NationCred score in the past 5 weeks)
+      nationCredScore5WeeksAgo = nationCredScore4WeeksAgo
       nationCredScore4WeeksAgo = nationCredScore3WeeksAgo
       nationCredScore3WeeksAgo = nationCredScore2WeeksAgo
       nationCredScore2WeeksAgo = nationCredScore1WeekAgo
       nationCredScore1WeekAgo = nationCredScore
       const activeThreshold = 1.00
-      const isActive = (nationCredScore4WeeksAgo && (nationCredScore4WeeksAgo > activeThreshold))
+      const isActive = ((nationCredScore4WeeksAgo && (nationCredScore4WeeksAgo > activeThreshold))
                     && (nationCredScore3WeeksAgo && (nationCredScore3WeeksAgo > activeThreshold))
                     && (nationCredScore2WeeksAgo && (nationCredScore2WeeksAgo > activeThreshold))
-                    && (nationCredScore1WeekAgo && (nationCredScore1WeekAgo > activeThreshold))
+                    && (nationCredScore1WeekAgo && (nationCredScore1WeekAgo > activeThreshold)))
+                    ||
+                    ((nationCredScore5WeeksAgo && (nationCredScore5WeeksAgo > activeThreshold))
+                    && (nationCredScore4WeeksAgo && (nationCredScore4WeeksAgo > activeThreshold))
+                    && (nationCredScore3WeeksAgo && (nationCredScore3WeeksAgo > activeThreshold))
+                    && (nationCredScore2WeeksAgo && (nationCredScore2WeeksAgo > activeThreshold)))
       console.info('isActive:', isActive)
       
       // Export to CSV
