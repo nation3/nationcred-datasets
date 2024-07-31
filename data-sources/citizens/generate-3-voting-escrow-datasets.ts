@@ -3,11 +3,12 @@ const createObjectCsvWriter = require('csv-writer').createObjectCsvWriter
 
 const VotingEscrow = require('../abis/VotingEscrow.json')
 import { ethers } from 'ethers'
+import { MulticallWrapper } from 'ethers-multicall-provider'
 const EthDater = require('ethereum-block-by-date')
 
-const ethersProvider = new ethers.JsonRpcProvider(
+const ethersProvider = MulticallWrapper.wrap(new ethers.JsonRpcProvider(
   'https://ethereum.publicnode.com'
-)
+))
 console.info('ethersProvider:', ethersProvider)
 
 const dater = new EthDater(ethersProvider)
@@ -23,6 +24,10 @@ loadVotingEscrowData()
 
 async function loadVotingEscrowData() {
   console.info('loadVotingEscrowData')
+
+  const blockPerWeekArray = await getBlockPerWeekArray()
+  console.info('blockPerWeekArray.length:', blockPerWeekArray.length)
+  console.debug('blockPerWeekArray:', blockPerWeekArray)
 
   const citizensJson = require('../output/citizens.json')
   for (const passportId in citizensJson) {
@@ -47,6 +52,7 @@ async function loadVotingEscrowData() {
     // Iterate every week from the week of [Sun May-29-2022 → Sun Jun-05-2022] until now
     const weekEndDate: Date = new Date('2022-06-05T00:00:00Z')
     console.info('weekEndDate:', weekEndDate)
+    let weekNumber: number = 1
     const nowDate: Date = new Date()
     console.info('nowDate:', nowDate)
     while (nowDate.getTime() > weekEndDate.getTime()) {
@@ -54,7 +60,8 @@ async function loadVotingEscrowData() {
       console.info('week:', `[${weekBeginDate.toISOString()} → ${weekEndDate.toISOString()}]`)
 
       // Get Ethereum block by date
-      const blockByDate = await dater.getDate(weekEndDate)
+      console.info('weekNumber:', weekNumber)
+      const blockByDate = blockPerWeekArray[weekNumber - 1]
       // console.debug('blockByDate:', blockByDate)
       
       // Get Citizen's voting escrow at the current block
@@ -75,10 +82,30 @@ async function loadVotingEscrowData() {
 
       // Increase week end date by 7 days
       weekEndDate.setDate(weekEndDate.getDate() + 7)
+      weekNumber++
     }
 
     writer.writeRecords(csvRows)
   }
+}
+
+/**
+ * Multicall for getting the Ethereum block for all the weeks.
+ */
+async function getBlockPerWeekArray() {
+  console.info('getBlockPerWeekArray')
+
+  // Populate an Array with one call per week
+  const calls = []
+  const weekEndDate: Date = new Date('2022-06-05T00:00:00Z')
+  const nowDate: Date = new Date()
+  while (nowDate.getTime() > weekEndDate.getTime()) {
+    calls.push(dater.getDate(weekEndDate))
+    weekEndDate.setDate(weekEndDate.getDate() + 7)
+  }
+  console.info('calls.length:', calls.length)
+
+  return Promise.all(calls)
 }
 
 async function getVotingEscrowAtBlock(ethAddress: string, blockNumber: number): Promise<number> {

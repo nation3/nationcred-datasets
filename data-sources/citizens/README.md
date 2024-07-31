@@ -49,7 +49,7 @@ npm run generate-1-csv
 npm run generate-2-json
 ```
 
-### 3. Generate Historical Citizen Data CSVs
+### 3. Generate Historical Citizen Voting Escrow Data CSVs
 
 ```
 npm run generate-3-voting-escrow
