@@ -5,7 +5,7 @@ const fs = require('fs')
 const Papa = require('papaparse')
 
 const ethersProvider = new ethers.JsonRpcProvider(
-  'https://ethereum.publicnode.com'
+  'https://lb.nodies.app/v1/5e9daed367d1454fab7c75f0ec8aceff'
 )
 console.debug('ethersProvider:', ethersProvider)
 
@@ -23,8 +23,8 @@ loadPassportMintsByWeek()
 async function loadPassportMintsByWeek() {
   console.info('loadPassportMintsByWeek')
 
-  const revocations = await fetchRevocations()
-  console.debug('revocations:', revocations)
+  // const revocations = await fetchRevocations()
+  // console.debug('revocations:', revocations)
 
   const writer = csvWriter.createObjectCsvWriter({
     path: 'output/citizen-count-per-week.csv',
@@ -65,7 +65,8 @@ async function loadPassportMintsByWeek() {
     const totalExpiredPassports: number = getTotalExpiredPassports(weekEndDate, id)
     console.debug('totalExpiredPassports:', totalExpiredPassports)
 
-    const totalRevokedPassports: number = getTotalRevokedPassports(weekEndDate, id, revocations)
+    // const totalRevokedPassports: number = getTotalRevokedPassports(weekEndDate, id, revocations)
+    const totalRevokedPassports: number = getTotalRevokedPassports(weekEndDate, id, new Array(nextId).fill(0))
     console.debug('totalRevokedPassports:', totalRevokedPassports)
     
     // Export to CSV
