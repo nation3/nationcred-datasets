@@ -7,7 +7,7 @@ import { MulticallWrapper } from 'ethers-multicall-provider'
 const EthDater = require('ethereum-block-by-date')
 
 const ethersProvider = MulticallWrapper.wrap(new ethers.JsonRpcProvider(
-  'https://ethereum.publicnode.com'
+  'https://lb.nodies.app/v1/5e9daed367d1454fab7c75f0ec8aceff'
 ))
 console.info('ethersProvider:', ethersProvider)
 
@@ -49,6 +49,9 @@ async function loadVotingEscrowData() {
     })
     const csvRows = []
 
+    const votingEscrowAtBlockArray = await getVotingEscrowAtBlockArray(blockPerWeekArray, ethAddress)
+    // console.debug('votingEscrowAtBlockArray:', votingEscrowAtBlockArray)
+
     // Iterate every week from the week of [Sun May-29-2022 → Sun Jun-05-2022] until now
     const weekEndDate: Date = new Date('2022-06-05T00:00:00Z')
     console.info('weekEndDate:', weekEndDate)
@@ -65,7 +68,7 @@ async function loadVotingEscrowData() {
       // console.debug('blockByDate:', blockByDate)
       
       // Get Citizen's voting escrow at the current block
-      const votingEscrowWei: number = await getVotingEscrowAtBlock(ethAddress, blockByDate.block)
+      const votingEscrowWei: number = votingEscrowAtBlockArray[weekNumber - 1]
       console.info('votingEscrowWei:', votingEscrowWei)
       const votingEscrowEther: string = ethers.formatUnits(votingEscrowWei)
       console.info('votingEscrowEther:', votingEscrowEther)
@@ -108,7 +111,20 @@ async function getBlockPerWeekArray() {
   return Promise.all(calls)
 }
 
-async function getVotingEscrowAtBlock(ethAddress: string, blockNumber: number): Promise<number> {
-  console.info('getVotingEscrowAtBlock')
-  return await votingEscrowContract.balanceOfAt(ethAddress, blockNumber)
+/**
+ * Multicall for getting the voting-escrow balance for the block 
+ * each week's block number.
+ */
+async function getVotingEscrowAtBlockArray(blockPerWeekArray: any, ethAddress: string) {
+  console.info('getVotingEscrowAtBlockArray', ethAddress)
+
+  // Populate an Array with one call per block number
+  const calls: any = []
+  blockPerWeekArray.forEach((element: any) => {
+    // console.debug('element:', element)
+    calls.push(votingEscrowContract.balanceOfAt(ethAddress, element.block))
+  })
+  // console.debug('calls.length:', calls.length)
+
+  return Promise.all(calls)
 }
