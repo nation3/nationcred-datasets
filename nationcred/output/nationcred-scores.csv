@@ -41,7 +41,7 @@ passport_id,nationcred_score,nationcred_score_accumulated
 39,0,0.00
 40,0,0.17
 41,0,0.00
-42,0,1.02
+42,0.17,1.19
 43,0,572.23
 44,0,0.00
 45,0,0.85
@@ -150,7 +150,7 @@ passport_id,nationcred_score,nationcred_score_accumulated
 148,0,0.00
 149,0,0.00
 150,0,0.00
-151,0,0.68
+151,0,0.51
 152,0,0.17
 153,0,1.19
 154,0,0.00
@@ -170,8 +170,8 @@ passport_id,nationcred_score,nationcred_score_accumulated
 168,0,2.55
 169,0,2.55
 170,0,0.51
-171,0,283.57
-172,0,486.71
+171,0,283.55
+172,0,486.72
 173,0,0.00
 174,0,0.00
 175,0,0.00
@@ -201,7 +201,7 @@ passport_id,nationcred_score,nationcred_score_accumulated
 199,0,2.84
 200,0,0.51
 201,0,0.00
-202,0,257.79
+202,0,257.80
 203,0,0.00
 204,0,0.68
 205,0,0.00
@@ -232,7 +232,7 @@ passport_id,nationcred_score,nationcred_score_accumulated
 230,0,0.00
 231,0,0.00
 232,0,2.38
-233,0.35,2278.42
+233,7.58,2286.20
 234,0,0.85
 235,0,0.00
 236,0,0.00
@@ -287,7 +287,7 @@ passport_id,nationcred_score,nationcred_score_accumulated
 285,0,26.92
 286,0,0.00
 287,0,1.19
-288,0,107.05
+288,0,107.04
 289,0,0.00
 290,0,0.00
 291,0,0.00
