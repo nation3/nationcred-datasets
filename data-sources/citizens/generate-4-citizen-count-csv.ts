@@ -1,12 +1,15 @@
 import { ethers } from 'ethers'
 const Passport = require('../abis/Passport.json')
+const PassportIssuer = require('../abis/PassportIssuer.json')
 const csvWriter = require('csv-writer')
 const fs = require('fs')
 const Papa = require('papaparse')
+import { MulticallWrapper } from 'ethers-multicall-provider'
+const EthDater = require('ethereum-block-by-date')
 
-const ethersProvider = new ethers.JsonRpcProvider(
+const ethersProvider = MulticallWrapper.wrap(new ethers.JsonRpcProvider(
   'https://lb.nodies.app/v1/5e9daed367d1454fab7c75f0ec8aceff'
-)
+))
 console.debug('ethersProvider:', ethersProvider)
 
 const passportContract = new ethers.Contract(
@@ -23,8 +26,13 @@ loadPassportMintsByWeek()
 async function loadPassportMintsByWeek() {
   console.info('loadPassportMintsByWeek')
 
-  // const revocations = await fetchRevocations()
-  // console.debug('revocations:', revocations)
+  const blocksWithRevocation: number[] = await fetchBlocksWithRevocation()
+  console.debug('blocksWithRevocation:', blocksWithRevocation)
+  console.debug('blocksWithRevocation.length:', blocksWithRevocation.length)
+
+  const blockPerWeekArray: any[] = await getBlockPerWeekArray()
+  console.debug('blockPerWeekArray:', blockPerWeekArray)
+  console.debug('blockPerWeekArray.length:', blockPerWeekArray.length)
 
   const writer = csvWriter.createObjectCsvWriter({
     path: 'output/citizen-count-per-week.csv',
@@ -65,8 +73,7 @@ async function loadPassportMintsByWeek() {
     const totalExpiredPassports: number = getTotalExpiredPassports(weekEndDate, id)
     console.debug('totalExpiredPassports:', totalExpiredPassports)
 
-    // const totalRevokedPassports: number = getTotalRevokedPassports(weekEndDate, id, revocations)
-    const totalRevokedPassports: number = getTotalRevokedPassports(weekEndDate, id, new Array(nextId).fill(0))
+    const totalRevokedPassports: number = getTotalRevokedPassports(weekEndDate, blocksWithRevocation, blockPerWeekArray)
     console.debug('totalRevokedPassports:', totalRevokedPassports)
     
     // Export to CSV
@@ -145,57 +152,65 @@ function getTotalExpiredPassports(weekEndDate: Date, maxPassportID: number): num
 /**
  * Calculates the total number of revoked passports up until `weekEndDate`
  */
-function getTotalRevokedPassports(weekEndDate: Date, maxPassportID: number, revocations: any): number {
+function getTotalRevokedPassports(weekEndDate: Date, blocksWithRevocation: number[], blockPerWeekArray: any[]): number {
   console.info('getTotalRevokedPassports')
 
-  const weekEndDateString: string = weekEndDate.toISOString().substring(0, 10)
+  let blockOfWeekEnd: number = 0
+  blockPerWeekArray.forEach((object) => {
+    if (new Date(object.date).getTime() == weekEndDate.getTime()) {
+      blockOfWeekEnd = object.block
+    }
+  })
+  console.debug('blockOfWeekEnd:', blockOfWeekEnd)
 
-  let totalRevokedPassports = 0
-  for (let passportID = 0; passportID < maxPassportID; passportID++) {
-    // console.debug(`weekEndDate: ${weekEndDateString}, passportID: ${passportID}`)
-    
-    revocations.forEach((row: any, i: number) => {
-      // console.debug('row:', row)
-      const blockTimestamp: number = Number(row.blockTimestamp)
-      const revocationDate: Date = new Date(blockTimestamp * 1_000)
-      // console.debug('revocationDate:', revocationDate)
-      if (revocationDate.getTime() <= weekEndDate.getTime()) {
-        const tokenID: number = Number(row._tokenId)
-        // console.debug('tokenID:', tokenID)
-        if (tokenID == passportID) {
-          console.debug('Passport ID revoked:', passportID)
-          totalRevokedPassports++
-        }
-      }
-    })
-  }
+  let totalRevokedPassports = 0    
+  blocksWithRevocation.forEach((blockWithRevocation: number) => {
+    if (blockWithRevocation <= blockOfWeekEnd) {
+      // console.debug('blockWithRevocation:', blockWithRevocation)
+      totalRevokedPassports++
+    }
+  })
 
   return totalRevokedPassports
 }
 
-async function fetchRevocations() {
-  console.info('fetchRevocations')
+async function fetchBlocksWithRevocation(): Promise<number[]> {
+  console.info('fetchBlocksWithRevocation')
 
-  // https://github.com/nation3/subgraphs/blob/main/passportissuance/schema.graphql
-  const GRAPHQL_URL: string = 'https://api.thegraph.com/subgraphs/name/nation3/passportissuance'
-  const response = await fetch(GRAPHQL_URL, {
-      method: 'POST',
-      body: JSON.stringify({
-          query: `
-            {
-              revokes(first: 420) {
-                _tokenId
-                blockTimestamp
-              }
-            }
-          `
-      })
+  const passportIssuerContract = new ethers.Contract(
+    '0x279c0b6bfCBBA977eaF4ad1B2FFe3C208aa068aC',
+    PassportIssuer.abi,
+    ethersProvider
+  )
+
+  const revokeEvents = await passportIssuerContract.queryFilter('Revoke')
+  console.debug('revokeEvents:', revokeEvents)
+  const blocksWithRevocation: number[] = []
+  revokeEvents.forEach((e) => {
+    blocksWithRevocation.push(e.blockNumber)
   })
+  return blocksWithRevocation
+}
 
-  const { data } = await response.json()
-  console.debug('data:', data)
+/**
+ * Multicall for getting the Ethereum block for all the weeks.
+ */
+async function getBlockPerWeekArray() {
+  console.info('getBlockPerWeekArray')
 
-  return data.revokes
+  const dater = new EthDater(ethersProvider)
+
+  // Populate an Array with one call per week
+  const calls = []
+  const weekEndDate: Date = new Date('2022-06-05T00:00:00Z')
+  const nowDate: Date = new Date()
+  while (nowDate.getTime() > weekEndDate.getTime()) {
+    calls.push(dater.getDate(weekEndDate))
+    weekEndDate.setDate(weekEndDate.getDate() + 7)
+  }
+  console.info('calls.length:', calls.length)
+
+  return Promise.all(calls)
 }
 
 export {}
